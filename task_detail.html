@@ -54,8 +54,11 @@
                         <h1 class="text-[20px] font-bold text-[#303133] mb-3">企业信用评估分析任务</h1>
                         <div class="flex items-center gap-6 text-[#909399] text-[13px]">
                             <span>任务编号：TSK202401001</span>
+                            <span>已申请数据数：3</span>
+                            <span>自用数据数：0</span>
+                            <span>开发人数：2</span>
                             <span>状态：<span class="text-[#1c7ffd]">进行中</span></span>
-                            <span>创建时间：2024-01-15 10:00:00</span>
+                            <span>任务更新时间：2024-01-15 10:00:00</span>
                         </div>
                     </div>
                     <div class="p-6">
@@ -72,13 +75,18 @@
                     </div>
                     <div class="p-6">
                         <div class="mb-6">
-                            <div class="text-[#303133] font-medium mb-3">已申请数据资源</div>
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="text-[#303133] font-medium">已申请数据资源</div>
+                                <button class="px-4 py-1.5 bg-[#1c7ffd] text-white rounded text-[13px] hover:bg-blue-600 transition-colors" onclick="openAddAppliedResourceModal()">新增</button>
+                            </div>
                             <table class="w-full text-center text-[13px] border-collapse">
                                 <thead class="bg-[#f8f8f9] text-[#909399] font-medium">
                                     <tr>
                                         <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">目录名称</th>
                                         <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">服务名称</th>
                                         <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">服务类型</th>
+                                        <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">授权开始时间</th>
+                                        <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">授权结束时间</th>
                                         <th class="py-3 px-4 font-medium border-b border-gray-100 w-[100px] whitespace-nowrap">操作</th>
                                     </tr>
                                 </thead>
@@ -87,28 +95,36 @@
                                         <td class="py-3 px-4 text-[#303133]">企业基础信息库</td>
                                         <td class="py-3 px-4 text-[#303133]">企业基础信息查询服务</td>
                                         <td class="py-3 px-4 text-[#909399]">API</td>
+                                        <td class="py-3 px-4 text-[#909399]">2024-01-15</td>
+                                        <td class="py-3 px-4 text-[#909399]">2024-12-31</td>
                                         <td class="py-3 px-4 text-[#1c7ffd]">
-                                            <a href="#" class="hover:underline" onclick="openAppliedResourceDetail()">详情</a>
+                                            <a href="#" class="hover:underline" onclick="openAppliedResourceDetail()">查看</a>
                                         </td>
                                     </tr>
                                     <tr class="border-b border-gray-100">
                                         <td class="py-3 px-4 text-[#303133]">经营变更记录表</td>
                                         <td class="py-3 px-4 text-[#303133]">企业变更信息查询服务</td>
                                         <td class="py-3 px-4 text-[#909399]">API</td>
+                                        <td class="py-3 px-4 text-[#909399]">2024-01-20</td>
+                                        <td class="py-3 px-4 text-[#909399]">2024-12-31</td>
                                         <td class="py-3 px-4 text-[#1c7ffd]">
-                                            <a href="#" class="hover:underline" onclick="openAppliedResourceDetail()">详情</a>
+                                            <a href="#" class="hover:underline" onclick="openAppliedResourceDetail()">查看</a>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div>
-                            <div class="text-[#303133] font-medium mb-3">自用数据资源</div>
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="text-[#303133] font-medium">自用数据资源</div>
+                                <button class="px-4 py-1.5 bg-[#1c7ffd] text-white rounded text-[13px] hover:bg-blue-600 transition-colors" onclick="openAddOwnResourceModal()">新增</button>
+                            </div>
                             <table class="w-full text-center text-[13px] border-collapse">
                                 <thead class="bg-[#f8f8f9] text-[#909399] font-medium">
                                     <tr>
                                         <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">资源名称</th>
                                         <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">资源类型</th>
+                                        <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">更新时间</th>
                                         <th class="py-3 px-4 font-medium border-b border-gray-100 w-[100px] whitespace-nowrap">操作</th>
                                     </tr>
                                 </thead>
@@ -116,15 +132,17 @@
                                     <tr class="border-b border-gray-100">
                                         <td class="py-3 px-4 text-[#303133]">企业标签接口</td>
                                         <td class="py-3 px-4 text-[#909399]">API</td>
+                                        <td class="py-3 px-4 text-[#909399]">2024-01-15 10:30:00</td>
                                         <td class="py-3 px-4 text-[#1c7ffd]">
-                                            <a href="#" class="hover:underline" onclick="openOwnResourceDetail()">详情</a>
+                                            <a href="#" class="hover:underline" onclick="openOwnResourceDetail()">查看</a>
                                         </td>
                                     </tr>
                                     <tr class="border-b border-gray-100">
                                         <td class="py-3 px-4 text-[#303133]">税务风险评估接口</td>
                                         <td class="py-3 px-4 text-[#909399]">API</td>
+                                        <td class="py-3 px-4 text-[#909399]">2024-01-16 14:20:00</td>
                                         <td class="py-3 px-4 text-[#1c7ffd]">
-                                            <a href="#" class="hover:underline" onclick="openOwnResourceDetail()">详情</a>
+                                            <a href="#" class="hover:underline" onclick="openOwnResourceDetail()">查看</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -141,22 +159,30 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <div class="flex flex-wrap gap-3">
-                            <div class="flex items-center gap-3 border border-gray-200 rounded-lg px-4 py-3">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=zhangsan&backgroundColor=b6e3f4" alt="avatar" class="w-8 h-8 rounded-full">
-                                <div>
-                                    <div class="text-[#303133] font-medium">张三</div>
-                                    <div class="text-[#909399] text-[12px]">zhangsan</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3 border border-gray-200 rounded-lg px-4 py-3">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=lisi&backgroundColor=b6e3f4" alt="avatar" class="w-8 h-8 rounded-full">
-                                <div>
-                                    <div class="text-[#303133] font-medium">李四</div>
-                                    <div class="text-[#909399] text-[12px]">lisi</div>
-                                </div>
-                            </div>
-                        </div>
+                        <table class="w-full text-center text-[13px] border-collapse">
+                            <thead class="bg-[#f8f8f9] text-[#909399] font-medium">
+                                <tr>
+                                    <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">姓名</th>
+                                    <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">账号</th>
+                                    <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">电话</th>
+                                    <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">单位名称</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                    <td class="py-3 px-4 text-[#303133]">张三</td>
+                                    <td class="py-3 px-4 text-[#909399]">zhangsan</td>
+                                    <td class="py-3 px-4 text-[#909399]">13800138001</td>
+                                    <td class="py-3 px-4 text-[#909399]">山东亿云信息技术有限公司</td>
+                                </tr>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                    <td class="py-3 px-4 text-[#303133]">李四</td>
+                                    <td class="py-3 px-4 text-[#909399]">lisi</td>
+                                    <td class="py-3 px-4 text-[#909399]">13900139002</td>
+                                    <td class="py-3 px-4 text-[#909399]">山东亿云信息技术有限公司</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -294,6 +320,188 @@
         </div>
     </div>
 
+    <!-- 新增已申请数据资源弹窗 -->
+    <div id="addAppliedResourceModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/50" onclick="closeAddAppliedResourceModal()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] bg-white rounded-lg shadow-2xl flex flex-col max-h-[80vh]">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+                <span class="font-medium text-[#303133]">选择已申请数据资源</span>
+                <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeAddAppliedResourceModal()"></i>
+            </div>
+            <div class="p-6 shrink-0">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="flex items-center gap-2">
+                        <label class="text-[#606266] text-[13px]">目录名称：</label>
+                        <input type="text" placeholder="请输入" class="h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd] w-[180px]">
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <label class="text-[#606266] text-[13px]">服务名称：</label>
+                        <input type="text" placeholder="请输入" class="h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd] w-[180px]">
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <label class="text-[#606266] text-[13px]">服务类型：</label>
+                        <div class="relative">
+                            <select class="h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd] w-[120px] appearance-none bg-white">
+                                <option value="">全部</option>
+                                <option>API</option>
+                                <option>数据库</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-gray-400 pointer-events-none"></i>
+                        </div>
+                    </div>
+                    <button class="h-8 px-4 bg-[#1c7ffd] text-white rounded text-[13px] hover:bg-blue-600 transition-colors">查询</button>
+                </div>
+            </div>
+            <div class="flex-1 overflow-auto px-6 pb-6">
+                <table class="w-full text-center text-[13px] border-collapse">
+                    <thead class="bg-[#f8f8f9] text-[#909399] font-medium sticky top-0">
+                        <tr>
+                            <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">目录名称</th>
+                            <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">服务名称</th>
+                            <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">服务类型</th>
+                            <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">授权开始时间</th>
+                            <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">授权结束时间</th>
+                            <th class="py-3 px-4 font-medium border-b border-gray-100 w-[100px] whitespace-nowrap">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-3 px-4 text-[#303133]">企业基础信息库</td>
+                            <td class="py-3 px-4 text-[#303133]">企业基础信息查询服务</td>
+                            <td class="py-3 px-4 text-[#909399]">API</td>
+                            <td class="py-3 px-4 text-[#909399]">2024-01-15</td>
+                            <td class="py-3 px-4 text-[#909399]">2024-12-31</td>
+                            <td class="py-3 px-4 text-[#1c7ffd]">
+                                <a href="#" class="hover:underline" onclick="openAddAppliedResourceDrawer()">查看</a>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-3 px-4 text-[#303133]">经营变更记录表</td>
+                            <td class="py-3 px-4 text-[#303133]">企业变更信息查询服务</td>
+                            <td class="py-3 px-4 text-[#909399]">API</td>
+                            <td class="py-3 px-4 text-[#909399]">2024-01-20</td>
+                            <td class="py-3 px-4 text-[#909399]">2024-12-31</td>
+                            <td class="py-3 px-4 text-[#1c7ffd]">
+                                <a href="#" class="hover:underline" onclick="openAddAppliedResourceDrawer()">查看</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="flex justify-end gap-3 px-6 py-4 border-t border-gray-200">
+                <button class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px]" onclick="closeAddAppliedResourceModal()">取消</button>
+                <button class="h-8 px-5 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px]" onclick="closeAddAppliedResourceModal()">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增已申请数据资源右侧抽屉 -->
+    <div id="addAppliedResourceDrawer" class="fixed top-0 right-0 h-full w-[480px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col hidden">
+        <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+            <span class="font-medium text-[#303133]">资源详情</span>
+            <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeAddAppliedResourceDrawer()"></i>
+        </div>
+        <div class="flex-1 overflow-y-auto p-6">
+            <div class="space-y-6">
+                <div>
+                    <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-4 leading-none">基本信息</h3>
+                    <div class="grid grid-cols-1 gap-y-4 text-[13px] pl-4">
+                        <div class="flex"><span class="text-[#909399] w-28 text-right pr-4">目录名称</span><span class="text-[#303133] flex-1">企业基础信息库</span></div>
+                        <div class="flex"><span class="text-[#909399] w-28 text-right pr-4">服务名称</span><span class="text-[#303133] flex-1">企业基础信息查询服务</span></div>
+                        <div class="flex"><span class="text-[#909399] w-28 text-right pr-4">服务类型</span><span class="text-[#303133] flex-1">API</span></div>
+                        <div class="flex"><span class="text-[#909399] w-28 text-right pr-4">授权开始时间</span><span class="text-[#303133] flex-1">2024-01-15</span></div>
+                        <div class="flex"><span class="text-[#909399] w-28 text-right pr-4">授权结束时间</span><span class="text-[#303133] flex-1">2024-12-31</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增自用数据资源弹窗 -->
+    <div id="addOwnResourceModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/50" onclick="closeAddOwnResourceModal()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] bg-white rounded-lg shadow-2xl flex flex-col max-h-[80vh]">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+                <span class="font-medium text-[#303133]">选择自用数据资源</span>
+                <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeAddOwnResourceModal()"></i>
+            </div>
+            <div class="p-6 shrink-0">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="flex items-center gap-2">
+                        <label class="text-[#606266] text-[13px]">资源名称：</label>
+                        <input type="text" placeholder="请输入" class="h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd] w-[180px]">
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <label class="text-[#606266] text-[13px]">资源类型：</label>
+                        <div class="relative">
+                            <select class="h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd] w-[120px] appearance-none bg-white">
+                                <option value="">全部</option>
+                                <option>API</option>
+                                <option>数据库</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-gray-400 pointer-events-none"></i>
+                        </div>
+                    </div>
+                    <button class="h-8 px-4 bg-[#1c7ffd] text-white rounded text-[13px] hover:bg-blue-600 transition-colors">查询</button>
+                </div>
+            </div>
+            <div class="flex-1 overflow-auto px-6 pb-6">
+                <table class="w-full text-center text-[13px] border-collapse">
+                    <thead class="bg-[#f8f8f9] text-[#909399] font-medium sticky top-0">
+                        <tr>
+                            <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">资源名称</th>
+                            <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">资源类型</th>
+                            <th class="py-3 px-4 font-medium border-b border-gray-100 whitespace-nowrap">更新时间</th>
+                            <th class="py-3 px-4 font-medium border-b border-gray-100 w-[100px] whitespace-nowrap">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-3 px-4 text-[#303133]">企业标签接口</td>
+                            <td class="py-3 px-4 text-[#909399]">API</td>
+                            <td class="py-3 px-4 text-[#909399]">2024-01-15 10:30:00</td>
+                            <td class="py-3 px-4 text-[#1c7ffd]">
+                                <a href="#" class="hover:underline" onclick="openAddOwnResourceDrawer()">查看</a>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-3 px-4 text-[#303133]">税务风险评估接口</td>
+                            <td class="py-3 px-4 text-[#909399]">API</td>
+                            <td class="py-3 px-4 text-[#909399]">2024-01-16 14:20:00</td>
+                            <td class="py-3 px-4 text-[#1c7ffd]">
+                                <a href="#" class="hover:underline" onclick="openAddOwnResourceDrawer()">查看</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="flex justify-end gap-3 px-6 py-4 border-t border-gray-200">
+                <button class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px]" onclick="closeAddOwnResourceModal()">取消</button>
+                <button class="h-8 px-5 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px]" onclick="closeAddOwnResourceModal()">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增自用数据资源右侧抽屉 -->
+    <div id="addOwnResourceDrawer" class="fixed top-0 right-0 h-full w-[480px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col hidden">
+        <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+            <span class="font-medium text-[#303133]">资源详情</span>
+            <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeAddOwnResourceDrawer()"></i>
+        </div>
+        <div class="flex-1 overflow-y-auto p-6">
+            <div class="space-y-6">
+                <div>
+                    <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-4 leading-none">基本信息</h3>
+                    <div class="grid grid-cols-1 gap-y-4 text-[13px] pl-4">
+                        <div class="flex"><span class="text-[#909399] w-28 text-right pr-4">资源名称</span><span class="text-[#303133] flex-1">企业标签接口</span></div>
+                        <div class="flex"><span class="text-[#909399] w-28 text-right pr-4">资源类型</span><span class="text-[#303133] flex-1">API</span></div>
+                        <div class="flex"><span class="text-[#909399] w-28 text-right pr-4">更新时间</span><span class="text-[#303133] flex-1">2024-01-15 10:30:00</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         function openAppliedResourceDetail() {
             document.getElementById('appliedResourceDrawer').classList.remove('hidden');
@@ -345,6 +553,48 @@
             }
             tabs[tabName].className = 'py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer text-[14px]';
             contents[tabName].classList.remove('hidden');
+        }
+
+        function openAddAppliedResourceModal() {
+            document.getElementById('addAppliedResourceModal').classList.remove('hidden');
+        }
+
+        function closeAddAppliedResourceModal() {
+            document.getElementById('addAppliedResourceModal').classList.add('hidden');
+        }
+
+        function openAddAppliedResourceDrawer() {
+            const drawer = document.getElementById('addAppliedResourceDrawer');
+            drawer.classList.remove('hidden');
+            setTimeout(() => {
+                drawer.classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closeAddAppliedResourceDrawer() {
+            const drawer = document.getElementById('addAppliedResourceDrawer');
+            drawer.classList.add('translate-x-full');
+        }
+
+        function openAddOwnResourceModal() {
+            document.getElementById('addOwnResourceModal').classList.remove('hidden');
+        }
+
+        function closeAddOwnResourceModal() {
+            document.getElementById('addOwnResourceModal').classList.add('hidden');
+        }
+
+        function openAddOwnResourceDrawer() {
+            const drawer = document.getElementById('addOwnResourceDrawer');
+            drawer.classList.remove('hidden');
+            setTimeout(() => {
+                drawer.classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closeAddOwnResourceDrawer() {
+            const drawer = document.getElementById('addOwnResourceDrawer');
+            drawer.classList.add('translate-x-full');
         }
 
         function switchOwnTab(tabName) {
