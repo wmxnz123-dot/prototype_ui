@@ -1,5 +1,5 @@
 const developerTopNavItems = [
-    { id: 'workbench', label: '开发工作台', href: 'index.html' },
+    { id: 'workbench', label: '工作台', href: 'index.html' },
     { id: 'resource', label: '资源中心', href: 'data_source_manage.html?nav=resource-source' },
     { id: 'sandbox', label: '数据沙箱', href: 'scene_center.html?nav=sandbox-task' },
     { id: 'model', label: '数据模型', href: 'image_repo_manage.html?nav=result-repo' },
