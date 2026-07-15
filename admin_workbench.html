@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据沙箱平台 - 管理工作台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col overflow-hidden bg-[#f0f2f5] text-[14px] text-gray-700">
+    <!-- 顶部导航栏 -->
+    <header class="h-14 bg-[#1c7ffd] flex justify-between items-center px-6 text-white shrink-0 shadow-sm z-10">
+        <div class="flex items-center gap-2">
+            <i class="fa-solid fa-cubes-stacked text-2xl"></i>
+            <span class="text-lg font-medium tracking-wider ml-1">数据沙箱平台</span>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="relative cursor-pointer hover:text-gray-200 transition-colors" onclick="window.location.href='my_messages.html'">
+                <i class="fa-regular fa-bell text-xl"></i>
+                <span class="absolute -top-1.5 -right-2 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-[#1c7ffd] leading-none">20</span>
+            </div>
+            <div class="flex items-center gap-2 cursor-pointer hover:text-gray-200 transition-colors">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=yiyun&backgroundColor=b6e3f4" alt="avatar" class="w-8 h-8 rounded-full border border-blue-300 bg-white">
+                <span>yiyun</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主体内容 -->
+    <div class="flex-1 flex overflow-hidden">
+        <!-- 左侧导航 -->
+        <aside class="w-[220px] bg-white border-r border-gray-200 shrink-0 overflow-y-auto">
+            <div id="developer-side-nav" class="py-4"></div>
+        </aside>
+
+        <script src="./developer_nav.js"></script>
+
+        <!-- 右侧内容区 -->
+        <main class="flex-1 flex flex-col overflow-hidden bg-[#f0f2f5]">
+            <div id="developer-top-nav" class="h-[52px] bg-white border-b border-gray-200 px-6 flex items-center gap-2 shrink-0 overflow-x-auto"></div>
+            <!-- 核心内容容器 -->
+            <div class="flex-1 p-6 flex flex-col gap-5 overflow-y-auto">
+                
+                <!-- 欢迎头部 -->
+                <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-5 shadow-sm relative overflow-hidden flex flex-col justify-center min-h-[100px]">
+                    <img src="./images/img01.png" class="absolute left-0 right-0 top-0 bottom-0 w-[100%] w-full h-[110px] z-0 pointer-events-none" alt="welcome">
+                    <h1 class="text-2xl font-bold text-[#303133] mb-4 relative z-10 tracking-wider">欢迎登录，yiyun！</h1>
+                    <div class="flex items-center gap-12 text-[#606266] text-[14px] relative z-10">
+                        <div class="flex items-center">
+                            <span class="text-[#909399]">单位名称：</span>
+                            <span class="font-medium">山东亿云信息技术有限公司</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-[#909399]">开发者名称：</span>
+                            <span class="font-medium">开发者一号</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 业务概览 -->
+                <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] p-6">
+                    <h2 class="text-[16px] font-bold text-[#303133] mb-5">业务概览</h2>
+                    <div class="grid grid-cols-4 gap-5">
+                        <div class="flex items-center gap-4 p-5 rounded-lg border border-gray-100 bg-gradient-to-r from-blue-50 to-white hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 rounded-full bg-[#1c7ffd] text-white flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                            </div>
+                            <div>
+                                <div class="text-[#909399] text-[13px] mb-1">已发布资源</div>
+                                <div class="text-[28px] font-bold text-[#303133] leading-none">12</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-5 rounded-lg border border-gray-100 bg-gradient-to-r from-green-50 to-white hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 rounded-full bg-green-500 text-white flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-database"></i>
+                            </div>
+                            <div>
+                                <div class="text-[#909399] text-[13px] mb-1">自用数据资源</div>
+                                <div class="text-[28px] font-bold text-[#303133] leading-none">8</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-5 rounded-lg border border-gray-100 bg-gradient-to-r from-orange-50 to-white hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-tasks"></i>
+                            </div>
+                            <div>
+                                <div class="text-[#909399] text-[13px] mb-1">开发任务</div>
+                                <div class="text-[28px] font-bold text-[#303133] leading-none">15</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-5 rounded-lg border border-gray-100 bg-gradient-to-r from-purple-50 to-white hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 rounded-full bg-purple-500 text-white flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-cube"></i>
+                            </div>
+                            <div>
+                                <div class="text-[#909399] text-[13px] mb-1">数据模型统计</div>
+                                <div class="text-[28px] font-bold text-[#303133] leading-none">6</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-5 flex-1 min-h-[300px]">
+                    <!-- 我的待办 -->
+                    <div class="flex-1 bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] p-6 flex flex-col">
+                        <div class="flex justify-between items-center mb-5">
+                            <h2 class="text-[16px] font-bold text-[#303133]">我的待办</h2>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 flex-1 content-start">
+                            <a href="data_resource_audit.html?nav=pending-resource" class="relative flex items-center gap-3 p-3 rounded-lg m-2 border border-gray-100 hover:border-[#1c7ffd] hover:bg-blue-50 transition-colors group">
+                                <div class="absolute -top-2 -right-2 bg-[#f56c6c] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full z-10">3</div>
+                                <div class="w-10 h-10 rounded-full bg-orange-100 text-orange-500 flex items-center justify-center text-lg shrink-0">
+                                    <i class="fa-solid fa-file-signature"></i>
+                                </div>
+                                <div class="text-[#303133] font-medium group-hover:text-[#1c7ffd] transition-colors">数据资源审核</div>
+                            </a>
+
+                            <a href="data_resource_renew_audit.html?nav=pending-renew" class="relative flex items-center gap-3 p-3 rounded-lg m-2 border border-gray-100 hover:border-[#1c7ffd] hover:bg-blue-50 transition-colors group">
+                                <div class="absolute -top-2 -right-2 bg-[#f56c6c] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full z-10">2</div>
+                                <div class="w-10 h-10 rounded-full bg-green-100 text-green-500 flex items-center justify-center text-lg shrink-0">
+                                    <i class="fa-solid fa-refresh"></i>
+                                </div>
+                                <div class="text-[#303133] font-medium group-hover:text-[#1c7ffd] transition-colors">资源续期审核</div>
+                            </a>
+
+                            <a href="model_deploy_audit.html?nav=pending-deploy" class="relative flex items-center gap-3 p-3 rounded-lg m-2 border border-gray-100 hover:border-[#1c7ffd] hover:bg-blue-50 transition-colors group">
+                                <div class="absolute -top-2 -right-2 bg-[#f56c6c] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full z-10">2</div>
+                                <div class="w-10 h-10 rounded-full bg-blue-100 text-[#1c7ffd] flex items-center justify-center text-lg shrink-0">
+                                    <i class="fa-solid fa-cube"></i>
+                                </div>
+                                <div class="text-[#303133] font-medium group-hover:text-[#1c7ffd] transition-colors">模型注册部署</div>
+                            </a>
+
+                            <a href="model_change_audit.html?nav=pending-change" class="relative flex items-center gap-3 p-3 rounded-lg m-2 border border-gray-100 hover:border-[#1c7ffd] hover:bg-blue-50 transition-colors group">
+                                <div class="absolute -top-2 -right-2 bg-[#f56c6c] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full z-10">1</div>
+                                <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-500 flex items-center justify-center text-lg shrink-0">
+                                    <i class="fa-solid fa-code-branch"></i>
+                                </div>
+                                <div class="text-[#303133] font-medium group-hover:text-[#1c7ffd] transition-colors">模型变更部署</div>
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <!-- 消息提醒 -->
+                    <div class="flex-1 bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] p-6 flex flex-col">
+                        <div class="flex justify-between items-center mb-5">
+                            <h2 class="text-[16px] font-bold text-[#303133]">消息提醒</h2>
+                            <a href="my_messages.html" class="text-sm text-gray-400 hover:text-[#1c7ffd] flex items-center">查看更多 <i class="fa-solid fa-angle-right ml-1 text-xs"></i></a>
+                        </div>
+
+                        <div class="flex flex-col gap-1 flex-1 overflow-y-auto pr-1">
+                            <div class="flex items-center gap-3 px-2 py-2.5 hover:bg-gray-50 transition-colors cursor-pointer">
+                                <div class="w-2 h-2 rounded-full bg-[#f56c6c] shrink-0"></div>
+                                <div class="flex-1 min-w-0 text-[#303133] text-[13px] truncate">数据资源申请已通过审核</div>
+                                <div class="text-[#909399] text-[12px] shrink-0">2024-01-25 10:30</div>
+                            </div>
+
+                            <div class="flex items-center gap-3 px-2 py-2.5 hover:bg-gray-50 transition-colors cursor-pointer">
+                                <div class="w-2 h-2 rounded-full bg-[#f56c6c] shrink-0"></div>
+                                <div class="flex-1 min-w-0 text-[#303133] text-[13px] truncate">模型部署申请待您审核</div>
+                                <div class="text-[#909399] text-[12px] shrink-0">2024-01-24 16:20</div>
+                            </div>
+
+                            <div class="flex items-center gap-3 px-2 py-2.5 hover:bg-gray-50 transition-colors cursor-pointer">
+                                <div class="w-2 h-2 rounded-full bg-[#f56c6c] shrink-0"></div>
+                                <div class="flex-1 min-w-0 text-[#303133] text-[13px] truncate">开发任务已完成</div>
+                                <div class="text-[#909399] text-[12px] shrink-0">2024-01-24 09:15</div>
+                            </div>
+
+                            <div class="flex items-center gap-3 px-2 py-2.5 hover:bg-gray-50 transition-colors cursor-pointer">
+                                <div class="w-2 h-2 rounded-full bg-gray-300 shrink-0"></div>
+                                <div class="flex-1 min-w-0 text-[#606266] text-[13px] truncate">数据资源授权即将到期提醒通知</div>
+                                <div class="text-[#909399] text-[12px] shrink-0">2024-01-23 14:00</div>
+                            </div>
+
+                            <div class="flex items-center gap-3 px-2 py-2.5 hover:bg-gray-50 transition-colors cursor-pointer">
+                                <div class="w-2 h-2 rounded-full bg-gray-300 shrink-0"></div>
+                                <div class="flex-1 min-w-0 text-[#606266] text-[13px] truncate">镜像上传成功</div>
+                                <div class="text-[#909399] text-[12px] shrink-0">2024-01-22 11:45</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 快捷入口 -->
+                    <div class="w-[260px] bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] p-5 flex flex-col shrink-0">
+                        <h2 class="text-[16px] font-bold text-[#303133] mb-4">快捷入口</h2>
+
+                        <div class="flex flex-col gap-2 overflow-y-auto pr-1 flex-1">
+                            <div class="flex items-center gap-3 p-3 rounded-lg border border-gray-100 bg-blue-50 cursor-pointer hover:bg-blue-100 hover:border-[#1c7ffd] transition-all group">
+                                <div class="w-9 h-9 rounded-full bg-white flex items-center justify-center text-[#1c7ffd] text-base shrink-0 shadow-sm">
+                                    <i class="fa-solid fa-globe"></i>
+                                </div>
+                                <span class="text-[#303133] font-medium text-[13px] group-hover:text-[#1c7ffd] transition-colors">授权运营门户</span>
+                            </div>
+
+                            <div class="flex items-center gap-3 p-3 rounded-lg border border-gray-100 bg-blue-50 cursor-pointer hover:bg-blue-100 hover:border-[#1c7ffd] transition-all group">
+                                <div class="w-9 h-9 rounded-full bg-white flex items-center justify-center text-[#1c7ffd] text-base shrink-0 shadow-sm">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                </div>
+                                <span class="text-[#303133] font-medium text-[13px] group-hover:text-[#1c7ffd] transition-colors">数据交易平台</span>
+                            </div>
+
+                            <div class="flex items-center gap-3 p-3 rounded-lg border border-gray-100 bg-blue-50 cursor-pointer hover:bg-blue-100 hover:border-[#1c7ffd] transition-all group">
+                                <div class="w-9 h-9 rounded-full bg-white flex items-center justify-center text-[#1c7ffd] text-base shrink-0 shadow-sm">
+                                    <i class="fa-solid fa-book"></i>
+                                </div>
+                                <span class="text-[#303133] font-medium text-[13px] group-hover:text-[#1c7ffd] transition-colors">帮助中心</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据沙箱平台 - 资源详情</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col overflow-hidden bg-[#f0f2f5] text-[14px] text-gray-700">
+    <header class="h-14 bg-[#1c7ffd] flex justify-between items-center px-6 text-white shrink-0 shadow-sm z-10">
+        <div class="flex items-center gap-2">
+            <i class="fa-solid fa-cubes-stacked text-2xl"></i>
+            <span class="text-lg font-medium tracking-wider ml-1">数据沙箱平台</span>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="relative cursor-pointer hover:text-gray-200 transition-colors" onclick="window.location.href='my_messages.html'">
+                <i class="fa-regular fa-bell text-xl"></i>
+                <span class="absolute -top-1.5 -right-2 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-[#1c7ffd] leading-none">20</span>
+            </div>
+            <div class="flex items-center gap-2 cursor-pointer hover:text-gray-200 transition-colors">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=yiyun&backgroundColor=b6e3f4" alt="avatar" class="w-8 h-8 rounded-full border border-blue-300 bg-white">
+                <span>yiyun</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-1 flex overflow-hidden">
+        <aside class="w-[220px] bg-white border-r border-gray-200 shrink-0 overflow-y-auto">
+            <div id="developer-side-nav" class="py-4"></div>
+        </aside>
+
+        <script src="./developer_nav.js"></script>
+
+        <main class="flex-1 flex flex-col overflow-hidden relative bg-[#f0f2f5]">
+            <div id="developer-top-nav" class="h-[52px] bg-white border-b border-gray-200 px-6 flex items-center gap-2 shrink-0 overflow-x-auto"></div>
+
+            <div class="px-6 py-3 bg-white border-b border-gray-100 flex items-center shrink-0">
+                <a href="resource_supermarket.html?nav=resource-market" class="text-[#1c7ffd] hover:opacity-80 transition-colors flex items-center gap-1 font-medium text-[15px]">
+                    <i class="fa-solid fa-arrow-left"></i> 返回
+                </a>
+            </div>
+
+            <div class="flex-1 p-6 flex flex-col gap-4 overflow-y-auto">
+                <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] p-6">
+                    <div class="flex justify-between items-start">
+                        <div class="flex items-start gap-4">
+                            <div class="w-24 h-24 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center text-white text-4xl shrink-0">
+                                <i class="fa-solid fa-plug"></i>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <h1 class="text-[20px] font-bold text-[#303133]">数据要素数据资源-接口003</h1>
+                                <div class="text-[#909399]">所属分类：经济</div>
+                                <div class="text-[#909399]">数据更新周期：每周</div>
+                                <div class="text-[#909399]">更新时间：2026-06-23 10:16:48</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="px-3 py-1 border border-gray-200 rounded text-[#909399] text-[13px] flex items-center gap-1">
+                                <i class="fa-solid fa-table"></i> 库表
+                            </div>
+                            <div class="px-3 py-1 border border-[#1c7ffd] rounded text-[#1c7ffd] text-[13px] flex items-center gap-1">
+                                <i class="fa-solid fa-plug"></i> 接口
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] flex-1 flex flex-col">
+                    <div class="flex border-b border-gray-100 px-6 shrink-0">
+                        <div id="detail-tab-basic" class="py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors" onclick="switchDetailTab('basic')">基本信息</div>
+                        <div id="detail-tab-service" class="py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer" onclick="switchDetailTab('service')">服务详情</div>
+                    </div>
+
+                    <div class="flex-1 p-6 overflow-y-auto">
+                        <div id="detail-content-basic" class="hidden">
+                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">基本信息</h3>
+                            <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] pl-4">
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">资源名称</span>
+                                    <span class="text-[#303133] flex-1">数据要素数据资源-接口003</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">资源编码</span>
+                                    <span class="text-[#303133] flex-1">PD202508140002</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">所属分类</span>
+                                    <span class="text-[#303133] flex-1">经济</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">数据更新周期</span>
+                                    <span class="text-[#303133] flex-1">每周</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">更新时间</span>
+                                    <span class="text-[#303133] flex-1">2026-06-23 10:16:48</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">提供方</span>
+                                    <span class="text-[#303133] flex-1">数据管理局</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="detail-content-service">
+                            <div class="flex justify-between items-start mb-6">
+                                <div>
+                                    <div class="text-[14px] text-[#606266] mb-2">服务名称：<span class="text-[#303133]">数据要素数据资源-接口服务003</span></div>
+                                    <div class="text-[14px] text-[#606266]">服务类型：<span class="text-[#303133]">接口</span></div>
+                                </div>
+                                <button onclick="openApiAddToBasketModal()" class="px-5 py-2 bg-[#1c7ffd] text-white rounded text-sm hover:bg-blue-600 transition-colors flex items-center gap-1">
+                                    <i class="fa-solid fa-plus"></i> 加入数据篮
+                                </button>
+                            </div>
+
+                            <h3 class="font-bold text-[#303133] text-[15px] mb-4">接口信息</h3>
+                            <div class="bg-[#f8f8f9] rounded-lg p-4 mb-6">
+                                <div class="grid grid-cols-2 gap-y-3 text-[13px]">
+                                    <div><span class="text-[#909399]">接口URL：</span><span class="text-[#303133]">http://10.193.3.18/risk</span></div>
+                                    <div><span class="text-[#909399]">接口Path：</span><span class="text-[#303133]">/company/risk-tags</span></div>
+                                    <div><span class="text-[#909399]">请求类型：</span><span class="text-[#303133]">POST</span></div>
+                                    <div><span class="text-[#909399]">返回类型：</span><span class="text-[#303133]">json</span></div>
+                                </div>
+                            </div>
+
+                            <h3 class="font-bold text-[#303133] text-[15px] mb-4">样例数据</h3>
+                            <pre class="bg-[#f8f8f9] border border-gray-200 rounded-lg p-4 text-[13px] leading-6 text-[#606266] overflow-x-auto whitespace-pre-wrap">{
+  "creditCode": "91370100MA1234567X",
+  "riskTags": ["高频涉诉", "税务异常"],
+  "score": 72
+}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fixed right-6 top-1/2 -translate-y-1/2 z-30">
+                <div class="relative cursor-pointer" onclick="openDataBasket()">
+                    <div class="w-14 h-14 bg-[#1c7ffd] rounded-full flex items-center justify-center text-white text-2xl shadow-lg hover:bg-blue-600 transition-colors">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <span id="basketBadge" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">1</span>
+                </div>
+            </div>
+
+            <div id="basketOverlay" class="fixed inset-0 bg-black bg-opacity-30 z-40 hidden" onclick="closeDataBasket()"></div>
+            <div id="dataBasketDrawer" class="fixed right-0 top-0 bottom-0 w-[1200px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
+                <div class="h-14 border-b border-gray-100 flex items-center justify-between px-6 shrink-0 bg-white">
+                    <span class="font-medium text-[#303133]">数据篮</span>
+                    <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeDataBasket()"></i>
+                </div>
+                <div class="flex-1 overflow-y-auto p-4 space-y-6">
+                    <div>
+                        <div class="text-[#303133] font-medium mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-plug text-[#1c7ffd]"></i>接口类
+                        </div>
+                        <table class="w-full text-[13px]">
+                            <thead>
+                                <tr class="bg-[#f8f8f9]">
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">目录名称</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">服务名称</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">调用频次平均</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">调用频次峰值</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">附件上传状态</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-3">企业风险信息</td>
+                                    <td class="py-3 px-3">数据要素数据资源-接口003</td>
+                                    <td class="py-3 px-3">1200次/小时</td>
+                                    <td class="py-3 px-3">3500次/小时</td>
+                                    <td class="py-3 px-3"><span class="text-gray-500">未上传</span></td>
+                                    <td class="py-3 px-3 text-[#1c7ffd]">
+                                        <a href="#" class="hover:underline mr-2" onclick="openApiAddToBasketModal()">编辑</a>
+                                        <a href="#" class="hover:underline mr-2">移除</a>
+                                        <a href="#" class="hover:underline">上传附件</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <div class="text-[#303133] font-medium mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-table text-[#1c7ffd]"></i>库表类
+                        </div>
+                        <table class="w-full text-[13px]">
+                            <thead>
+                                <tr class="bg-[#f8f8f9]">
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">目录名称</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">服务名称</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">字段名称</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">附件上传状态</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-3">企业基础信息库</td>
+                                    <td class="py-3 px-3">数据要素数据资源-库表003</td>
+                                    <td class="py-3 px-3">id, ip, type, create_by, create_time</td>
+                                    <td class="py-3 px-3"><span class="text-green-600">已上传</span></td>
+                                    <td class="py-3 px-3 text-[#1c7ffd]">
+                                        <a href="#" class="hover:underline mr-2">编辑</a>
+                                        <a href="#" class="hover:underline mr-2">移除</a>
+                                        <a href="#" class="hover:underline">重新上传</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="h-14 border-t border-gray-100 flex items-center justify-between px-6 shrink-0 bg-white">
+                    <span class="text-[#606266] text-sm">共 <span class="text-[#1c7ffd] font-medium">2</span> 项资源</span>
+                    <button class="px-5 py-1.5 bg-[#1c7ffd] text-white rounded text-sm hover:bg-blue-600 transition-colors">提交申请</button>
+                </div>
+            </div>
+
+            <div id="apiAddToBasketModalOverlay" class="fixed inset-0 bg-black bg-opacity-30 z-50 hidden flex items-center justify-center" onclick="closeApiAddToBasketModal()">
+                <div class="bg-white rounded-lg w-[600px] shadow-xl" onclick="event.stopPropagation()">
+                    <div class="h-12 border-b border-gray-100 flex items-center justify-between px-6">
+                        <span class="font-medium text-[#303133]">加入数据篮</span>
+                        <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeApiAddToBasketModal()"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex items-center">
+                                <label class="text-[#606266] w-[200px] text-right pr-4"><span class="text-red-500 mr-1">*</span>调用频次（平均）（次/天）：</label>
+                                <input type="text" id="apiAvgFrequency" placeholder="请输入" class="flex-1 border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:border-[#1c7ffd]">
+                            </div>
+                            <div class="flex items-center">
+                                <label class="text-[#606266] w-[200px] text-right pr-4"><span class="text-red-500 mr-1">*</span>调用频次（峰值）（次/天）：</label>
+                                <input type="text" id="apiPeakFrequency" placeholder="请输入" class="flex-1 border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:border-[#1c7ffd]">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="h-12 border-t border-gray-100 flex items-center justify-end px-6 gap-3">
+                        <button onclick="closeApiAddToBasketModal()" class="px-4 py-1.5 border border-gray-300 rounded text-[#606266] text-sm hover:text-[#1c7ffd] hover:border-[#1c7ffd]">取消</button>
+                        <button onclick="confirmApiAddToBasket()" class="px-4 py-1.5 bg-[#1c7ffd] text-white rounded text-sm hover:bg-blue-600">确定</button>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function switchDetailTab(tabName) {
+                    const tabs = {
+                        'basic': document.getElementById('detail-tab-basic'),
+                        'service': document.getElementById('detail-tab-service')
+                    };
+                    const contents = {
+                        'basic': document.getElementById('detail-content-basic'),
+                        'service': document.getElementById('detail-content-service')
+                    };
+
+                    for (let key in tabs) {
+                        tabs[key].className = 'py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors';
+                        contents[key].classList.add('hidden');
+                    }
+
+                    tabs[tabName].className = 'py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer';
+                    contents[tabName].classList.remove('hidden');
+                }
+
+                function openApiAddToBasketModal() {
+                    document.getElementById('apiAddToBasketModalOverlay').classList.remove('hidden');
+                }
+
+                function closeApiAddToBasketModal() {
+                    document.getElementById('apiAddToBasketModalOverlay').classList.add('hidden');
+                }
+
+                function confirmApiAddToBasket() {
+                    const avg = document.getElementById('apiAvgFrequency').value;
+                    const peak = document.getElementById('apiPeakFrequency').value;
+                    if (!avg || !peak) {
+                        showAlert('请填写调用频次');
+                        return;
+                    }
+                    showAlert('已加入数据篮！');
+                    closeApiAddToBasketModal();
+                }
+
+                function openDataBasket() {
+                    const overlay = document.getElementById('basketOverlay');
+                    const drawer = document.getElementById('dataBasketDrawer');
+                    overlay.classList.remove('hidden');
+                    setTimeout(() => {
+                        drawer.classList.remove('translate-x-full');
+                    }, 10);
+                }
+
+                function closeDataBasket() {
+                    const overlay = document.getElementById('basketOverlay');
+                    const drawer = document.getElementById('dataBasketDrawer');
+                    drawer.classList.add('translate-x-full');
+                    setTimeout(() => {
+                        overlay.classList.add('hidden');
+                    }, 300);
+                }
+            </script>
+
+            <div id="alertModal" class="fixed inset-0 bg-black bg-opacity-30 z-[70] hidden flex items-center justify-center">
+                <div class="bg-white rounded-lg shadow-2xl w-[400px] overflow-hidden">
+                    <div class="px-6 py-5 flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-green-500 text-2xl"></i>
+                        <span id="alertMessage" class="text-[#303133] text-[15px]"></span>
+                    </div>
+                    <div class="px-6 py-4 flex justify-end gap-3 bg-white border-t border-gray-100">
+                        <button class="px-5 h-8 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-sm" onclick="closeAlert()">确 定</button>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function showAlert(message) {
+                    document.getElementById('alertMessage').textContent = message;
+                    document.getElementById('alertModal').classList.remove('hidden');
+                }
+
+                function closeAlert() {
+                    document.getElementById('alertModal').classList.add('hidden');
+                }
+            </script>
+        </main>
+    </div>
+</body>
+</html>

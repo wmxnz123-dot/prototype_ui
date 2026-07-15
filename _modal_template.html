@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>添加弹窗组件 - 占位</title>
+</head>
+<body>
+<!-- 操作确认弹窗 -->
+<div id="confirmModal" class="fixed inset-0 bg-black bg-opacity-30 z-[70] hidden flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-2xl w-[420px] overflow-hidden">
+        <div class="px-6 py-5 flex items-center gap-3 border-b border-gray-100">
+            <i class="fa-solid fa-circle-question text-orange-500 text-2xl"></i>
+            <span id="confirmMessage" class="text-[#303133] text-[15px]"></span>
+        </div>
+        <div class="px-6 py-4 flex justify-end gap-3 bg-white">
+            <button class="px-5 h-8 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-sm" onclick="closeConfirm()">取 消</button>
+            <button class="px-5 h-8 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-sm" id="confirmOkBtn">确 定</button>
+        </div>
+    </div>
+</div>
+
+<!-- 操作提示弹窗 -->
+<div id="alertModal" class="fixed inset-0 bg-black bg-opacity-30 z-[70] hidden flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-2xl w-[400px] overflow-hidden">
+        <div class="px-6 py-5 flex items-center gap-3">
+            <i class="fa-solid fa-circle-check text-green-500 text-2xl"></i>
+            <span id="alertMessage" class="text-[#303133] text-[15px]"></span>
+        </div>
+        <div class="px-6 py-4 flex justify-end gap-3 bg-white border-t border-gray-100">
+            <button class="px-5 h-8 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-sm" onclick="closeAlert()">确 定</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showConfirm(message, onOk) {
+        document.getElementById('confirmMessage').textContent = message;
+        document.getElementById('confirmOkBtn').onclick = function() {
+            closeConfirm();
+            if (onOk) onOk();
+        };
+        document.getElementById('confirmModal').classList.remove('hidden');
+    }
+
+    function closeConfirm() {
+        document.getElementById('confirmModal').classList.add('hidden');
+    }
+
+    function showAlert(message) {
+        document.getElementById('alertMessage').textContent = message;
+        document.getElementById('alertModal').classList.remove('hidden');
+    }
+
+    function closeAlert() {
+        document.getElementById('alertModal').classList.add('hidden');
+    }
+</script>
+</body>
+</html>
