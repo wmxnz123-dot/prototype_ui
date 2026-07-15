@@ -177,16 +177,16 @@
         </main>
     </div>
 
-    <!-- 抽屉遮罩 -->
+    <!-- API详情抽屉遮罩 -->
     <div id="drawerOverlay" class="fixed inset-0 bg-black/40 z-40 hidden backdrop-blur-[1px] transition-opacity" onclick="closeDrawer()"></div>
-    
-    <!-- 抽屉内容 -->
+
+    <!-- API详情抽屉 -->
     <div id="detailDrawer" class="fixed top-0 right-0 w-[800px] h-full bg-gray-50 z-50 transform translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
         <div class="h-14 bg-white border-b border-gray-100 flex items-center justify-between px-6 shrink-0">
             <span class="font-bold text-[#303133] text-[16px]">API详情</span>
             <button onclick="closeDrawer()" class="text-gray-400 hover:text-[#1c7ffd] transition-colors"><i class="fa-solid fa-xmark text-lg"></i></button>
         </div>
-        
+
         <div class="flex-1 overflow-y-auto">
             <!-- 头部信息卡片 -->
             <div class="bg-white p-6 border-b border-gray-100">
@@ -194,11 +194,11 @@
                     <div class="w-8 h-8 rounded-full bg-blue-50 text-[#1c7ffd] flex items-center justify-center text-sm">
                         <i class="fa-solid fa-plug"></i>
                     </div>
-                    <h2 class="text-xl font-bold text-[#303133]">接口名称：xxx企业数据查询</h2>
+                    <h2 class="text-xl font-bold text-[#303133]">xxx企业数据查询</h2>
                 </div>
                 <div class="flex justify-between items-center text-sm text-[#909399] ml-11">
                     <span>单位名称：山东亿云信息技术有限公司</span>
-                    <span>任务开始时间：2026-03-09 &nbsp;&nbsp; 任务截止时间：2026-12-31</span>
+                    <span>更新时间：2026-03-09 15:30:07</span>
                 </div>
             </div>
 
@@ -209,12 +209,12 @@
                     <h3 class="font-bold text-[#303133] mb-4 text-[15px]">基本信息</h3>
                     <div class="bg-gray-50/50 p-5 rounded border border-gray-100 flex flex-col gap-4 text-[14px]">
                         <div class="flex"><span class="w-[100px] text-[#909399]">接口名称：</span><span class="text-[#303133]">xxx企业数据查询</span></div>
-                        <div class="flex"><span class="w-[100px] text-[#909399]">任务名称：</span><span class="text-[#303133]">公积金数据任务_0815</span></div>
+                        <div class="flex"><span class="w-[100px] text-[#909399]">任务名称：</span><a href="#" class="text-[#1c7ffd] hover:underline" onclick="openTaskDetailDrawer(); return false;">公积金数据任务_0815</a></div>
                         <div class="flex"><span class="w-[100px] text-[#909399]">接口地址：</span><span class="text-[#303133]">/index/menu</span></div>
-                        <div class="flex justify-between w-[400px]">
-                            <div class="flex"><span class="w-[100px] text-[#909399]">请求类型：</span><span class="text-[#303133]">GET</span></div>
-                            <div class="flex"><span class="w-[100px] text-[#909399]">是否关联模型：</span><span class="text-[#303133]">否</span></div>
-                        </div>
+                        <div class="flex"><span class="w-[100px] text-[#909399]">请求类型：</span><span class="text-[#303133]">GET</span></div>
+                        <div class="flex"><span class="w-[100px] text-[#909399]">单位名称：</span><span class="text-[#303133]">山东亿云信息技术有限公司</span></div>
+                        <div class="flex"><span class="w-[100px] text-[#909399]">创建人：</span><span class="text-[#303133]">张三</span></div>
+                        <div class="flex"><span class="w-[100px] text-[#909399]">是否关联模型：</span><span class="text-[#303133]">是</span></div>
                     </div>
                 </div>
 
@@ -269,6 +269,31 @@
         </div>
     </div>
 
+    <!-- 任务详情抽屉（嵌套在API详情页面内） -->
+    <div id="taskDetailDrawer" class="fixed top-0 right-0 w-[520px] h-full bg-white z-[60] transform translate-x-full transition-transform duration-300 shadow-2xl flex flex-col hidden">
+        <div class="h-14 bg-white border-b border-gray-100 flex items-center justify-between px-6 shrink-0">
+            <span class="font-bold text-[#303133] text-[16px]">任务详情</span>
+            <button onclick="closeTaskDetailDrawer()" class="text-gray-400 hover:text-[#1c7ffd] transition-colors"><i class="fa-solid fa-xmark text-lg"></i></button>
+        </div>
+        <div class="flex-1 overflow-y-auto p-6">
+            <div class="space-y-6">
+                <div>
+                    <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-4 leading-none">基本信息</h3>
+                    <div class="grid grid-cols-1 gap-y-4 text-[13px] pl-4">
+                        <div class="flex"><span class="text-[#909399] w-28 text-right pr-4">任务名称</span><span class="text-[#303133] flex-1">公积金数据任务_0815</span></div>
+                        <div class="flex"><span class="text-[#909399] w-28 text-right pr-4">任务编号</span><span class="text-[#303133] flex-1">TSK202401001</span></div>
+                        <div class="flex"><span class="text-[#909399] w-28 text-right pr-4">任务状态</span><span class="text-[#303133] flex-1">进行中</span></div>
+                        <div class="flex"><span class="text-[#909399] w-28 text-right pr-4">任务描述</span><span class="text-[#303133] flex-1">公积金数据查询与统计分析任务</span></div>
+                        <div class="flex"><span class="text-[#909399] w-28 text-right pr-4">创建时间</span><span class="text-[#303133] flex-1">2024-01-15 10:00:00</span></div>
+                        <div class="flex"><span class="text-[#909399] w-28 text-right pr-4">已申请数据数</span><span class="text-[#303133] flex-1">3</span></div>
+                        <div class="flex"><span class="text-[#909399] w-28 text-right pr-4">自用数据数</span><span class="text-[#303133] flex-1">0</span></div>
+                        <div class="flex"><span class="text-[#909399] w-28 text-right pr-4">开发人数</span><span class="text-[#303133] flex-1">2</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         function openDrawer() {
             const overlay = document.getElementById('drawerOverlay');
@@ -285,6 +310,16 @@
                 drawer.classList.add('translate-x-full');
                 setTimeout(() => { overlay.classList.add('hidden'); }, 300);
             }
+        }
+        function openTaskDetailDrawer() {
+            const drawer = document.getElementById('taskDetailDrawer');
+            drawer.classList.remove('hidden');
+            setTimeout(() => { drawer.classList.remove('translate-x-full'); }, 10);
+        }
+        function closeTaskDetailDrawer() {
+            const drawer = document.getElementById('taskDetailDrawer');
+            drawer.classList.add('translate-x-full');
+            setTimeout(() => { drawer.classList.add('hidden'); }, 300);
         }
     </script>
 
