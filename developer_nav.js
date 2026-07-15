@@ -1,6 +1,6 @@
 const developerTopNavItems = [
-    { id: 'workbench', label: '工作台', href: 'workbench.html' },
-    { id: 'resource', label: '资源中心', href: 'data_source_manage.html?nav=resource-datasource' },
+    { id: 'workbench', label: '开发工作台', href: 'index.html' },
+    { id: 'resource', label: '资源中心', href: 'data_source_manage.html?nav=resource-source' },
     { id: 'sandbox', label: '数据沙箱', href: 'scene_center.html?nav=sandbox-task' },
     { id: 'model', label: '数据模型', href: 'image_repo_manage.html?nav=result-repo' },
     { id: 'approval', label: '审批中心', href: 'data_resource_apply.html?nav=initiated-resource' },
@@ -10,7 +10,7 @@ const developerTopNavItems = [
 
 const developerSideNavMap = {
     workbench: [
-        { type: 'link', label: '开发工作台', href: 'workbench.html', navKey: 'workbench-home', icon: 'fa-desktop' },
+        { type: 'link', label: '开发工作台', href: 'index.html', navKey: 'workbench-home', icon: 'fa-desktop' },
         { type: 'link', label: '管理工作台', href: 'admin_workbench.html', navKey: 'workbench-admin', icon: 'fa-chart-line' }
     ],
     resource: [
@@ -160,7 +160,7 @@ const developerSideNavMap = {
 };
 
 const developerPathDefaults = {
-    'workbench.html': { group: 'workbench', navKey: 'workbench-home' },
+    'index.html': { group: 'workbench', navKey: 'workbench-home' },
     'admin_workbench.html': { group: 'workbench', navKey: 'workbench-admin' },
     'data_resources.html': { group: 'sandbox', navKey: 'sandbox-quota' },
     'own_data_manage.html': { group: 'resource', navKey: 'resource-own' },
@@ -221,9 +221,9 @@ Object.keys(developerSideNavMap).forEach((groupId) => {
 
 function getDeveloperNavState() {
     const url = new URL(window.location.href);
-    const currentPath = window.location.pathname.split('/').pop() || 'workbench.html';
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     const currentNav = url.searchParams.get('nav');
-    const fallback = developerPathDefaults[currentPath] || developerPathDefaults['workbench.html'];
+    const fallback = developerPathDefaults[currentPath] || developerPathDefaults['index.html'];
     const activeGroup = currentNav ? (developerNavKeyToGroup[currentNav] || fallback.group) : fallback.group;
     const activeNav = currentNav || fallback.navKey;
 
