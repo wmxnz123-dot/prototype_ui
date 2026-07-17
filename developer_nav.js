@@ -68,7 +68,7 @@ const developerSideNavMap = {
             label: '测试区',
             icon: 'fa-vial',
             children: [
-                { type: 'link', label: '测试区使用说明', href: '', navKey: 'sandbox-test-doc', disabled: true },
+                { type: 'link', label: '测试区使用说明', href: 'test_zone_guide.html?nav=sandbox-test-doc', navKey: 'sandbox-test-doc' },
                 { type: 'link', label: '库表权限查看', href: '', navKey: 'sandbox-test-auth', disabled: true },
                 { type: 'link', label: '库表资源查看', href: '', navKey: 'sandbox-test-resource-db', disabled: true },
                 { type: 'link', label: '接口资源查看', href: '', navKey: 'sandbox-test-resource-api', disabled: true }

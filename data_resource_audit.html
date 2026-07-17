@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数据沙箱平台 - 数据资源审核</title>
+    <title>数据沙箱平台 - 数据申请审核</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -47,7 +47,7 @@
                 <span class="mx-2">/</span>
                 <span>待处理</span>
                 <span class="mx-2">/</span>
-                <span class="font-medium text-[#303133]">数据资源审核</span>
+                <span class="font-medium text-[#303133]">数据申请审核</span>
             </div>
 
             <div class="flex-1 p-6 flex flex-col gap-5 overflow-y-auto">
@@ -61,15 +61,11 @@
                 <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] p-6 shrink-0">
                     <div class="grid grid-cols-3 gap-x-8 gap-y-4">
                         <div class="flex items-center gap-3">
-                            <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">目录名称：</label>
+                            <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">资源名称：</label>
                             <input type="text" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
                         </div>
                         <div class="flex items-center gap-3">
-                            <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">服务名称：</label>
-                            <input type="text" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">服务类型：</label>
+                            <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">资源类型：</label>
                             <select class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd] appearance-none bg-white">
                                 <option value="">全部</option>
                                 <option value="api">API</option>
@@ -109,8 +105,8 @@
                             <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
                                 <tr>
                                     <th class="py-3 px-4 w-16">序号</th>
-                                    <th class="py-3 px-4">目录名称</th>
-                                    <th class="py-3 px-4">服务名称</th>
+                                    <th class="py-3 px-4">资源名称</th>
+                                    <th class="py-3 px-4">资源类型</th>
                                     <th class="py-3 px-4">数据申请方</th>
                                     <th class="py-3 px-4">数据所属方</th>
                                     <th class="py-3 px-4">申请时间 <i class="fa-solid fa-sort cursor-pointer hover:text-[#1c7ffd] transition-colors"></i></th>
@@ -120,8 +116,8 @@
                             <tbody>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">1</td>
-                                    <td class="py-4 px-4">企业基础信息库</td>
                                     <td class="py-4 px-4">企业基础信息查询服务</td>
+                                    <td class="py-4 px-4">API</td>
                                     <td class="py-4 px-4">山东**信息技术有限公司</td>
                                     <td class="py-4 px-4">山东省市场监管局</td>
                                     <td class="py-4 px-4">2026-02-25 15:22:03</td>
@@ -131,8 +127,8 @@
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">2</td>
-                                    <td class="py-4 px-4">经营变更记录表</td>
                                     <td class="py-4 px-4">企业变更信息查询服务</td>
+                                    <td class="py-4 px-4">API</td>
                                     <td class="py-4 px-4">济南**数据科技有限公司</td>
                                     <td class="py-4 px-4">山东省市场监管局</td>
                                     <td class="py-4 px-4">2026-02-24 09:15:30</td>
@@ -142,8 +138,8 @@
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">3</td>
-                                    <td class="py-4 px-4">社保信息库</td>
                                     <td class="py-4 px-4">社保信息查询服务</td>
+                                    <td class="py-4 px-4">库表</td>
                                     <td class="py-4 px-4">青岛**信息服务有限公司</td>
                                     <td class="py-4 px-4">山东省人社厅</td>
                                     <td class="py-4 px-4">2026-02-23 11:40:12</td>
@@ -153,8 +149,8 @@
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">4</td>
-                                    <td class="py-4 px-4">医疗健康数据</td>
                                     <td class="py-4 px-4">医疗健康数据查询服务</td>
+                                    <td class="py-4 px-4">API</td>
                                     <td class="py-4 px-4">山东**健康科技有限公司</td>
                                     <td class="py-4 px-4">山东省卫健委</td>
                                     <td class="py-4 px-4">2026-02-22 14:05:00</td>
@@ -164,8 +160,8 @@
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">5</td>
-                                    <td class="py-4 px-4">房产登记信息</td>
                                     <td class="py-4 px-4">房产登记信息查询服务</td>
+                                    <td class="py-4 px-4">库表</td>
                                     <td class="py-4 px-4">烟台**数据运营有限公司</td>
                                     <td class="py-4 px-4">山东省住建厅</td>
                                     <td class="py-4 px-4">2026-02-21 16:30:45</td>
@@ -210,9 +206,8 @@
                             <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
                                 <tr>
                                     <th class="py-3 px-4 w-16">序号</th>
-
-                                    <th class="py-3 px-4">目录名称</th>
-                                    <th class="py-3 px-4">服务名称</th>
+                                    <th class="py-3 px-4">资源名称</th>
+                                    <th class="py-3 px-4">资源类型</th>
                                     <th class="py-3 px-4">数据申请方</th>
                                     <th class="py-3 px-4">数据所属方</th>
                                     <th class="py-3 px-4 relative">
@@ -242,8 +237,8 @@
                             <tbody>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">1</td>
-                                    <td class="py-4 px-4">企业信贷数据</td>
                                     <td class="py-4 px-4">企业信贷查询服务</td>
+                                    <td class="py-4 px-4">API</td>
                                     <td class="py-4 px-4">山东**金融科技有限公司</td>
                                     <td class="py-4 px-4">山东省金融办</td>
                                     <td class="py-4 px-4">
@@ -259,8 +254,8 @@
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">2</td>
-                                    <td class="py-4 px-4">交通出行数据</td>
                                     <td class="py-4 px-4">交通流量查询服务</td>
+                                    <td class="py-4 px-4">API</td>
                                     <td class="py-4 px-4">济南**交通数据有限公司</td>
                                     <td class="py-4 px-4">山东省交通厅</td>
                                     <td class="py-4 px-4">
@@ -276,8 +271,8 @@
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">3</td>
-                                    <td class="py-4 px-4">学校基础信息库</td>
                                     <td class="py-4 px-4">学校信息查询服务</td>
+                                    <td class="py-4 px-4">库表</td>
                                     <td class="py-4 px-4">青岛**教育科技有限公司</td>
                                     <td class="py-4 px-4">山东省教育厅</td>
                                     <td class="py-4 px-4">
@@ -293,8 +288,8 @@
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">4</td>
-                                    <td class="py-4 px-4">环境质量数据</td>
                                     <td class="py-4 px-4">环境质量查询服务</td>
+                                    <td class="py-4 px-4">API</td>
                                     <td class="py-4 px-4">山东**环保科技有限公司</td>
                                     <td class="py-4 px-4">山东省生态环境厅</td>
                                     <td class="py-4 px-4">
@@ -310,8 +305,8 @@
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">5</td>
-                                    <td class="py-4 px-4">劳动力市场数据</td>
                                     <td class="py-4 px-4">就业信息查询服务</td>
+                                    <td class="py-4 px-4">库表</td>
                                     <td class="py-4 px-4">烟台**人力资源有限公司</td>
                                     <td class="py-4 px-4">山东省人社厅</td>
                                     <td class="py-4 px-4">
@@ -366,7 +361,7 @@
                                     <i class="fa-solid fa-envelope"></i>
                                 </div>
                                 <div>
-                                    <div class="text-[16px] font-bold text-[#303133] mb-1">目录名称：测试</div>
+                                    <div class="text-[16px] font-bold text-[#303133] mb-1">资源名称：企业基础信息查询服务</div>
                                     <div class="text-[#909399] text-[13px]">数据运营商：**信息技术有限公司</div>
                                 </div>
                             </div>
@@ -393,15 +388,11 @@
                                     <span class="text-[#303133] flex-1">企业信用评估</span>
                                 </div>
                                 <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4 shrink-0">目录名称</span>
-                                    <span class="text-[#303133] flex-1">企业基础信息库</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4 shrink-0">服务名称</span>
+                                    <span class="text-[#909399] w-28 text-right pr-4 shrink-0">资源名称</span>
                                     <span class="text-[#303133] flex-1">企业基础信息查询服务</span>
                                 </div>
                                 <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4 shrink-0">服务类型</span>
+                                    <span class="text-[#909399] w-28 text-right pr-4 shrink-0">资源类型</span>
                                     <span class="text-[#303133] flex-1">API</span>
                                 </div>
                             </div>
