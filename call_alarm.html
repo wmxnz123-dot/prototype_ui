@@ -57,21 +57,17 @@
             <div class="flex-1 px-6 pb-6 flex flex-col gap-4 overflow-y-auto pr-2">
                 <!-- 搜索区 -->
                 <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] p-6 shrink-0">
-                    <div class="grid grid-cols-4 gap-x-8 gap-y-4">
-                        <div class="flex items-center gap-3">
-                            <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">场景名称：</label>
-                            <input type="text" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
-                        </div>
+                    <div class="grid grid-cols-3 gap-x-8 gap-y-4">
                         <div class="flex items-center gap-3">
                             <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">资源名称：</label>
                             <input type="text" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
                         </div>
                         <div class="flex items-center gap-3">
-                            <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">资源所属单位：</label>
+                            <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">资源所属方：</label>
                             <input type="text" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
                         </div>
                         <div class="flex items-center gap-3">
-                            <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">资源使用单位：</label>
+                            <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">资源使用方：</label>
                             <input type="text" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
                         </div>
                     </div>
@@ -100,10 +96,9 @@
                             <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
                                 <tr>
                                     <th class="py-3 px-4 w-16 text-center">序号</th>
-                                    <th class="py-3 px-4">场景名称</th>
                                     <th class="py-3 px-4">资源名称</th>
-                                    <th class="py-3 px-4">资源所属单位</th>
-                                    <th class="py-3 px-4">资源使用单位</th>
+                                    <th class="py-3 px-4">资源所属方</th>
+                                    <th class="py-3 px-4">资源使用方</th>
                                     <th class="py-3 px-4">告警内容</th>
                                     <th class="py-3 px-4 w-40">告警时间<i class="fa-solid fa-sort text-gray-300 ml-1"></i></th>
                                     <th class="py-3 px-4 w-20 text-center">操作</th>
@@ -112,11 +107,10 @@
                             <tbody>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4 text-center">1</td>
-                                    <td class="py-4 px-4 text-[#303133] font-medium">离线数据同步场景</td>
                                     <td class="py-4 px-4">税务基础信息表</td>
                                     <td class="py-4 px-4">税务局</td>
                                     <td class="py-4 px-4">发改委</td>
-                                    <td class="py-4 px-4 text-[#f56c6c]">接口调用失败率超过设定阈值(50%)</td>
+                                    <td class="py-4 px-4 text-[#f56c6c]">资源调用频次超出申请值</td>
                                     <td class="py-4 px-4 text-[#909399]">2026-07-09 10:23:45</td>
                                     <td class="py-4 px-4 text-center">
                                         <button class="text-[#1c7ffd] hover:text-blue-700 transition-colors">查看</button>
@@ -124,11 +118,10 @@
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4 text-center">2</td>
-                                    <td class="py-4 px-4 text-[#303133] font-medium">实时风控监测场景</td>
                                     <td class="py-4 px-4">交易流水核查接口</td>
                                     <td class="py-4 px-4">财政局</td>
                                     <td class="py-4 px-4">公安局</td>
-                                    <td class="py-4 px-4 text-[#f56c6c]">资源访问响应超时</td>
+                                    <td class="py-4 px-4 text-[#f56c6c]">资源调用频次超出申请值</td>
                                     <td class="py-4 px-4 text-[#909399]">2026-07-09 09:15:20</td>
                                     <td class="py-4 px-4 text-center">
                                         <button class="text-[#1c7ffd] hover:text-blue-700 transition-colors">查看</button>
@@ -136,11 +129,10 @@
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4 text-center">3</td>
-                                    <td class="py-4 px-4 text-[#303133] font-medium">企业信用评估模型</td>
                                     <td class="py-4 px-4">企业失信人员名单</td>
                                     <td class="py-4 px-4">市场监管局</td>
                                     <td class="py-4 px-4">工信厅</td>
-                                    <td class="py-4 px-4 text-[#f56c6c]">非法调用来源拦截</td>
+                                    <td class="py-4 px-4 text-[#f56c6c]">资源调用频次超出申请值</td>
                                     <td class="py-4 px-4 text-[#909399]">2026-07-08 16:45:00</td>
                                     <td class="py-4 px-4 text-center">
                                         <button class="text-[#1c7ffd] hover:text-blue-700 transition-colors">查看</button>

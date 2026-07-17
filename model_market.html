@@ -52,25 +52,21 @@
 
             <div class="flex-1 p-6 flex flex-col gap-5 overflow-y-auto">
                 <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] p-6 shrink-0">
-                    <div class="grid grid-cols-2 gap-x-8 gap-y-4">
+                    <div class="grid grid-cols-3 gap-x-8 gap-y-4">
                         <div class="flex items-center gap-3">
                             <label class="text-[#606266] whitespace-nowrap w-[100px] text-right">模型名称：</label>
                             <input type="text" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
                         </div>
                         <div class="flex items-center gap-3">
-                            <label class="text-[#606266] whitespace-nowrap w-[100px] text-right">模型提供部门：</label>
+                            <label class="text-[#606266] whitespace-nowrap w-[100px] text-right">模型提供方：</label>
                             <input type="text" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
                         </div>
-                        <div></div>
                         <div class="flex justify-end items-center gap-3">
                             <button class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px] flex items-center gap-1">
                                 <i class="fa-solid fa-rotate-right"></i> 重置
                             </button>
                             <button class="h-8 px-5 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px] flex items-center gap-1">
                                 <i class="fa-solid fa-magnifying-glass"></i> 查询
-                            </button>
-                            <button class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px] flex items-center gap-1">
-                                展开 <i class="fa-solid fa-angle-down"></i>
                             </button>
                         </div>
                     </div>
@@ -91,7 +87,7 @@
                                 <tr>
                                     <th class="py-3 px-4 w-16">序号</th>
                                     <th class="py-3 px-4">模型名称</th>
-                                    <th class="py-3 px-4">模型提供部门</th>
+                                    <th class="py-3 px-4">模型提供方</th>
                                     <th class="py-3 px-4">
                                         <div class="flex items-center gap-1 cursor-pointer">
                                             <span>发布时间</span>
@@ -193,30 +189,50 @@
 
                     <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-4">
                         <div class="flex border-b border-gray-100 px-6">
-                            <div class="py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer text-[14px]">基本信息</div>
+                            <div class="py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer text-[14px]">模型信息</div>
                         </div>
                         <div class="p-6">
-                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">基本信息</h3>
+                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">模型信息</h3>
                             <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] pl-4">
                                 <div class="flex">
                                     <span class="text-[#909399] w-28 text-right pr-4">模型名称</span>
                                     <span id="detailName" class="text-[#303133] flex-1">数据要素-模型001</span>
                                 </div>
                                 <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">模型提供部门</span>
+                                    <span class="text-[#909399] w-28 text-right pr-4">任务名称</span>
+                                    <span class="text-[#303133] flex-1">zh测试任务_0310</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">镜像名称</span>
+                                    <span class="text-[#303133] flex-1">ys4201/ys4201:1.0</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">cpu限制（Core）</span>
+                                    <span class="text-[#303133] flex-1">0.2</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">cpu预留（Core）</span>
+                                    <span class="text-[#303133] flex-1">0.2</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">内存限制（Mi）</span>
+                                    <span class="text-[#303133] flex-1">256</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">内存预留（Mi）</span>
+                                    <span class="text-[#303133] flex-1">256</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">容器端口号</span>
+                                    <span class="text-[#303133] flex-1">8081</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">模型所属方</span>
                                     <span id="detailDept" class="text-[#303133] flex-1">数据要素事业部</span>
                                 </div>
                                 <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">发布时间</span>
-                                    <span id="detailTime" class="text-[#303133] flex-1">2026-06-22 16:35:02</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">模型版本</span>
-                                    <span class="text-[#303133] flex-1">v1.0.0</span>
-                                </div>
-                                <div class="flex col-span-2">
-                                    <span class="text-[#909399] w-28 text-right pr-4">模型描述</span>
-                                    <span class="text-[#303133] flex-1">该模型用于数据要素分析与处理，支持多种数据格式的输入与输出，适用于企业级数据治理场景。</span>
+                                    <span class="text-[#909399] w-28 text-right pr-4">是否公开</span>
+                                    <span class="text-[#303133] flex-1">是</span>
                                 </div>
                             </div>
                         </div>

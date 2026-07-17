@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数据沙箱平台 - 已申请数据资源</title>
+    <title>数据沙箱平台 - 已申请数据</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -43,26 +43,22 @@
             <div id="developer-top-nav" class="h-[52px] bg-white border-b border-gray-200 px-6 flex items-center gap-2 shrink-0 overflow-x-auto"></div>
 
             <div class="h-[52px] flex items-center px-6 text-[#606266] shrink-0 bg-white border-b border-gray-100 text-[14px]">
-                <span>资源中心</span>
+                <span>数据中心</span>
                 <span class="mx-2">/</span>
-                <span>数据资源申请</span>
+                <span>数据申请</span>
                 <span class="mx-2">/</span>
-                <span class="font-medium text-[#303133]">已申请数据资源</span>
+                <span class="font-medium text-[#303133]">已申请数据</span>
             </div>
 
             <div class="flex-1 p-6 flex flex-col gap-5 overflow-y-auto">
                 <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] p-6 shrink-0">
                     <div class="grid grid-cols-3 gap-x-8 gap-y-4">
                         <div class="flex items-center gap-3">
-                            <label class="text-[#606266] whitespace-nowrap w-[100px] text-right">目录名称：</label>
+                            <label class="text-[#606266] whitespace-nowrap w-[100px] text-right">资源名称：</label>
                             <input type="text" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
                         </div>
                         <div class="flex items-center gap-3">
-                            <label class="text-[#606266] whitespace-nowrap w-[100px] text-right">服务名称：</label>
-                            <input type="text" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <label class="text-[#606266] whitespace-nowrap w-[100px] text-right">服务类型：</label>
+                            <label class="text-[#606266] whitespace-nowrap w-[100px] text-right">资源类型：</label>
                             <select class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd] bg-white">
                                 <option value="">全部</option>
                                 <option value="api">API</option>
@@ -70,10 +66,13 @@
                             </select>
                         </div>
                         <div class="flex items-center gap-3">
-                            <label class="text-[#606266] whitespace-nowrap w-[100px] text-right">资源所属单位：</label>
+                            <label class="text-[#606266] whitespace-nowrap w-[100px] text-right">资源所属方：</label>
                             <input type="text" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
                         </div>
-                        <div class="flex items-center gap-3"></div>
+                        <div class="flex items-center gap-3">
+                            <label class="text-[#606266] whitespace-nowrap w-[100px] text-right">资源申请方：</label>
+                            <input type="text" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
+                        </div>
                         <div class="flex justify-end items-center gap-3">
                             <button class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px] flex items-center gap-1">
                                 <i class="fa-solid fa-rotate-right"></i> 重置
@@ -87,7 +86,7 @@
 
                 <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] flex-1 flex flex-col p-6">
                     <div class="flex justify-between items-center mb-4">
-                        <h3 class="font-bold text-[#303133]">已申请数据资源列表</h3>
+                        <h3 class="font-bold text-[#303133]">已申请数据列表</h3>
                         <div class="flex gap-3 text-gray-400">
                             <i class="fa-solid fa-rotate-right cursor-pointer hover:text-[#1c7ffd]"></i>
                             <i class="fa-solid fa-gear cursor-pointer hover:text-[#1c7ffd]"></i>
@@ -99,10 +98,10 @@
                             <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
                                 <tr>
                                     <th class="py-3 px-4 w-16">序号</th>
-                                    <th class="py-3 px-4">目录名称</th>
-                                    <th class="py-3 px-4">服务名称</th>
-                                    <th class="py-3 px-4">服务类型</th>
-                                    <th class="py-3 px-4">资源所属单位</th>
+                                    <th class="py-3 px-4">资源名称</th>
+                                    <th class="py-3 px-4">资源类型</th>
+                                    <th class="py-3 px-4">资源所属方</th>
+                                    <th class="py-3 px-4">资源申请方</th>
                                     <th class="py-3 px-4 relative">
                                         <div class="flex items-center gap-1">
                                             <span>状态</span>
@@ -112,9 +111,6 @@
                                             <div class="space-y-2 mb-3">
                                                 <label class="flex items-center gap-2 cursor-pointer text-[13px]">
                                                     <input type="checkbox" class="w-3.5 h-3.5"> 已授权
-                                                </label>
-                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]">
-                                                    <input type="checkbox" class="w-3.5 h-3.5"> 已过期
                                                 </label>
                                                 <label class="flex items-center gap-2 cursor-pointer text-[13px]">
                                                     <input type="checkbox" class="w-3.5 h-3.5"> 已取消
@@ -133,10 +129,10 @@
                             <tbody>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">1</td>
-                                    <td class="py-4 px-4">企业基础信息库</td>
                                     <td class="py-4 px-4">企业基础信息查询服务</td>
                                     <td class="py-4 px-4">API</td>
                                     <td class="py-4 px-4">山东省数据管理局</td>
+                                    <td class="py-4 px-4">山东亿云信息技术有限公司</td>
                                     <td class="py-4 px-4">
                                         <span class="inline-flex items-center gap-1.5">
                                             <i class="fa-solid fa-circle text-[8px] text-[#1c7ffd]"></i>
@@ -146,34 +142,15 @@
                                     <td class="py-4 px-4">2024-01-15 10:30:00</td>
                                     <td class="py-4 px-4">
                                         <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openResourceDetail()">查看</a>
-                                        <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="showConfirm('确定取消授权吗？取消后将不可恢复'); return false;">取消授权</a>
-                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="openRenewModal(); return false;">续期</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="showConfirm('确定取消授权吗？取消后将不可恢复'); return false;">取消授权</a>
                                     </td>
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">2</td>
-                                    <td class="py-4 px-4">经营变更记录表</td>
-                                    <td class="py-4 px-4">企业变更信息查询服务</td>
-                                    <td class="py-4 px-4">API</td>
-                                    <td class="py-4 px-4">山东省市场监管局</td>
-                                    <td class="py-4 px-4">
-                                        <span class="inline-flex items-center gap-1.5">
-                                            <i class="fa-solid fa-circle text-[8px] text-[#909399]"></i>
-                                            <span>已过期</span>
-                                        </span>
-                                    </td>
-                                    <td class="py-4 px-4">2024-01-18 14:20:00</td>
-                                    <td class="py-4 px-4">
-                                        <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openResourceDetail()">查看</a>
-                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="openRenewModal(); return false;">续期</a>
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                                    <td class="py-4 px-4">3</td>
-                                    <td class="py-4 px-4">社保信息库</td>
                                     <td class="py-4 px-4">社保信息查询服务</td>
                                     <td class="py-4 px-4">库表</td>
                                     <td class="py-4 px-4">山东省人社厅</td>
+                                    <td class="py-4 px-4">山东亿云信息技术有限公司</td>
                                     <td class="py-4 px-4">
                                         <span class="inline-flex items-center gap-1.5">
                                             <i class="fa-solid fa-circle text-[8px] text-[#f56c6c]"></i>
@@ -186,11 +163,11 @@
                                     </td>
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                                    <td class="py-4 px-4">4</td>
-                                    <td class="py-4 px-4">医疗健康数据</td>
+                                    <td class="py-4 px-4">3</td>
                                     <td class="py-4 px-4">医疗健康数据查询服务</td>
                                     <td class="py-4 px-4">API</td>
                                     <td class="py-4 px-4">山东省卫健委</td>
+                                    <td class="py-4 px-4">山东亿云信息技术有限公司</td>
                                     <td class="py-4 px-4">
                                         <span class="inline-flex items-center gap-1.5">
                                             <i class="fa-solid fa-circle text-[8px] text-[#1c7ffd]"></i>
@@ -200,16 +177,15 @@
                                     <td class="py-4 px-4">2024-01-22 16:45:00</td>
                                     <td class="py-4 px-4">
                                         <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openResourceDetail()">查看</a>
-                                        <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="showConfirm('确定取消授权吗？取消后将不可恢复'); return false;">取消授权</a>
-                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="openRenewModal(); return false;">续期</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="showConfirm('确定取消授权吗？取消后将不可恢复'); return false;">取消授权</a>
                                     </td>
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                                    <td class="py-4 px-4">5</td>
-                                    <td class="py-4 px-4">房产登记信息</td>
+                                    <td class="py-4 px-4">4</td>
                                     <td class="py-4 px-4">房产登记信息查询服务</td>
                                     <td class="py-4 px-4">库表</td>
                                     <td class="py-4 px-4">山东省自然资源厅</td>
+                                    <td class="py-4 px-4">山东亿云信息技术有限公司</td>
                                     <td class="py-4 px-4">
                                         <span class="inline-flex items-center gap-1.5">
                                             <i class="fa-solid fa-circle text-[8px] text-[#1c7ffd]"></i>
@@ -219,8 +195,7 @@
                                     <td class="py-4 px-4">2024-01-25 11:00:00</td>
                                     <td class="py-4 px-4">
                                         <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openResourceDetail()">查看</a>
-                                        <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="showConfirm('确定取消授权吗？取消后将不可恢复'); return false;">取消授权</a>
-                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="openRenewModal(); return false;">续期</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="showConfirm('确定取消授权吗？取消后将不可恢复'); return false;">取消授权</a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -228,7 +203,7 @@
                     </div>
 
                     <div class="flex justify-end items-center mt-4 text-[#606266] text-sm">
-                        <span class="mr-4">共 5 条</span>
+                        <span class="mr-4">共 4 条</span>
                         <div class="flex items-center gap-1">
                             <button class="w-7 h-7 flex items-center justify-center border border-gray-200 rounded text-gray-400 bg-gray-50 cursor-not-allowed">
                                 <i class="fa-solid fa-angle-left"></i>
@@ -263,10 +238,9 @@
                                 </div>
                                 <div>
                                     <div class="text-[18px] font-bold text-[#303133] mb-1 flex items-center gap-2">
-                                        企业基础信息库
+                                        企业基础信息查询服务
                                         <span class="bg-blue-50 text-[#1c7ffd] text-[12px] px-2 py-0.5 rounded border border-blue-100 font-normal">API</span>
                                     </div>
-                                    <div class="text-[#909399] text-[13px]">企业基础信息查询服务</div>
                                 </div>
                             </div>
                             <div class="text-right">
@@ -286,15 +260,11 @@
                             <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">基本信息</h3>
                             <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] pl-4">
                                 <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">目录名称</span>
-                                    <span class="text-[#303133] flex-1">企业基础信息库</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">服务名称</span>
+                                    <span class="text-[#909399] w-28 text-right pr-4">资源名称</span>
                                     <span class="text-[#303133] flex-1">企业基础信息查询服务</span>
                                 </div>
                                 <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">服务类型</span>
+                                    <span class="text-[#909399] w-28 text-right pr-4">资源类型</span>
                                     <span class="text-[#303133] flex-1">API</span>
                                 </div>
                                 <div class="flex">

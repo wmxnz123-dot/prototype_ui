@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数据沙箱平台 - 资源超市</title>
+    <title>数据沙箱平台 - 数据超市</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -43,11 +43,11 @@
             <div id="developer-top-nav" class="h-[52px] bg-white border-b border-gray-200 px-6 flex items-center gap-2 shrink-0 overflow-x-auto"></div>
 
             <div class="h-[52px] flex items-center px-6 text-[#606266] shrink-0 bg-white border-b border-gray-100 text-[14px]">
-                <span>资源中心</span>
+                <span>数据中心</span>
                 <span class="mx-2">/</span>
-                <span>数据资源申请</span>
+                <span>数据申请</span>
                 <span class="mx-2">/</span>
-                <span class="font-medium text-[#303133]">资源超市</span>
+                <span class="font-medium text-[#303133]">数据超市</span>
             </div>
 
             <div class="flex-1 p-6 flex gap-5 overflow-hidden">
@@ -125,7 +125,7 @@
                 <div class="flex-1 flex flex-col overflow-hidden">
                     <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] p-6 mb-4 shrink-0">
                         <div class="flex items-center mb-5">
-                            <span class="text-[#606266] w-[100px] shrink-0">服务类型</span>
+                            <span class="text-[#606266] w-[100px] shrink-0">资源类型</span>
                             <div class="flex gap-6">
                                 <span class="text-[#1c7ffd] cursor-pointer font-medium">全部</span>
                                 <span class="text-[#606266] cursor-pointer hover:text-[#1c7ffd]">接口</span>
@@ -287,17 +287,15 @@
                         <table class="w-full text-[13px]">
                             <thead>
                                 <tr class="bg-[#f8f8f9]">
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">目录名称</th>
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">服务名称</th>
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">调用频次平均</th>
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">调用频次峰值</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">资源名称</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">调用频次（平均）（次/天）</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">调用频次（峰值）（次/天）</th>
                                     <th class="py-2 px-3 text-left text-[#909399] font-medium">附件上传状态</th>
                                     <th class="py-2 px-3 text-left text-[#909399] font-medium">操作</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="border-b border-gray-100">
-                                    <td class="py-3 px-3">企业风险信息</td>
                                     <td class="py-3 px-3">数据要素数据资源-接口003</td>
                                     <td class="py-3 px-3">1200次/小时</td>
                                     <td class="py-3 px-3">3500次/小时</td>
@@ -309,7 +307,6 @@
                                     </td>
                                 </tr>
                                 <tr class="border-b border-gray-100">
-                                    <td class="py-3 px-3">企业标签服务</td>
                                     <td class="py-3 px-3">数据要素数据资源-接口002</td>
                                     <td class="py-3 px-3">800次/小时</td>
                                     <td class="py-3 px-3">2500次/小时</td>
@@ -331,8 +328,7 @@
                         <table class="w-full text-[13px]">
                             <thead>
                                 <tr class="bg-[#f8f8f9]">
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">目录名称</th>
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">服务名称</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">资源名称</th>
                                     <th class="py-2 px-3 text-left text-[#909399] font-medium">字段名称</th>
                                     <th class="py-2 px-3 text-left text-[#909399] font-medium">附件上传状态</th>
                                     <th class="py-2 px-3 text-left text-[#909399] font-medium">操作</th>
@@ -340,7 +336,6 @@
                             </thead>
                             <tbody>
                                 <tr class="border-b border-gray-100">
-                                    <td class="py-3 px-3">企业基础信息库</td>
                                     <td class="py-3 px-3">数据要素数据资源-库表003</td>
                                     <td class="py-3 px-3">id, ip, type, create_by, create_time</td>
                                     <td class="py-3 px-3"><span class="text-green-600">已上传</span></td>
@@ -351,7 +346,6 @@
                                     </td>
                                 </tr>
                                 <tr class="border-b border-gray-100">
-                                    <td class="py-3 px-3">企业经营变化信息</td>
                                     <td class="py-3 px-3">数据要素数据资源-库表002</td>
                                     <td class="py-3 px-3">credit_code, change_item, change_before, change_after</td>
                                     <td class="py-3 px-3"><span class="text-gray-500">未上传</span></td>
@@ -379,10 +373,6 @@
                     </div>
                     <div class="px-6 py-5">
                         <div class="flex flex-col gap-4">
-                            <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[130px] text-right"><span class="text-red-500 mr-1">*</span>使用截止日期：</label>
-                                <input type="date" id="applyEndDate" placeholder="如不确定具体的数据使用时间，填写授权截止日期" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
-                            </div>
                             <div class="flex items-center gap-3">
                                 <label class="text-[#606266] whitespace-nowrap w-[130px] text-right">使用单位：</label>
                                 <input type="text" id="applyUnit" value="数据要素事业部" readonly class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] bg-gray-50">
@@ -458,14 +448,9 @@
                 }
 
                 function submitApply() {
-                    const endDate = document.getElementById('applyEndDate').value;
                     const contact = document.getElementById('applyContact').value;
                     const phone = document.getElementById('applyPhone').value;
                     
-                    if (!endDate) {
-                        alert('请选择使用截止日期');
-                        return;
-                    }
                     if (!contact) {
                         alert('请填写联系人');
                         return;

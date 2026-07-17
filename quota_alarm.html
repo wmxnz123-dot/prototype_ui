@@ -59,17 +59,6 @@
                 <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] p-5 flex justify-between items-center shrink-0">
                     <div class="flex items-center gap-8">
                         <div class="flex items-center gap-3">
-                            <span class="text-[#606266]">告警类型：</span>
-                            <div class="relative">
-                                <select class="border border-gray-300 rounded px-3 py-1.5 text-sm w-[200px] focus:outline-none focus:border-[#1c7ffd] text-gray-700 bg-white appearance-none cursor-pointer transition-colors">
-                                    <option value="">请选择</option>
-                                    <option value="1">总配额使用告警</option>
-                                    <option value="2">部门配额使用告警</option>
-                                </select>
-                                <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-3">
                             <span class="text-[#606266]">告警对象：</span>
                             <div class="relative">
                                 <select class="border border-gray-300 rounded px-3 py-1.5 text-sm w-[200px] focus:outline-none focus:border-[#1c7ffd] text-gray-700 bg-white appearance-none cursor-pointer transition-colors">
@@ -110,8 +99,8 @@
                             <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
                                 <tr>
                                     <th class="py-3 px-4 w-16 text-center">序号</th>
-                                    <th class="py-3 px-4">告警类型</th>
                                     <th class="py-3 px-4">告警对象</th>
+                                    <th class="py-3 px-4">告警内容</th>
                                     <th class="py-3 px-4">部门名称</th>
                                     <th class="py-3 px-4 w-48">告警时间<i class="fa-solid fa-sort text-gray-300 ml-1"></i></th>
                                 </tr>
@@ -119,28 +108,22 @@
                             <tbody>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4 text-center">1</td>
-                                    <td class="py-4 px-4">
-                                        <span class="px-2 py-1 bg-red-50 border border-red-100 text-red-500 rounded text-[12px]">部门配额使用告警</span>
-                                    </td>
                                     <td class="py-4 px-4 font-medium text-[#303133]">CPU</td>
+                                    <td class="py-4 px-4 text-[#f56c6c]">CPU使用已超过95%</td>
                                     <td class="py-4 px-4 text-[#303133]">宣传部</td>
                                     <td class="py-4 px-4 text-[#909399]">2026-07-09 11:20:00</td>
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4 text-center">2</td>
-                                    <td class="py-4 px-4">
-                                        <span class="px-2 py-1 bg-orange-50 border border-orange-100 text-orange-500 rounded text-[12px]">总配额使用告警</span>
-                                    </td>
                                     <td class="py-4 px-4 font-medium text-[#303133]">内存</td>
+                                    <td class="py-4 px-4 text-[#f56c6c]">内存使用已超过95%</td>
                                     <td class="py-4 px-4 text-[#303133]">全局</td>
                                     <td class="py-4 px-4 text-[#909399]">2026-07-09 08:15:00</td>
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4 text-center">3</td>
-                                    <td class="py-4 px-4">
-                                        <span class="px-2 py-1 bg-red-50 border border-red-100 text-red-500 rounded text-[12px]">部门配额使用告警</span>
-                                    </td>
                                     <td class="py-4 px-4 font-medium text-[#303133]">内存</td>
+                                    <td class="py-4 px-4 text-[#f56c6c]">内存使用已超过95%</td>
                                     <td class="py-4 px-4 text-[#303133]">财政局</td>
                                     <td class="py-4 px-4 text-[#909399]">2026-07-08 14:30:22</td>
                                 </tr>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数据沙箱平台 - 自用数据管理新增</title>
+    <title>数据沙箱平台 - 数据注册新增</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -79,6 +79,18 @@
                                     </label>
                                     <label class="flex items-center cursor-pointer">
                                         <input type="radio" name="serviceType" value="table" class="mr-2 cursor-pointer w-3.5 h-3.5 text-[#1c7ffd]" onchange="switchServiceType('table')">库表
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center">
+                                <label class="w-[160px] text-right shrink-0 text-[#606266]"><span class="text-red-500 mr-1">*</span>是否公开：</label>
+                                <div class="ml-4 flex items-center gap-8">
+                                    <label class="flex items-center cursor-pointer text-[#1c7ffd]">
+                                        <input type="radio" name="isPublic" value="yes" checked class="mr-2 cursor-pointer w-3.5 h-3.5 text-[#1c7ffd] border-[#1c7ffd] focus:ring-[#1c7ffd]">公开
+                                    </label>
+                                    <label class="flex items-center cursor-pointer">
+                                        <input type="radio" name="isPublic" value="no" class="mr-2 cursor-pointer w-3.5 h-3.5 text-[#1c7ffd]">不公开
                                     </label>
                                 </div>
                             </div>

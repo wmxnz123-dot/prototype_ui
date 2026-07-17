@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数据沙箱平台 - 开发团队</title>
+    <title>数据沙箱平台 - 开发者管理</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -12,10 +12,38 @@
         ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+        .toggle-switch {
+            appearance: none;
+            width: 40px;
+            height: 20px;
+            background: #dcdfe6;
+            border-radius: 10px;
+            position: relative;
+            outline: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: left 0.2s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .toggle-switch:checked {
+            background: #1c7ffd;
+        }
+        .toggle-switch:checked::after {
+            left: 22px;
+        }
     </style>
 </head>
 <body class="h-screen w-screen flex flex-col overflow-hidden bg-[#f0f2f5] text-[14px] text-gray-700">
-    <!-- 顶部导航栏 -->
     <header class="h-14 bg-[#1c7ffd] flex justify-between items-center px-6 text-white shrink-0 shadow-sm z-10">
         <div class="flex items-center gap-2">
             <i class="fa-solid fa-cubes-stacked text-2xl"></i>
@@ -33,111 +61,274 @@
         </div>
     </header>
 
-    <!-- 主体内容 -->
     <div class="flex-1 flex overflow-hidden">
-<!-- 左侧导航 -->
-<aside class="w-[220px] bg-white border-r border-gray-200 shrink-0 overflow-y-auto">
-    <div id="developer-side-nav" class="py-4"></div>
-</aside>
+        <aside class="w-[220px] bg-white border-r border-gray-200 shrink-0 overflow-y-auto">
+            <div id="developer-side-nav" class="py-4"></div>
+        </aside>
 
-<script src="./developer_nav.js"></script>
+        <script src="./developer_nav.js"></script>
 
-<!-- 右侧内容区 -->
-        <main class="flex-1 flex flex-col overflow-hidden bg-[#f0f2f5] relative">
+        <main class="flex-1 flex flex-col overflow-hidden bg-[#f0f2f5]">
             <div id="developer-top-nav" class="h-[52px] bg-white border-b border-gray-200 px-6 flex items-center gap-2 shrink-0 overflow-x-auto"></div>
 
-            <div class="px-6 py-3 bg-white border-b border-gray-100 flex items-center shrink-0">
-                <a href="scene_center.html?nav=sandbox-task" class="text-[#1c7ffd] hover:opacity-80 transition-colors flex items-center gap-1 font-medium text-[15px]">
-                    <i class="fa-solid fa-arrow-rotate-left"></i> 返回列表
-                </a>
-            </div>
-
-            <!-- 核心内容容器 -->
-            <div class="flex-1 p-6 flex gap-6 overflow-hidden">
-                
-                <!-- 左侧菜单卡片 -->
-                <div class="w-[200px] bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] shrink-0 flex flex-col py-2">
-                    <a href="scene_detail.html" class="flex items-center px-4 py-3 text-[#606266] hover:bg-gray-50 hover:text-[#1c7ffd] rounded-md transition-colors">
-                        <i class="fa-solid fa-border-all w-6 text-center mr-2 text-lg"></i>
-                        任务详情
-                    </a>
-                    <a href="data_resources.html" class="flex items-center px-4 py-3 text-[#606266] hover:bg-gray-50 hover:text-[#1c7ffd] rounded-md transition-colors">
-                        <i class="fa-solid fa-chart-line w-6 text-center mr-2 text-lg"></i>
-                        加工资源
-                    </a>
-                    <a href="dev_team.html" class="flex items-center px-4 py-3 bg-blue-50 text-[#1c7ffd] font-medium rounded-md transition-colors">
-                        <i class="fa-solid fa-users w-6 text-center mr-2 text-lg"></i>
-                        开发团队
-                    </a>
-                    <a href="online_dev.html" class="flex items-center px-4 py-3 text-[#606266] hover:bg-gray-50 hover:text-[#1c7ffd] rounded-md transition-colors">
-                        <i class="fa-solid fa-code w-6 text-center mr-2 text-lg"></i>
-                        在线开发
-                    </a>
-                </div>
-
-                <!-- 详情内容卡片 -->
-                <div class="flex-1 flex flex-col overflow-hidden">
-                    <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] flex-1 flex flex-col p-6">
-                        
-                        <!-- 列表区 -->
-                        <div class="flex-1 flex flex-col relative">
-                            <div class="flex justify-between items-center mb-6">
-                                <h2 class="text-[15px] font-bold text-[#303133]">开发者列表</h2>
-                                <div class="flex items-center gap-3">
-                                    <i class="fa-solid fa-rotate-right text-gray-400 cursor-pointer hover:text-[#1c7ffd]"></i>
-                                    <i class="fa-solid fa-gear text-gray-400 cursor-pointer hover:text-[#1c7ffd]"></i>
-                                </div>
-                            </div>
-                            
-                            <div class="flex-1 overflow-x-auto">
-                                <table class="w-full text-left text-[13px] text-[#606266]">
-                                    <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
-                                        <tr>
-                                            <th class="py-3 px-4 text-center w-20">序号</th>
-                                            <th class="py-3 px-4">姓名</th>
-                                            <th class="py-3 px-4">账号</th>
-                                            <th class="py-3 px-4">身份证号</th>
-                                            <th class="py-3 px-4">电话</th>
-                                            <th class="py-3 px-4">单位名称</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                                            <td class="py-4 px-4 text-center">1</td>
-                                            <td class="py-4 px-4">亿**</td>
-                                            <td class="py-4 px-4">yiyun</td>
-                                            <td class="py-4 px-4">11**************11</td>
-                                            <td class="py-4 px-4">138********</td>
-                                            <td class="py-4 px-4">山东亿云信息技术有限公司</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                            <div class="flex justify-end items-center mt-4 text-[13px] text-[#606266] gap-2 pt-4 border-t border-gray-100">
-                                <span>共 0 条</span>
-                                <div class="flex items-center gap-1">
-                                    <button class="w-8 h-8 flex items-center justify-center border border-gray-200 rounded text-gray-300 cursor-not-allowed"><i class="fa-solid fa-angle-left text-[10px]"></i></button>
-                                    <button class="w-8 h-8 flex items-center justify-center border border-gray-200 rounded text-gray-400 cursor-not-allowed">0</button>
-                                    <button class="w-8 h-8 flex items-center justify-center border border-gray-200 rounded text-gray-300 cursor-not-allowed"><i class="fa-solid fa-angle-right text-[10px]"></i></button>
-                                </div>
-                                <div class="relative">
-                                    <select class="h-8 px-3 border border-gray-200 rounded focus:outline-none focus:border-[#1c7ffd] appearance-none pr-6 bg-white">
-                                        <option>10 条/页</option>
-                                    </select>
-                                    <i class="fa-solid fa-angle-down absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 text-[10px] pointer-events-none"></i>
-                                </div>
-                            </div>
+            <div class="flex-1 p-6 flex flex-col gap-5 overflow-y-auto">
+                <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] p-6 shrink-0">
+                    <div class="flex items-end gap-4">
+                        <div class="flex items-center gap-3 flex-1 max-w-[300px]">
+                            <label class="text-[#606266] whitespace-nowrap">账号：</label>
+                            <input type="text" id="searchAccount" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
+                        </div>
+                        <div class="flex items-center gap-3 flex-1 max-w-[300px]">
+                            <label class="text-[#606266] whitespace-nowrap">姓名：</label>
+                            <input type="text" id="searchName" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
+                        </div>
+                        <div class="flex items-center gap-3 flex-1 max-w-[300px]">
+                            <label class="text-[#606266] whitespace-nowrap">手机号：</label>
+                            <input type="text" id="searchPhone" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
+                        </div>
+                        <div class="flex gap-3">
+                            <button onclick="resetSearch()" class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px] flex items-center gap-1">
+                                <i class="fa-solid fa-rotate-right"></i> 重置
+                            </button>
+                            <button onclick="renderTable()" class="h-8 px-5 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px] flex items-center gap-1">
+                                <i class="fa-solid fa-magnifying-glass"></i> 查询
+                            </button>
                         </div>
                     </div>
-                    
-                    <div class="text-center text-xs text-[#1c7ffd] opacity-70 mt-2 shrink-0">
-                        主办单位：山东亿云信息技术有限公司
+                </div>
+
+                <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] flex-1 flex flex-col p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-[#303133]">开发者列表</h3>
+                        <div class="flex items-center gap-3">
+                            <button onclick="openAddModal()" class="px-4 py-1.5 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px] flex items-center gap-1">
+                                <i class="fa-solid fa-plus text-[12px]"></i> 新增
+                            </button>
+                            <i class="fa-solid fa-rotate-right text-gray-400 cursor-pointer hover:text-[#1c7ffd]" onclick="renderTable()"></i>
+                            <i class="fa-solid fa-gear text-gray-400 cursor-pointer hover:text-[#1c7ffd]"></i>
+                        </div>
+                    </div>
+
+                    <div class="flex-1 overflow-x-auto">
+                        <table class="w-full text-left text-[13px] text-[#606266]">
+                            <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
+                                <tr>
+                                    <th class="py-3 px-4 w-16">序号</th>
+                                    <th class="py-3 px-4">账号</th>
+                                    <th class="py-3 px-4">姓名</th>
+                                    <th class="py-3 px-4">手机号</th>
+                                    <th class="py-3 px-4">状态</th>
+                                    <th class="py-3 px-4 cursor-pointer" onclick="toggleSort()">
+                                        时间<i class="fa-solid fa-sort text-gray-300 ml-1"></i>
+                                    </th>
+                                    <th class="py-3 px-4 w-32">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="developerTableBody"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="flex justify-end items-center mt-4 text-[#606266] text-sm">
+                        <span class="mr-4">共 <span id="totalCount">3</span> 条</span>
+                        <div class="flex items-center gap-1">
+                            <button class="w-7 h-7 flex items-center justify-center border border-gray-200 rounded text-gray-400 bg-gray-50 cursor-not-allowed">
+                                <i class="fa-solid fa-angle-left"></i>
+                            </button>
+                            <button class="w-7 h-7 flex items-center justify-center border border-[#1c7ffd] rounded text-[#1c7ffd] bg-blue-50">1</button>
+                            <button class="w-7 h-7 flex items-center justify-center border border-gray-200 rounded text-gray-400 bg-gray-50 cursor-not-allowed">
+                                <i class="fa-solid fa-angle-right"></i>
+                            </button>
+                        </div>
+                        <div class="relative ml-4 w-[90px]">
+                            <select class="w-full border border-gray-300 rounded px-3 py-1 text-sm focus:outline-none focus:border-[#1c7ffd] appearance-none bg-white cursor-pointer hover:border-gray-400 transition-colors">
+                                <option>10 条/页</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-gray-400 pointer-events-none"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </main>
     </div>
+
+    <div id="developerModal" class="fixed inset-0 bg-black bg-opacity-30 z-[70] hidden flex items-center justify-center">
+        <div class="bg-white rounded-lg shadow-2xl w-[420px] overflow-hidden">
+            <div class="px-6 py-5 border-b border-gray-100 flex items-center justify-between">
+                <span id="modalTitle" class="text-[#303133] text-[15px] font-medium">新增开发者</span>
+                <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeModal()"></i>
+            </div>
+            <div class="px-6 py-5 space-y-4">
+                <div class="flex items-center gap-3">
+                    <label class="text-[#606266] whitespace-nowrap w-[70px] text-right"><span class="text-red-500 mr-1">*</span>账号</label>
+                    <input type="text" id="devAccount" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
+                </div>
+                <div class="flex items-center gap-3">
+                    <label class="text-[#606266] whitespace-nowrap w-[70px] text-right"><span class="text-red-500 mr-1">*</span>姓名</label>
+                    <input type="text" id="devName" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
+                </div>
+                <div class="flex items-center gap-3">
+                    <label class="text-[#606266] whitespace-nowrap w-[70px] text-right"><span class="text-red-500 mr-1">*</span>手机号</label>
+                    <input type="text" id="devPhone" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
+                </div>
+            </div>
+            <div class="px-6 py-4 flex justify-end gap-3 bg-white border-t border-gray-100">
+                <button onclick="closeModal()" class="px-5 h-8 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-sm">取 消</button>
+                <button onclick="saveDeveloper()" class="px-5 h-8 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-sm">确 定</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmModal" class="fixed inset-0 bg-black bg-opacity-30 z-[70] hidden flex items-center justify-center">
+        <div class="bg-white rounded-lg shadow-2xl w-[420px] overflow-hidden">
+            <div class="px-6 py-5 flex items-center gap-3 border-b border-gray-100">
+                <i class="fa-solid fa-circle-question text-orange-500 text-2xl"></i>
+                <span id="confirmMessage" class="text-[#303133] text-[15px]"></span>
+            </div>
+            <div class="px-6 py-4 flex justify-end gap-3 bg-white">
+                <button class="px-5 h-8 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-sm" onclick="closeConfirm()">取 消</button>
+                <button class="px-5 h-8 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-sm" id="confirmOkBtn">确 定</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let developers = [
+            { id: 1, account: 'zhangsan', name: '张三', phone: '13800138000', status: true, time: '2024-01-15 10:30:00' },
+            { id: 2, account: 'lisi', name: '李四', phone: '13900139000', status: false, time: '2024-01-20 14:20:00' },
+            { id: 3, account: 'wangwu', name: '王五', phone: '13700137000', status: true, time: '2024-01-22 09:15:00' }
+        ];
+        let sortDesc = true;
+        let editingId = null;
+
+        function openAddModal() {
+            editingId = null;
+            document.getElementById('modalTitle').textContent = '新增开发者';
+            document.getElementById('devAccount').value = '';
+            document.getElementById('devName').value = '';
+            document.getElementById('devPhone').value = '';
+            document.getElementById('developerModal').classList.remove('hidden');
+        }
+
+        function openEditModal(id) {
+            const dev = developers.find(item => item.id === id);
+            if (!dev) return;
+            editingId = id;
+            document.getElementById('modalTitle').textContent = '编辑开发者';
+            document.getElementById('devAccount').value = dev.account;
+            document.getElementById('devName').value = dev.name;
+            document.getElementById('devPhone').value = dev.phone;
+            document.getElementById('developerModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('developerModal').classList.add('hidden');
+        }
+
+        function saveDeveloper() {
+            const account = document.getElementById('devAccount').value.trim();
+            const name = document.getElementById('devName').value.trim();
+            const phone = document.getElementById('devPhone').value.trim();
+
+            if (!account) { alert('请输入账号'); return; }
+            if (!name) { alert('请输入姓名'); return; }
+            if (!phone) { alert('请输入手机号'); return; }
+
+            if (editingId) {
+                const dev = developers.find(item => item.id === editingId);
+                dev.account = account;
+                dev.name = name;
+                dev.phone = phone;
+            } else {
+                const newId = developers.length > 0 ? Math.max(...developers.map(d => d.id)) + 1 : 1;
+                const now = new Date();
+                const timeStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0') + ' ' + String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0') + ':' + String(now.getSeconds()).padStart(2, '0');
+                developers.push({ id: newId, account, name, phone, status: true, time: timeStr });
+            }
+
+            closeModal();
+            renderTable();
+        }
+
+        function toggleStatus(id) {
+            const dev = developers.find(item => item.id === id);
+            if (dev) {
+                dev.status = !dev.status;
+                renderTable();
+            }
+        }
+
+        function deleteDeveloper(id) {
+            showConfirm('确定删除该开发者吗？删除后不可恢复', function() {
+                developers = developers.filter(item => item.id !== id);
+                renderTable();
+            });
+        }
+
+        function showConfirm(message, onOk) {
+            document.getElementById('confirmMessage').textContent = message;
+            document.getElementById('confirmOkBtn').onclick = function() {
+                closeConfirm();
+                if (onOk) onOk();
+            };
+            document.getElementById('confirmModal').classList.remove('hidden');
+        }
+
+        function closeConfirm() {
+            document.getElementById('confirmModal').classList.add('hidden');
+        }
+
+        function resetSearch() {
+            document.getElementById('searchAccount').value = '';
+            document.getElementById('searchName').value = '';
+            document.getElementById('searchPhone').value = '';
+            renderTable();
+        }
+
+        function toggleSort() {
+            sortDesc = !sortDesc;
+            renderTable();
+        }
+
+        function renderTable() {
+            const accountFilter = document.getElementById('searchAccount').value.trim();
+            const nameFilter = document.getElementById('searchName').value.trim();
+            const phoneFilter = document.getElementById('searchPhone').value.trim();
+
+            let list = developers.filter(item => {
+                return (!accountFilter || item.account.includes(accountFilter)) &&
+                       (!nameFilter || item.name.includes(nameFilter)) &&
+                       (!phoneFilter || item.phone.includes(phoneFilter));
+            });
+
+            list.sort((a, b) => {
+                return sortDesc ? new Date(b.time) - new Date(a.time) : new Date(a.time) - new Date(b.time);
+            });
+
+            const tbody = document.getElementById('developerTableBody');
+            tbody.innerHTML = list.map((item, index) => `
+                <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                    <td class="py-4 px-4">${index + 1}</td>
+                    <td class="py-4 px-4">${item.account}</td>
+                    <td class="py-4 px-4">${item.name}</td>
+                    <td class="py-4 px-4">${item.phone}</td>
+                    <td class="py-4 px-4">
+                        <div class="flex items-center gap-2">
+                            <input type="checkbox" class="toggle-switch" ${item.status ? 'checked' : ''} onchange="toggleStatus(${item.id})">
+                            <span class="${item.status ? 'text-[#67c23a]' : 'text-[#909399]'}">${item.status ? '启用' : '停用'}</span>
+                        </div>
+                    </td>
+                    <td class="py-4 px-4">${item.time}</td>
+                    <td class="py-4 px-4 text-[#1c7ffd]">
+                        <a href="#" class="hover:underline mr-3" onclick="openEditModal(${item.id}); return false;">编辑</a>
+                        <a href="#" class="hover:underline" onclick="deleteDeveloper(${item.id}); return false;">删除</a>
+                    </td>
+                </tr>
+            `).join('');
+
+            document.getElementById('totalCount').textContent = list.length;
+        }
+
+        renderTable();
+    </script>
 </body>
 </html>

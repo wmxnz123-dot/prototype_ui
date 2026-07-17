@@ -99,6 +99,22 @@
                                     <th class="py-3 px-4">模型名称</th>
                                     <th class="py-3 px-4 relative">
                                         <div class="flex items-center gap-1 cursor-pointer hover:text-gray-600">
+                                            <span>是否公开</span>
+                                            <i class="fa-solid fa-filter text-gray-300 text-[10px]" onclick="toggleColumnFilter('externalUseFilter', event)"></i>
+                                        </div>
+                                        <div id="externalUseFilter" class="hidden absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded shadow-lg p-3 z-30 w-[160px]">
+                                            <div class="space-y-2 mb-3">
+                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]"><input type="checkbox" class="w-3.5 h-3.5"> 是</label>
+                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]"><input type="checkbox" class="w-3.5 h-3.5"> 否</label>
+                                            </div>
+                                            <div class="flex justify-end gap-2">
+                                                <button class="text-[#1c7ffd] text-[13px]" onclick="closeColumnFilter('externalUseFilter')">确定</button>
+                                                <button class="text-[#1c7ffd] text-[13px]" onclick="closeColumnFilter('externalUseFilter')">重置</button>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th class="py-3 px-4 relative">
+                                        <div class="flex items-center gap-1 cursor-pointer hover:text-gray-600">
                                             <span>状态</span>
                                             <i class="fa-solid fa-filter text-gray-300 text-[10px]" onclick="toggleColumnFilter('deployedStatusFilter', event)"></i>
                                         </div>
@@ -113,22 +129,6 @@
                                             </div>
                                         </div>
                                     </th>
-                                    <th class="py-3 px-4 relative">
-                                        <div class="flex items-center gap-1 cursor-pointer hover:text-gray-600">
-                                            <span>是否对外使用</span>
-                                            <i class="fa-solid fa-filter text-gray-300 text-[10px]" onclick="toggleColumnFilter('externalUseFilter', event)"></i>
-                                        </div>
-                                        <div id="externalUseFilter" class="hidden absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded shadow-lg p-3 z-30 w-[160px]">
-                                            <div class="space-y-2 mb-3">
-                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]"><input type="checkbox" class="w-3.5 h-3.5"> 是</label>
-                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]"><input type="checkbox" class="w-3.5 h-3.5"> 否</label>
-                                            </div>
-                                            <div class="flex justify-end gap-2">
-                                                <button class="text-[#1c7ffd] text-[13px]" onclick="closeColumnFilter('externalUseFilter')">确定</button>
-                                                <button class="text-[#1c7ffd] text-[13px]" onclick="closeColumnFilter('externalUseFilter')">重置</button>
-                                            </div>
-                                        </div>
-                                    </th>
                                     <th class="py-3 px-4">发布时间 <i class="fa-solid fa-sort text-gray-300 ml-1"></i></th>
                                     <th class="py-3 px-4 w-40">操作</th>
                                 </tr>
@@ -138,8 +138,8 @@
                                     <td class="py-4 px-4">1</td>
                                     <td class="py-4 px-4">zh测试任务_0310</td>
                                     <td class="py-4 px-4">社保核验模型_0420</td>
-                                    <td class="py-4 px-4"><span class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-[#67c23a]"></i> 运行中</span></td>
                                     <td class="py-4 px-4"><span class="inline-flex items-center justify-center h-5 px-2 bg-green-50 text-green-600 rounded text-[12px]">是</span></td>
+                                    <td class="py-4 px-4"><span class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-[#67c23a]"></i> 运行中</span></td>
                                     <td class="py-4 px-4">2026-04-21 10:37:11</td>
                                     <td class="py-4 px-4 text-[#1c7ffd]">
                                         <a href="#" class="hover:underline" onclick="openDeployedModelDrawer()">查看</a>
@@ -151,8 +151,8 @@
                                     <td class="py-4 px-4">2</td>
                                     <td class="py-4 px-4">zh测试任务_0310</td>
                                     <td class="py-4 px-4">zh0319001模型</td>
-                                    <td class="py-4 px-4"><span class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-[#67c23a]"></i> 运行中</span></td>
                                     <td class="py-4 px-4"><span class="inline-flex items-center justify-center h-5 px-2 bg-gray-100 text-gray-500 rounded text-[12px]">否</span></td>
+                                    <td class="py-4 px-4"><span class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-[#67c23a]"></i> 运行中</span></td>
                                     <td class="py-4 px-4">2026-03-19 15:06:34</td>
                                     <td class="py-4 px-4 text-[#1c7ffd]">
                                         <a href="#" class="hover:underline">查看</a>
@@ -164,8 +164,8 @@
                                     <td class="py-4 px-4">3</td>
                                     <td class="py-4 px-4">zh测试任务_0310</td>
                                     <td class="py-4 px-4">zhou模型测试_0310001</td>
-                                    <td class="py-4 px-4"><span class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-[#1c7ffd]"></i> 变更中</span></td>
                                     <td class="py-4 px-4"><span class="inline-flex items-center justify-center h-5 px-2 bg-green-50 text-green-600 rounded text-[12px]">是</span></td>
+                                    <td class="py-4 px-4"><span class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-[#1c7ffd]"></i> 变更中</span></td>
                                     <td class="py-4 px-4">2026-03-11 17:06:00</td>
                                     <td class="py-4 px-4 text-[#1c7ffd]">
                                         <a href="#" class="hover:underline">查看</a>
@@ -175,8 +175,8 @@
                                     <td class="py-4 px-4">4</td>
                                     <td class="py-4 px-4">多底座套餐任务001_2026...</td>
                                     <td class="py-4 px-4">lxmceshimodel0311</td>
-                                    <td class="py-4 px-4"><span class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-[#1c7ffd]"></i> 变更中</span></td>
                                     <td class="py-4 px-4"><span class="inline-flex items-center justify-center h-5 px-2 bg-gray-100 text-gray-500 rounded text-[12px]">否</span></td>
+                                    <td class="py-4 px-4"><span class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-[#1c7ffd]"></i> 变更中</span></td>
                                     <td class="py-4 px-4">2026-03-11 14:30:24</td>
                                     <td class="py-4 px-4 text-[#1c7ffd]">
                                         <a href="#" class="hover:underline">查看</a>
@@ -186,8 +186,8 @@
                                     <td class="py-4 px-4">5</td>
                                     <td class="py-4 px-4">zh测试任务_0310</td>
                                     <td class="py-4 px-4">模型名称:306-001</td>
-                                    <td class="py-4 px-4"><span class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-[#1c7ffd]"></i> 变更中</span></td>
                                     <td class="py-4 px-4"><span class="inline-flex items-center justify-center h-5 px-2 bg-green-50 text-green-600 rounded text-[12px]">是</span></td>
+                                    <td class="py-4 px-4"><span class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-[#1c7ffd]"></i> 变更中</span></td>
                                     <td class="py-4 px-4">2026-03-11 11:21:59</td>
                                     <td class="py-4 px-4 text-[#1c7ffd]">
                                         <a href="#" class="hover:underline">查看</a>
@@ -197,8 +197,8 @@
                                     <td class="py-4 px-4">6</td>
                                     <td class="py-4 px-4">zh测试任务_0310</td>
                                     <td class="py-4 px-4">测试就业模型_20260224001</td>
-                                    <td class="py-4 px-4"><span class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-[#1c7ffd]"></i> 变更中</span></td>
                                     <td class="py-4 px-4"><span class="inline-flex items-center justify-center h-5 px-2 bg-gray-100 text-gray-500 rounded text-[12px]">否</span></td>
+                                    <td class="py-4 px-4"><span class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-[#1c7ffd]"></i> 变更中</span></td>
                                     <td class="py-4 px-4">2026-03-10 17:59:04</td>
                                     <td class="py-4 px-4 text-[#1c7ffd]">
                                         <a href="#" class="hover:underline">查看</a>
@@ -246,8 +246,8 @@
                                         <i class="fa-solid fa-envelope-open-text"></i>
                                     </div>
                                     <div>
-                                        <div class="text-[18px] font-bold text-[#303133] mb-1">模型名称：社保核验模型_0420</div>
-                                        <div class="text-[#909399] text-[13px]">数据使用方：山东亿云信息技术有限公司</div>
+                                        <div class="text-[18px] font-bold text-[#303133] mb-1 flex items-center gap-3">模型名称：社保核验模型_0420<button onclick="openTokenModal()" class="text-[13px] font-normal text-[#1c7ffd] border border-[#1c7ffd] rounded px-2 py-0.5 hover:bg-[#1c7ffd] hover:text-white transition-colors">查看token</button></div>
+                                        <div class="text-[#909399] text-[13px]">模型所属方：山东亿云信息技术有限公司</div>
                                     </div>
                                 </div>
                                 <div class="text-right">
@@ -270,18 +270,18 @@
                             <div class="p-6">
                                 <!-- 模型信息 Tab -->
                                 <div id="deployedModelInfoTab">
-                                    <h3 class="font-bold text-[#303133] text-[15px] mb-4">基本信息</h3>
+                                    <h3 class="font-bold text-[#303133] text-[15px] mb-4">模型信息</h3>
                                     <div class="flex flex-col gap-5 text-[13px]">
-                                        <div class="flex">
-                                            <span class="text-[#909399] w-36">任务名称：</span>
-                                            <span class="text-[#303133] flex-1">zh测试任务_0310</span>
-                                        </div>
                                         <div class="flex">
                                             <span class="text-[#909399] w-36">模型名称：</span>
                                             <span class="text-[#303133] flex-1">社保核验模型_0420</span>
                                         </div>
                                         <div class="flex">
-                                            <span class="text-[#909399] w-36">模型镜像：</span>
+                                            <span class="text-[#909399] w-36">任务名称：</span>
+                                            <span class="text-[#303133] flex-1">zh测试任务_0310</span>
+                                        </div>
+                                        <div class="flex">
+                                            <span class="text-[#909399] w-36">镜像名称：</span>
                                             <span class="text-[#1c7ffd] flex-1">sbhy04201/sbhy04201:1.0</span>
                                         </div>
                                         <div class="flex">
@@ -309,47 +309,23 @@
                                             <span class="text-[#303133] flex-1">山东亿云信息技术有限公司</span>
                                         </div>
                                         <div class="flex">
-                                            <span class="text-[#909399] w-36">功能测试报告：</span>
-                                            <span class="text-[#303133] flex-1">--</span>
-                                        </div>
-                                        <div class="flex">
-                                            <span class="text-[#909399] w-36">安全测试报告：</span>
-                                            <span class="text-[#303133] flex-1">--</span>
-                                        </div>
-                                        <div class="flex">
-                                            <span class="text-[#909399] w-36">代码包：</span>
-                                            <span class="text-[#303133] flex-1">--</span>
+                                            <span class="text-[#909399] w-36">是否公开：</span>
+                                            <span class="text-[#303133] flex-1">是</span>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <!-- 模型接口 Tab (默认隐藏) -->
                                 <div id="deployedModelInterfaceTab" class="hidden">
-                                    <h3 class="font-bold text-[#303133] text-[15px] mb-4">基本信息</h3>
+                                    <h3 class="font-bold text-[#303133] text-[15px] mb-4">模型接口</h3>
                                     <div class="flex flex-col gap-5 text-[13px] mb-8">
-                                        <div class="flex">
-                                            <span class="text-[#909399] w-24">接口名称：</span>
-                                            <span class="text-[#303133] flex-1">社保核验_0420</span>
-                                        </div>
                                         <div class="flex">
                                             <span class="text-[#909399] w-24">接口URI：</span>
                                             <span class="text-[#303133] flex-1">/api/social/person</span>
                                         </div>
                                         <div class="flex">
-                                            <span class="text-[#909399] w-24">接口地址：</span>
-                                            <span class="text-[#303133] flex-1">http://10.193.31.6:5556/apiRoute/gateway/social/person1</span>
-                                        </div>
-                                        <div class="flex">
-                                            <span class="text-[#909399] w-24">接口标识：</span>
-                                            <span class="text-[#303133] flex-1">social/person1</span>
-                                        </div>
-                                        <div class="flex">
                                             <span class="text-[#909399] w-24">请求类型：</span>
                                             <span class="text-[#303133] flex-1">GET</span>
-                                        </div>
-                                        <div class="flex">
-                                            <span class="text-[#909399] w-24">是否开启心跳：</span>
-                                            <span class="text-[#303133] flex-1">是</span>
                                         </div>
                                         <div class="flex">
                                             <span class="text-[#909399] w-24">接口描述：</span>
@@ -462,6 +438,26 @@
                     }
                 </script>
 
+    <!-- Token 弹窗 -->
+    <div id="tokenModalOverlay" class="fixed inset-0 bg-black/40 z-[60] hidden backdrop-blur-[1px] flex items-center justify-center" onclick="closeTokenModal()">
+        <div class="bg-white rounded-lg shadow-xl w-[520px] p-6" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-5">
+                <h3 class="text-[16px] font-bold text-[#303133]">查看 Token</h3>
+                <button onclick="closeTokenModal()" class="text-gray-400 hover:text-[#1c7ffd] transition-colors"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="mb-5">
+                <label class="block text-[#606266] text-[13px] mb-2">Token</label>
+                <div class="relative">
+                    <textarea id="tokenValue" readonly class="w-full border border-gray-300 rounded px-3 py-2 text-[13px] text-[#303133] bg-gray-50 h-24 resize-none focus:outline-none font-mono">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2RlbF9pZCI6Ik1PREVMLTIwMjYtMDQyMCIsIm5hbWUiOiLnvqTnqbrls7AtMDQyMCIsImV4cCI6MTc0NTIxNjAwMH0.sFzMVX7vZ1qX2y3aB4cD5eF6gH7iJ8kL9mN0oP1qR2s</textarea>
+                    <button onclick="copyToken()" class="absolute top-2 right-2 text-[#1c7ffd] text-[12px] border border-[#1c7ffd] rounded px-2 py-0.5 hover:bg-[#1c7ffd] hover:text-white transition-colors bg-white">复制</button>
+                </div>
+            </div>
+            <div class="flex justify-end">
+                <button onclick="closeTokenModal()" class="px-5 py-2 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px]">关闭</button>
+            </div>
+        </div>
+    </div>
+
                 <script>
                     function toggleColumnFilter(id, event) {
                         event.stopPropagation();
@@ -473,6 +469,19 @@
                     }
                     function closeColumnFilter(id) {
                         document.getElementById(id).classList.add('hidden');
+                    }
+
+                    function openTokenModal() {
+                        document.getElementById('tokenModalOverlay').classList.remove('hidden');
+                    }
+                    function closeTokenModal() {
+                        document.getElementById('tokenModalOverlay').classList.add('hidden');
+                    }
+                    function copyToken() {
+                        const textarea = document.getElementById('tokenValue');
+                        textarea.select();
+                        document.execCommand('copy');
+                        alert('Token 已复制到剪贴板');
                     }
                 </script>
             </div>

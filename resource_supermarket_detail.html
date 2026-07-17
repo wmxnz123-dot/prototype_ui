@@ -62,27 +62,32 @@
                                 <div class="text-[#909399]">更新时间：2026-06-23 10:26:19</div>
                             </div>
                         </div>
-                        <div class="flex gap-3">
-                            <div class="px-3 py-1 border border-[#1c7ffd] rounded text-[#1c7ffd] text-[13px] flex items-center gap-1">
-                                <i class="fa-solid fa-table"></i> 库表
+                        <div class="flex flex-col gap-3 items-end">
+                            <div class="flex gap-3">
+                                <div class="px-3 py-1 border border-[#1c7ffd] rounded text-[#1c7ffd] text-[13px] flex items-center gap-1">
+                                    <i class="fa-solid fa-table"></i> 库表
+                                </div>
+                                <div class="px-3 py-1 border border-gray-200 rounded text-[#909399] text-[13px] flex items-center gap-1">
+                                    <i class="fa-solid fa-plug"></i> 接口
+                                </div>
                             </div>
-                            <div class="px-3 py-1 border border-gray-200 rounded text-[#909399] text-[13px] flex items-center gap-1">
-                                <i class="fa-solid fa-plug"></i> 接口
-                            </div>
+                            <button onclick="openFieldSelectModal()" class="px-5 py-2 bg-[#1c7ffd] text-white rounded text-sm hover:bg-blue-600 transition-colors flex items-center gap-1">
+                                <i class="fa-solid fa-plus"></i> 加入数据篮
+                            </button>
                         </div>
                     </div>
                 </div>
 
                 <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] flex-1 flex flex-col">
                     <div class="flex border-b border-gray-100 px-6 shrink-0">
-                        <div id="detail-tab-basic" class="py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors" onclick="switchDetailTab('basic')">基本信息</div>
-                        <div id="detail-tab-service" class="py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer" onclick="switchDetailTab('service')">服务详情</div>
+                        <div id="detail-tab-basic" class="py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer" onclick="switchDetailTab('basic')">基本信息</div>
+                        <div id="detail-tab-sample" class="py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors" onclick="switchDetailTab('sample')">样例数据</div>
                     </div>
 
                     <div class="flex-1 p-6 overflow-y-auto">
-                        <div id="detail-content-basic" class="hidden">
+                        <div id="detail-content-basic">
                             <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">基本信息</h3>
-                            <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] pl-4">
+                            <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] pl-4 mb-8">
                                 <div class="flex">
                                     <span class="text-[#909399] w-28 text-right pr-4">资源名称</span>
                                     <span class="text-[#303133] flex-1">数据要素数据资源-库表003</span>
@@ -107,20 +112,82 @@
                                     <span class="text-[#909399] w-28 text-right pr-4">提供方</span>
                                     <span class="text-[#303133] flex-1">数据管理局</span>
                                 </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">服务名称</span>
+                                    <span class="text-[#303133] flex-1">数据要素数据资源-库表服务003</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">资源类型</span>
+                                    <span class="text-[#303133] flex-1">库表</span>
+                                </div>
+                            </div>
+
+                            <h3 class="font-bold text-[#303133] text-[15px] mb-4">表字段展示</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left text-[13px] text-[#606266] border border-gray-200">
+                                    <thead class="bg-[#f5f7fa] text-[#303133] font-medium border-b border-gray-200">
+                                        <tr>
+                                            <th class="py-3 px-4 text-center">序号</th>
+                                            <th class="py-3 px-4 text-center">字段名称</th>
+                                            <th class="py-3 px-4 text-center">字段类型</th>
+                                            <th class="py-3 px-4 text-center">字段描述</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b border-gray-100">
+                                            <td class="py-3 px-4 text-center">1</td>
+                                            <td class="py-3 px-4 text-center">id</td>
+                                            <td class="py-3 px-4 text-center">bigint</td>
+                                            <td class="py-3 px-4 text-center">主键ID</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-100">
+                                            <td class="py-3 px-4 text-center">2</td>
+                                            <td class="py-3 px-4 text-center">ip</td>
+                                            <td class="py-3 px-4 text-center">varchar(64)</td>
+                                            <td class="py-3 px-4 text-center">IP地址</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-100">
+                                            <td class="py-3 px-4 text-center">3</td>
+                                            <td class="py-3 px-4 text-center">type</td>
+                                            <td class="py-3 px-4 text-center">varchar(32)</td>
+                                            <td class="py-3 px-4 text-center">类型</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-100">
+                                            <td class="py-3 px-4 text-center">4</td>
+                                            <td class="py-3 px-4 text-center">create_by</td>
+                                            <td class="py-3 px-4 text-center">varchar(64)</td>
+                                            <td class="py-3 px-4 text-center">创建人</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-100">
+                                            <td class="py-3 px-4 text-center">5</td>
+                                            <td class="py-3 px-4 text-center">update_by</td>
+                                            <td class="py-3 px-4 text-center">varchar(64)</td>
+                                            <td class="py-3 px-4 text-center">更新人</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-100">
+                                            <td class="py-3 px-4 text-center">6</td>
+                                            <td class="py-3 px-4 text-center">create_time</td>
+                                            <td class="py-3 px-4 text-center">datetime</td>
+                                            <td class="py-3 px-4 text-center">创建时间</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-100">
+                                            <td class="py-3 px-4 text-center">7</td>
+                                            <td class="py-3 px-4 text-center">update_time</td>
+                                            <td class="py-3 px-4 text-center">datetime</td>
+                                            <td class="py-3 px-4 text-center">更新时间</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-100">
+                                            <td class="py-3 px-4 text-center">8</td>
+                                            <td class="py-3 px-4 text-center">is_deleted</td>
+                                            <td class="py-3 px-4 text-center">tinyint</td>
+                                            <td class="py-3 px-4 text-center">是否删除</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
 
-                        <div id="detail-content-service">
-                            <div class="flex justify-between items-start mb-6">
-                                <div>
-                                    <div class="text-[14px] text-[#606266] mb-2">服务名称：<span class="text-[#303133]">数据要素数据资源-库表服务003</span></div>
-                                    <div class="text-[14px] text-[#606266]">服务类型：<span class="text-[#303133]">库表</span></div>
-                                </div>
-                                <button onclick="openFieldSelectModal()" class="px-5 py-2 bg-[#1c7ffd] text-white rounded text-sm hover:bg-blue-600 transition-colors flex items-center gap-1">
-                                    <i class="fa-solid fa-plus"></i> 加入数据篮
-                                </button>
-                            </div>
-
+                        <div id="detail-content-sample" class="hidden">
                             <h3 class="font-bold text-[#303133] text-[15px] mb-4">样例数据</h3>
                             <div class="overflow-x-auto">
                                 <table class="w-full text-left text-[13px] text-[#606266] border border-gray-200">
@@ -304,10 +371,6 @@
                     <div class="px-6 py-5">
                         <div class="flex flex-col gap-4">
                             <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[130px] text-right"><span class="text-red-500 mr-1">*</span>使用截止日期：</label>
-                                <input type="date" id="applyEndDate" placeholder="如不确定具体的数据使用时间，填写授权截止日期" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
-                            </div>
-                            <div class="flex items-center gap-3">
                                 <label class="text-[#606266] whitespace-nowrap w-[130px] text-right">使用单位：</label>
                                 <input type="text" id="applyUnit" value="数据要素事业部" readonly class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] bg-gray-50">
                             </div>
@@ -332,11 +395,11 @@
                 function switchDetailTab(tabName) {
                     const tabs = {
                         'basic': document.getElementById('detail-tab-basic'),
-                        'service': document.getElementById('detail-tab-service')
+                        'sample': document.getElementById('detail-tab-sample')
                     };
                     const contents = {
                         'basic': document.getElementById('detail-content-basic'),
-                        'service': document.getElementById('detail-content-service')
+                        'sample': document.getElementById('detail-content-sample')
                     };
 
                     for (let key in tabs) {
@@ -409,14 +472,9 @@
                 }
 
                 function submitApply() {
-                    const endDate = document.getElementById('applyEndDate').value;
                     const contact = document.getElementById('applyContact').value;
                     const phone = document.getElementById('applyPhone').value;
                     
-                    if (!endDate) {
-                        alert('请选择使用截止日期');
-                        return;
-                    }
                     if (!contact) {
                         alert('请填写联系人');
                         return;

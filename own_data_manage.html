@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数据沙箱平台 - 自用数据管理</title>
+    <title>数据沙箱平台 - 数据注册</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -43,11 +43,11 @@
             <div id="developer-top-nav" class="h-[52px] bg-white border-b border-gray-200 px-6 flex items-center gap-2 shrink-0 overflow-x-auto"></div>
 
             <div class="h-[52px] flex items-center px-6 text-[#606266] shrink-0 bg-white border-b border-gray-100 text-sm">
-                <span>资源中心</span>
+                <span>数据中心</span>
                 <span class="mx-2">/</span>
-                <span>数据资源接入</span>
+                <span>数据接入</span>
                 <span class="mx-2">/</span>
-                <span class="text-[#303133] font-medium">自用数据管理</span>
+                <span class="text-[#303133] font-medium">数据注册</span>
             </div>
 
             <div class="flex-1 p-6 flex flex-col gap-4 overflow-y-auto">
@@ -81,7 +81,7 @@
 
                 <div class="bg-white rounded-lg shadow-sm border border-gray-100 flex-1 flex flex-col p-5 overflow-hidden">
                     <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-[16px] font-bold text-[#303133]">自用数据资源列表</h3>
+                        <h3 class="text-[16px] font-bold text-[#303133]">数据注册列表</h3>
                         <div class="flex items-center gap-3">
                             <a href="own_data_manage_add.html?nav=resource-own" class="px-4 py-1.5 bg-[#1c7ffd] text-white rounded hover:bg-blue-500 transition-colors text-sm inline-flex items-center gap-1">
                                 <i class="fa-solid fa-plus text-[12px]"></i>新增
@@ -99,6 +99,22 @@
                                     <th class="py-3 px-4 w-16">序号</th>
                                     <th class="py-3 px-4">资源名称</th>
                                     <th class="py-3 px-4">资源类型</th>
+                                    <th class="py-3 px-4 relative">
+                                        <div class="flex items-center gap-1">
+                                            <span>是否公开</span>
+                                            <i class="fa-solid fa-filter text-gray-400 text-[10px] cursor-pointer" onclick="toggleColumnFilter('publicFilter', event)"></i>
+                                        </div>
+                                        <div id="publicFilter" class="hidden absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded shadow-lg p-3 z-30 w-[160px]">
+                                            <div class="space-y-2 mb-3">
+                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]"><input type="checkbox" class="w-3.5 h-3.5"> 公开</label>
+                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]"><input type="checkbox" class="w-3.5 h-3.5"> 不公开</label>
+                                            </div>
+                                            <div class="flex justify-end gap-2">
+                                                <button class="text-[#1c7ffd] text-[13px]" onclick="closeColumnFilter('publicFilter')">确定</button>
+                                                <button class="text-[#1c7ffd] text-[13px]" onclick="closeColumnFilter('publicFilter')">重置</button>
+                                            </div>
+                                        </div>
+                                    </th>
                                     <th class="py-3 px-4 relative">
                                         <div class="flex items-center gap-1">
                                             <span>状态</span>
@@ -124,6 +140,7 @@
                                     <td class="py-4 px-4">1</td>
                                     <td class="py-4 px-4">lxmceshi0624-1</td>
                                     <td class="py-4 px-4">接口</td>
+                                    <td class="py-4 px-4">是</td>
                                     <td class="py-4 px-4">
                                         <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-gray-300"></i>草稿</span>
                                     </td>
@@ -138,6 +155,7 @@
                                     <td class="py-4 px-4">2</td>
                                     <td class="py-4 px-4">数据要素数据资源-库表003</td>
                                     <td class="py-4 px-4">库表</td>
+                                    <td class="py-4 px-4">否</td>
                                     <td class="py-4 px-4">
                                         <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-[#67c23a]"></i>已注册</span>
                                     </td>
@@ -152,6 +170,7 @@
                                     <td class="py-4 px-4">3</td>
                                     <td class="py-4 px-4">数据要素数据资源-接口003</td>
                                     <td class="py-4 px-4">接口</td>
+                                    <td class="py-4 px-4">是</td>
                                     <td class="py-4 px-4">
                                         <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-[#67c23a]"></i>已注册</span>
                                     </td>
@@ -166,6 +185,7 @@
                                     <td class="py-4 px-4">4</td>
                                     <td class="py-4 px-4">数据要素数据资源-库表002</td>
                                     <td class="py-4 px-4">库表</td>
+                                    <td class="py-4 px-4">否</td>
                                     <td class="py-4 px-4">
                                         <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-[#67c23a]"></i>已注册</span>
                                     </td>
@@ -180,6 +200,7 @@
                                     <td class="py-4 px-4">5</td>
                                     <td class="py-4 px-4">数据要素数据资源-接口002</td>
                                     <td class="py-4 px-4">接口</td>
+                                    <td class="py-4 px-4">是</td>
                                     <td class="py-4 px-4">
                                         <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-[#67c23a]"></i>已注册</span>
                                     </td>
@@ -275,6 +296,7 @@
                     ['资源类型', '接口'],
                     ['数据所属方', '数据要素事业部'],
                     ['状态', '草稿'],
+                    ['是否公开', '是'],
                     ['更新时间', '2026-06-24 15:50:26']
                 ],
                 apiInfo: {
@@ -304,6 +326,7 @@
                     ['资源类型', '库表'],
                     ['数据所属方', '数据要素事业部'],
                     ['状态', '已注册'],
+                    ['是否公开', '否'],
                     ['更新时间', '2026-06-23 10:26:19']
                 ],
                 tableInfo: {
@@ -325,6 +348,7 @@
                     ['资源类型', '接口'],
                     ['数据所属方', '数据要素事业部'],
                     ['状态', '已注册'],
+                    ['是否公开', '是'],
                     ['更新时间', '2026-06-23 10:16:48']
                 ],
                 apiInfo: {
@@ -356,6 +380,7 @@
                     ['资源类型', '库表'],
                     ['数据所属方', '数据要素事业部'],
                     ['状态', '已注册'],
+                    ['是否公开', '否'],
                     ['更新时间', '2026-06-22 16:10:30']
                 ],
                 tableInfo: {
@@ -377,6 +402,7 @@
                     ['资源类型', '接口'],
                     ['数据所属方', '数据要素事业部'],
                     ['状态', '已注册'],
+                    ['是否公开', '是'],
                     ['更新时间', '2026-06-22 16:09:54']
                 ],
                 apiInfo: {

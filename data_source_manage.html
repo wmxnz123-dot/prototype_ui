@@ -43,7 +43,7 @@
             <div id="developer-top-nav" class="h-[52px] bg-white border-b border-gray-200 px-6 flex items-center gap-2 shrink-0 overflow-x-auto"></div>
 
             <div class="h-[52px] flex items-center px-6 text-[#606266] shrink-0 bg-white border-b border-gray-100 text-[14px]">
-                <span>资源中心</span>
+                <span>数据中心</span>
                 <span class="mx-2">/</span>
                 <span>资源管理</span>
                 <span class="mx-2">/</span>
@@ -146,26 +146,6 @@
                                         </div>
                                     </th>
                                     <th class="py-3 px-4">是否关联资源</th>
-                                    <th class="py-3 px-4 relative">
-                                        <div class="flex items-center gap-1">
-                                            <span>用途</span>
-                                            <i class="fa-solid fa-filter text-gray-400 text-[10px] cursor-pointer" onclick="toggleColumnFilter('purposeFilter', event)"></i>
-                                        </div>
-                                        <div id="purposeFilter" class="hidden absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded shadow-lg p-3 z-30 w-[160px]">
-                                            <div class="space-y-2 mb-3">
-                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]">
-                                                    <input type="checkbox" class="w-3.5 h-3.5"> 对外数据资源
-                                                </label>
-                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]">
-                                                    <input type="checkbox" class="w-3.5 h-3.5"> 自用数据资源
-                                                </label>
-                                            </div>
-                                            <div class="flex justify-end gap-2">
-                                                <button class="text-[#1c7ffd] text-[13px]" onclick="closeColumnFilter('purposeFilter')">确定</button>
-                                                <button class="text-[#1c7ffd] text-[13px]" onclick="closeColumnFilter('purposeFilter')">重置</button>
-                                            </div>
-                                        </div>
-                                    </th>
                                     <th class="py-3 px-4">
                                         <div class="flex items-center gap-1">
                                             <span>更新时间</span>
@@ -193,7 +173,6 @@
                                         </span>
                                     </td>
                                     <td class="py-4 px-4">否</td>
-                                    <td class="py-4 px-4">对外数据资源</td>
                                     <td class="py-4 px-4">2026-06-24 10:29:40</td>
                                     <td class="py-4 px-4">
                                         <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openDetailDrawer(0); return false;">查看</a>
@@ -218,7 +197,6 @@
                                         </span>
                                     </td>
                                     <td class="py-4 px-4">是</td>
-                                    <td class="py-4 px-4">自用数据资源</td>
                                     <td class="py-4 px-4">2026-06-22 15:35:32</td>
                                     <td class="py-4 px-4">
                                         <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openDetailDrawer(1); return false;">查看</a>
@@ -238,7 +216,6 @@
                                     </td>
                                     <td class="py-4 px-4">--</td>
                                     <td class="py-4 px-4">否</td>
-                                    <td class="py-4 px-4">对外数据资源</td>
                                     <td class="py-4 px-4">2026-06-22 14:51:34</td>
                                     <td class="py-4 px-4">
                                         <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openDetailDrawer(2); return false;">查看</a>
@@ -263,7 +240,6 @@
                                         </span>
                                     </td>
                                     <td class="py-4 px-4">是</td>
-                                    <td class="py-4 px-4">自用数据资源</td>
                                     <td class="py-4 px-4">2026-06-11 15:30:18</td>
                                     <td class="py-4 px-4">
                                         <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openDetailDrawer(3); return false;">查看</a>
@@ -288,7 +264,6 @@
                                         </span>
                                     </td>
                                     <td class="py-4 px-4">否</td>
-                                    <td class="py-4 px-4">对外数据资源</td>
                                     <td class="py-4 px-4">2026-06-11 13:51:58</td>
                                     <td class="py-4 px-4">
                                         <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openDetailDrawer(4); return false;">查看</a>
@@ -313,7 +288,6 @@
                                         </span>
                                     </td>
                                     <td class="py-4 px-4">是</td>
-                                    <td class="py-4 px-4">自用数据资源</td>
                                     <td class="py-4 px-4">2026-06-08 16:49:12</td>
                                     <td class="py-4 px-4">
                                         <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openDetailDrawer(5); return false;">查看</a>
@@ -396,10 +370,6 @@
                                         <span class="text-[#303133] flex-1" id="detailName2"></span>
                                     </div>
                                     <div class="flex">
-                                        <span class="text-[#909399] w-28 text-right pr-4">用途</span>
-                                        <span class="text-[#303133] flex-1" id="detailPurpose"></span>
-                                    </div>
-                                    <div class="flex">
                                         <span class="text-[#909399] w-28 text-right pr-4">数据库类型</span>
                                         <span class="text-[#303133] flex-1" id="detailDbType2"></span>
                                     </div>
@@ -430,10 +400,6 @@
                                     <div class="flex">
                                         <span class="text-[#909399] w-28 text-right pr-4">联系电话</span>
                                         <span class="text-[#303133] flex-1" id="detailPhone"></span>
-                                    </div>
-                                    <div class="flex">
-                                        <span class="text-[#909399] w-28 text-right pr-4">用途</span>
-                                        <span class="text-[#303133] flex-1" id="detailPurpose"></span>
                                     </div>
                                 </div>
                             </div>
@@ -481,25 +447,6 @@
                             <div class="flex items-center">
                                 <label class="w-[120px] text-right shrink-0 text-[#606266] text-[14px]"><span class="text-red-500 mr-1">*</span>数据源名称：</label>
                                 <input type="text" placeholder="请输入" class="ml-3 flex-1 h-9 px-3 border border-gray-300 rounded text-sm focus:outline-none focus:border-[#1c7ffd]">
-                            </div>
-                            <div class="flex items-center">
-                                <label class="w-[120px] text-right shrink-0 text-[#606266] text-[14px]"><span class="text-red-500 mr-1">*</span>用途：</label>
-                                <div class="ml-3 flex-1 flex items-center gap-8">
-                                    <label class="flex items-center gap-2 cursor-pointer text-[#1c7ffd]">
-                                        <div class="relative flex items-center">
-                                            <input type="radio" name="purpose" class="peer sr-only" checked>
-                                            <div class="w-4 h-4 rounded-full border border-gray-300 peer-checked:border-[#1c7ffd] peer-checked:border-[4px] transition-all bg-white"></div>
-                                        </div>
-                                        <span class="text-sm text-[#303133]">对外数据资源</span>
-                                    </label>
-                                    <label class="flex items-center gap-2 cursor-pointer">
-                                        <div class="relative flex items-center">
-                                            <input type="radio" name="purpose" class="peer sr-only">
-                                            <div class="w-4 h-4 rounded-full border border-gray-300 peer-checked:border-[#1c7ffd] peer-checked:border-[4px] transition-all bg-white"></div>
-                                        </div>
-                                        <span class="text-sm text-[#303133]">自用数据资源</span>
-                                    </label>
-                                </div>
                             </div>
                             <div class="flex items-center">
                                 <label class="w-[120px] text-right shrink-0 text-[#606266] text-[14px]"><span class="text-red-500 mr-1">*</span>数据库类型：</label>
@@ -658,7 +605,6 @@
                         publishStatus: 'published',
                         connectStatus: 'normal',
                         hasResource: '否',
-                        purpose: '对外数据资源',
                         updateTime: '2026-06-24 10:29:40',
                         version: '5.7',
                         dbName: 'test1',
@@ -675,7 +621,6 @@
                         publishStatus: 'published',
                         connectStatus: 'normal',
                         hasResource: '是',
-                        purpose: '自用数据资源',
                         updateTime: '2026-06-22 15:35:32',
                         version: '5.7',
                         dbName: 'test01',
@@ -694,7 +639,6 @@
                         publishStatus: 'draft',
                         connectStatus: '--',
                         hasResource: '否',
-                        purpose: '对外数据资源',
                         updateTime: '2026-06-22 14:51:34',
                         version: '13.0',
                         dbName: 'test02',
@@ -711,7 +655,6 @@
                         publishStatus: 'published',
                         connectStatus: 'normal',
                         hasResource: '是',
-                        purpose: '自用数据资源',
                         updateTime: '2026-06-11 15:30:18',
                         version: '5.7',
                         dbName: 'data_element',
@@ -730,7 +673,6 @@
                         publishStatus: 'published',
                         connectStatus: 'normal',
                         hasResource: '否',
-                        purpose: '对外数据资源',
                         updateTime: '2026-06-11 13:51:58',
                         version: '5.7',
                         dbName: 'data_element_2',
@@ -747,7 +689,6 @@
                         publishStatus: 'published',
                         connectStatus: 'normal',
                         hasResource: '是',
-                        purpose: '自用数据资源',
                         updateTime: '2026-06-08 16:49:12',
                         version: '5.7',
                         dbName: 'zhongcaixin',
@@ -776,7 +717,6 @@
                     document.getElementById('detailUsername').textContent = data.username;
                     document.getElementById('detailContact').textContent = data.contact;
                     document.getElementById('detailPhone').textContent = data.phone;
-                    document.getElementById('detailPurpose').textContent = data.purpose;
 
                     const statusEl = document.getElementById('detailPublishStatus');
                     if (data.publishStatus === 'published') {

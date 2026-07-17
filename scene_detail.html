@@ -70,86 +70,588 @@
                 
                 <!-- 左侧菜单卡片 -->
                 <div class="w-[200px] bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] shrink-0 flex flex-col py-2">
-                    <a href="scene_detail.html" class="flex items-center px-4 py-3 bg-blue-50 text-[#1c7ffd] font-medium rounded-md">
+                    <a href="#" onclick="switchTaskTab('taskDetail'); return false;" id="tab-taskDetail" class="flex items-center px-4 py-3 bg-blue-50 text-[#1c7ffd] font-medium rounded-md">
                         <i class="fa-solid fa-border-all w-6 text-center mr-2 text-lg"></i>
                         任务详情
                     </a>
-                    <a href="data_resources.html" class="flex items-center px-4 py-3 text-[#606266] hover:bg-gray-50 hover:text-[#1c7ffd] rounded-md transition-colors">
+                    <a href="#" onclick="switchTaskTab('processingResources'); return false;" id="tab-processingResources" class="flex items-center px-4 py-3 text-[#606266] hover:bg-gray-50 hover:text-[#1c7ffd] rounded-md transition-colors">
                         <i class="fa-solid fa-chart-line w-6 text-center mr-2 text-lg"></i>
                         加工资源
                     </a>
-                    <a href="dev_team.html" class="flex items-center px-4 py-3 text-[#606266] hover:bg-gray-50 hover:text-[#1c7ffd] rounded-md transition-colors">
+                    <a href="#" onclick="switchTaskTab('developers'); return false;" id="tab-developers" class="flex items-center px-4 py-3 text-[#606266] hover:bg-gray-50 hover:text-[#1c7ffd] rounded-md transition-colors">
                         <i class="fa-solid fa-users w-6 text-center mr-2 text-lg"></i>
-                        开发团队
+                        开发者
                     </a>
-                    <a href="online_dev.html" class="flex items-center px-4 py-3 text-[#606266] hover:bg-gray-50 hover:text-[#1c7ffd] rounded-md transition-colors">
-                        <i class="fa-solid fa-code w-6 text-center mr-2 text-lg"></i>
-                        在线开发
+                    <a href="#" onclick="switchTaskTab('models'); return false;" id="tab-models" class="flex items-center px-4 py-3 text-[#606266] hover:bg-gray-50 hover:text-[#1c7ffd] rounded-md transition-colors">
+                        <i class="fa-solid fa-cube w-6 text-center mr-2 text-lg"></i>
+                        数据模型
                     </a>
                 </div>
 
                 <!-- 详情内容卡片 -->
                 <div class="flex-1 flex flex-col overflow-hidden">
-                    <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] flex-1 flex flex-col p-6">
-                    <div class="flex-1 flex flex-col gap-6 overflow-y-auto">
-                        <div class="flex justify-between items-start">
-                            <div class="flex flex-col gap-4">
-                                <h1 class="text-[20px] font-bold text-[#303133]">任务名称：单位公积金开户</h1>
-                                <span class="text-[#909399]">任务ID：CJ20250714001</span>
-                            </div>
-                            <div class="flex flex-col items-end gap-4">
-                                <div class="bg-[#1c7ffd] text-white px-3 py-1 rounded-full text-xs flex items-center shadow-sm">
-                                    <i class="fa-solid fa-circle-check mr-1.5 text-sm"></i>
-                                    已授权
+                    <div id="content-taskDetail" class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] flex-1 flex flex-col p-6">
+                        <div class="flex-1 flex flex-col gap-6 overflow-y-auto">
+                            <div class="flex justify-between items-start">
+                                <div class="flex flex-col gap-4">
+                                    <h1 class="text-[20px] font-bold text-[#303133]">任务名称：单位公积金开户</h1>
+                                    <span class="text-[#909399]">任务ID：CJ20250714001</span>
                                 </div>
-                                <span class="text-[#909399]">任务开始时间：2021年07月12日</span>
+                                <div class="flex flex-col items-end gap-4">
+                                    <div class="bg-[#1c7ffd] text-white px-3 py-1 rounded-full text-xs flex items-center shadow-sm">
+                                        <i class="fa-solid fa-circle-check mr-1.5 text-sm"></i>
+                                        已授权
+                                    </div>
+                                    <span class="text-[#909399]">任务开始时间：2021年07月12日</span>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-gray-100 pt-6">
+                                <h2 class="text-[16px] font-bold text-[#303133] mb-8">基本信息</h2>
+                                
+                                <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[14px]">
+                                    <div class="flex">
+                                        <span class="text-[#909399] w-[100px] shrink-0">任务名称：</span>
+                                        <span class="text-[#303133]">单位公积金开户</span>
+                                    </div>
+                                    <div class="flex">
+                                        <span class="text-[#909399] w-[100px] shrink-0">任务ID：</span>
+                                        <span class="text-[#303133]">CJ20250714001</span>
+                                    </div>
+
+                                    <div class="flex">
+                                        <span class="text-[#909399] w-[100px] shrink-0">资源数量：</span>
+                                        <span class="text-[#303133]">3</span>
+                                    </div>
+                                    
+                                    <div class="flex">
+                                        <span class="text-[#909399] w-[100px] shrink-0">开发人数：</span>
+                                        <span class="text-[#303133]">2</span>
+                                    </div>
+                                    <div class="flex">
+                                        <span class="text-[#909399] w-[100px] shrink-0">单位名称：</span>
+                                        <span class="text-[#303133]">山东汇云信息技术有限公司</span>
+                                    </div>
+                                    
+                                    <div class="flex">
+                                        <span class="text-[#909399] w-[100px] shrink-0">创建人：</span>
+                                        <span class="text-[#303133]">张三</span>
+                                    </div>
+                                    <div class="flex">
+                                        <span class="text-[#909399] w-[100px] shrink-0">电话：</span>
+                                        <span class="text-[#303133]">10000000001</span>
+                                    </div>
+                                    <div class="flex col-span-2 mt-2">
+                                        <span class="text-[#909399] w-[100px] shrink-0">任务描述：</span>
+                                        <span class="text-[#303133] leading-relaxed">单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="content-processingResources" class="hidden bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] flex-1 flex flex-col p-6">
+                        <div class="flex-1 flex flex-col gap-5 overflow-hidden">
+                            <!-- Tab栏 -->
+                            <div class="flex border-b border-gray-100 shrink-0">
+                                <div id="tab-data-resource" class="py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer" onclick="switchDataTab('resource')">已申请数据</div>
+                                <div id="tab-own-data" class="py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors" onclick="switchDataTab('own-data')">自用数据</div>
+                            </div>
+                            
+                            <!-- 已申请数据列表 -->
+                            <div id="content-data-resource" class="flex-1 flex flex-col overflow-hidden">
+                                <div class="flex-1 overflow-auto">
+                                    <table class="w-full text-left text-[13px] text-[#606266]">
+                                        <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
+                                            <tr>
+                                                <th class="py-3 px-4 w-16">序号</th>
+                                                <th class="py-3 px-4">目录名称</th>
+                                                <th class="py-3 px-4">服务名称</th>
+                                                <th class="py-3 px-4">服务类型</th>
+                                                <th class="py-3 px-4">授权开始时间</th>
+                                                <th class="py-3 px-4">授权结束时间</th>
+                                                <th class="py-3 px-4 w-20">操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                                <td class="py-4 px-4">1</td>
+                                                <td class="py-4 px-4">企业基础信息库</td>
+                                                <td class="py-4 px-4">企业基础信息查询服务</td>
+                                                <td class="py-4 px-4">API</td>
+                                                <td class="py-4 px-4">2026-06-23</td>
+                                                <td class="py-4 px-4">2026-08-23</td>
+                                                <td class="py-4 px-4"><a href="#" onclick="openAppliedDataDetail(); return false;" class="text-[#1c7ffd] hover:underline">查看</a></td>
+                                            </tr>
+                                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                                <td class="py-4 px-4">2</td>
+                                                <td class="py-4 px-4">经营变更记录表</td>
+                                                <td class="py-4 px-4">企业变更信息查询服务</td>
+                                                <td class="py-4 px-4">API</td>
+                                                <td class="py-4 px-4">2026-06-23</td>
+                                                <td class="py-4 px-4">2026-08-23</td>
+                                                <td class="py-4 px-4"><a href="#" onclick="openAppliedDataDetail(); return false;" class="text-[#1c7ffd] hover:underline">查看</a></td>
+                                            </tr>
+                                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                                <td class="py-4 px-4">3</td>
+                                                <td class="py-4 px-4">税务信息库</td>
+                                                <td class="py-4 px-4">税务信息查询服务</td>
+                                                <td class="py-4 px-4">数据库表</td>
+                                                <td class="py-4 px-4">2026-06-23</td>
+                                                <td class="py-4 px-4">2026-08-23</td>
+                                                <td class="py-4 px-4"><a href="#" onclick="openAppliedDataDetail(); return false;" class="text-[#1c7ffd] hover:underline">查看</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <!-- 自用数据列表 -->
+                            <div id="content-own-data" class="hidden flex-1 flex flex-col overflow-hidden">
+                                <div class="flex-1 overflow-auto">
+                                    <table class="w-full text-left text-[13px] text-[#606266]">
+                                        <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
+                                            <tr>
+                                                <th class="py-3 px-4 w-16">序号</th>
+                                                <th class="py-3 px-4">资源名称</th>
+                                                <th class="py-3 px-4">资源类型</th>
+                                                <th class="py-3 px-4">更新时间</th>
+                                                <th class="py-3 px-4 w-20">操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                                <td class="py-4 px-4">1</td>
+                                                <td class="py-4 px-4">企业标签接口</td>
+                                                <td class="py-4 px-4">API</td>
+                                                <td class="py-4 px-4">2026-01-20 10:00:00</td>
+                                                <td class="py-4 px-4"><a href="#" onclick="openOwnDataDetail(); return false;" class="text-[#1c7ffd] hover:underline">查看</a></td>
+                                            </tr>
+                                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                                <td class="py-4 px-4">2</td>
+                                                <td class="py-4 px-4">税务风险评估接口</td>
+                                                <td class="py-4 px-4">API</td>
+                                                <td class="py-4 px-4">2026-01-22 10:00:00</td>
+                                                <td class="py-4 px-4"><a href="#" onclick="openOwnDataDetail(); return false;" class="text-[#1c7ffd] hover:underline">查看</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="content-developers" class="hidden bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] flex-1 flex flex-col p-6">
+                        <div class="flex-1 flex flex-col gap-5 overflow-hidden">
+                            <div class="flex justify-between items-center">
+                                <h2 class="text-[16px] font-bold text-[#303133]">开发者</h2>
+                            </div>
+                            <div class="flex-1 overflow-auto">
+                                <table class="w-full text-left text-[13px] text-[#606266]">
+                                    <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
+                                        <tr>
+                                            <th class="py-3 px-4 w-16">序号</th>
+                                            <th class="py-3 px-4">账号</th>
+                                            <th class="py-3 px-4">姓名</th>
+                                            <th class="py-3 px-4">手机号</th>
+                                            <th class="py-3 px-4">时间</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                            <td class="py-4 px-4">1</td>
+                                            <td class="py-4 px-4">yiyun</td>
+                                            <td class="py-4 px-4">伊云</td>
+                                            <td class="py-4 px-4">138****1234</td>
+                                            <td class="py-4 px-4">2026-03-10 09:30:00</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                            <td class="py-4 px-4">2</td>
+                                            <td class="py-4 px-4">wangyu</td>
+                                            <td class="py-4 px-4">王宇</td>
+                                            <td class="py-4 px-4">139****5678</td>
+                                            <td class="py-4 px-4">2026-03-09 14:20:00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="content-models" class="hidden bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] flex-1 flex flex-col p-6">
+                        <div class="flex-1 flex flex-col gap-5 overflow-hidden">
+                            <div class="flex justify-between items-center">
+                                <h2 class="text-[16px] font-bold text-[#303133]">数据模型</h2>
+                            </div>
+                            <div class="flex-1 overflow-auto">
+                                <table class="w-full text-left text-[13px] text-[#606266]">
+                                    <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
+                                        <tr>
+                                            <th class="py-3 px-4 w-16">序号</th>
+                                            <th class="py-3 px-4">模型名称</th>
+                                            <th class="py-3 px-4">镜像名称</th>
+                                            <th class="py-3 px-4">是否公开</th>
+                                            <th class="py-3 px-4">状态</th>
+                                            <th class="py-3 px-4">更新时间</th>
+                                            <th class="py-3 px-4 w-20">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                            <td class="py-4 px-4">1</td>
+                                            <td class="py-4 px-4">社保核验模型_0420</td>
+                                            <td class="py-4 px-4">social-check:v1.0</td>
+                                            <td class="py-4 px-4">是</td>
+                                            <td class="py-4 px-4">
+                                                <span class="inline-flex items-center gap-1.5">
+                                                    <i class="fa-solid fa-circle text-[8px] text-[#1c7ffd]"></i>
+                                                    <span>审核中</span>
+                                                </span>
+                                            </td>
+                                            <td class="py-4 px-4">2026-04-20 16:00:00</td>
+                                            <td class="py-4 px-4">
+                                                <a href="#" class="text-[#1c7ffd] hover:underline">查看</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                            <td class="py-4 px-4">2</td>
+                                            <td class="py-4 px-4">公积金查询模型_0815</td>
+                                            <td class="py-4 px-4">gjj-query:v2.1</td>
+                                            <td class="py-4 px-4">否</td>
+                                            <td class="py-4 px-4">
+                                                <span class="inline-flex items-center gap-1.5">
+                                                    <i class="fa-solid fa-circle text-[8px] text-green-500"></i>
+                                                    <span>已注册</span>
+                                                </span>
+                                            </td>
+                                            <td class="py-4 px-4">2026-08-15 14:30:00</td>
+                                            <td class="py-4 px-4">
+                                                <a href="#" class="text-[#1c7ffd] hover:underline">查看</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 已申请数据详情抽屉 -->
+            <div id="appliedDataDrawerOverlay" class="fixed inset-0 bg-black bg-opacity-30 z-40 hidden" onclick="closeAppliedDataDetail()"></div>
+            <div id="appliedDataDetailDrawer" class="fixed top-0 right-0 h-full w-[800px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+                <div class="h-14 border-b border-gray-100 flex items-center justify-between px-6 shrink-0 bg-white">
+                    <span class="font-medium text-[#303133]">资源详情</span>
+                    <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-[#1c7ffd] text-lg" onclick="closeAppliedDataDetail()"></i>
+                </div>
+                <div class="flex-1 overflow-y-auto p-6 bg-[#f5f7fa]">
+                    <div class="bg-white rounded-lg p-6 shadow-sm mb-4">
+                        <div class="flex justify-between items-start">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-blue-50 text-[#1c7ffd] rounded-full flex items-center justify-center text-xl shrink-0">
+                                    <i class="fa-solid fa-envelope-open-text"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[18px] font-bold text-[#303133] mb-1 flex items-center gap-2">
+                                        企业基础信息查询服务
+                                        <span class="bg-blue-50 text-[#1c7ffd] text-[12px] px-2 py-0.5 rounded border border-blue-100 font-normal">API</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[#909399] text-[13px]">更新时间：2026-06-23 10:30:00</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-4">
+                        <div class="flex border-b border-gray-100 px-6">
+                            <div id="applied-drawer-tab-basic" class="py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer text-[14px]" onclick="switchAppliedDrawerTab('basic')">基本信息</div>
+                            <div id="applied-drawer-tab-sample" class="py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors text-[14px]" onclick="switchAppliedDrawerTab('sample')">样例数据</div>
+                            <div id="applied-drawer-tab-apply" class="py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors text-[14px]" onclick="switchAppliedDrawerTab('apply')">申请信息</div>
+                        </div>
+
+                        <div id="applied-drawer-content-basic" class="p-6">
+                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">基本信息</h3>
+                            <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] pl-4">
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">资源名称</span>
+                                    <span class="text-[#303133] flex-1">企业基础信息查询服务</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">资源类型</span>
+                                    <span class="text-[#303133] flex-1">API</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">资源所属单位</span>
+                                    <span class="text-[#303133] flex-1">山东省数据管理局</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">状态</span>
+                                    <span class="text-[#1c7ffd] flex-1">已授权</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">更新时间</span>
+                                    <span class="text-[#303133] flex-1">2026-06-23 10:30:00</span>
+                                </div>
+                                <div class="flex col-span-2">
+                                    <span class="text-[#909399] w-28 text-right pr-4">资源摘要</span>
+                                    <span class="text-[#303133] flex-1">包含企业工商登记基本信息，包括企业名称、统一社会信用代码、法定代表人、注册地址等字段</span>
+                                </div>
+                            </div>
+
+                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none mt-8">接口信息</h3>
+                            <div class="bg-[#f8f8f9] rounded-lg p-4">
+                                <div class="grid grid-cols-2 gap-y-3 text-[13px]">
+                                    <div><span class="text-[#909399]">接口URL：</span><span class="text-[#303133]">http://api.example.com/enterprise</span></div>
+                                    <div><span class="text-[#909399]">接口Path：</span><span class="text-[#303133]">/basic-info</span></div>
+                                    <div><span class="text-[#909399]">请求类型：</span><span class="text-[#303133]">GET</span></div>
+                                    <div><span class="text-[#909399]">返回类型：</span><span class="text-[#303133]">json</span></div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="border-t border-gray-100 pt-6">
-                            <h2 class="text-[16px] font-bold text-[#303133] mb-8">基本信息</h2>
-                            
-                            <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[14px]">
-                                <div class="flex">
-                                    <span class="text-[#909399] w-[100px] shrink-0">任务名称：</span>
-                                    <span class="text-[#303133]">单位公积金开户</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-[100px] shrink-0">任务ID：</span>
-                                    <span class="text-[#303133]">CJ20250714001</span>
-                                </div>
+                        <div id="applied-drawer-content-sample" class="p-6 hidden">
+                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">样例数据</h3>
+                            <pre class="bg-[#f8f8f9] border border-gray-200 rounded-lg p-4 text-[13px] leading-6 text-[#606266] overflow-x-auto whitespace-pre-wrap">{
+  "creditCode": "91370100MA1234567X",
+  "enterpriseName": "山东数据科技有限公司",
+  "legalRepresentative": "张三",
+  "registeredAddress": "山东省济南市高新区",
+  "registrationDate": "2018-06-15",
+  "businessScope": "数据处理、技术服务"
+}</pre>
+                        </div>
 
+                        <div id="applied-drawer-content-apply" class="p-6 hidden border-t border-gray-100">
+                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none mt-4">申请信息</h3>
+                            <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] pl-4">
                                 <div class="flex">
-                                    <span class="text-[#909399] w-[100px] shrink-0">资源数量：</span>
-                                    <span class="text-[#303133]">3</span>
-                                </div>
-                                
-                                <div class="flex">
-                                    <span class="text-[#909399] w-[100px] shrink-0">开发人数：</span>
-                                    <span class="text-[#303133]">2</span>
+                                    <span class="text-[#909399] w-28 text-right pr-4">申请时间</span>
+                                    <span class="text-[#303133] flex-1">2026-06-20 09:00:00</span>
                                 </div>
                                 <div class="flex">
-                                    <span class="text-[#909399] w-[100px] shrink-0">单位名称：</span>
-                                    <span class="text-[#303133]">山东汇云信息技术有限公司</span>
-                                </div>
-                                
-                                <div class="flex">
-                                    <span class="text-[#909399] w-[100px] shrink-0">创建人：</span>
-                                    <span class="text-[#303133]">张三</span>
+                                    <span class="text-[#909399] w-28 text-right pr-4">授权时间</span>
+                                    <span class="text-[#303133] flex-1">2026-06-23 10:30:00</span>
                                 </div>
                                 <div class="flex">
-                                    <span class="text-[#909399] w-[100px] shrink-0">电话：</span>
-                                    <span class="text-[#303133]">10000000001</span>
+                                    <span class="text-[#909399] w-28 text-right pr-4">授权有效期</span>
+                                    <span class="text-[#303133] flex-1">2026-06-23 至 2026-08-23</span>
                                 </div>
-                                <div class="flex col-span-2 mt-2">
-                                    <span class="text-[#909399] w-[100px] shrink-0">任务描述：</span>
-                                    <span class="text-[#303133] leading-relaxed">单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户单位公积金开户</span>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">申请人</span>
+                                    <span class="text-[#303133] flex-1">张三</span>
+                                </div>
+                                <div class="flex col-span-2">
+                                    <span class="text-[#909399] w-28 text-right pr-4">申请事由</span>
+                                    <span class="text-[#303133] flex-1">用于企业信用评估分析</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- 自用数据详情抽屉 -->
+            <div id="ownDataDrawerOverlay" class="fixed inset-0 bg-black bg-opacity-30 z-40 hidden" onclick="closeOwnDataDetail()"></div>
+            <div id="ownDataDetailDrawer" class="fixed top-0 right-0 h-full w-[800px] bg-[#f5f7fa] z-50 transform translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
+                <div class="h-14 bg-white border-b border-gray-100 flex items-center justify-between px-6 shrink-0">
+                    <span class="font-medium text-[#303133]">资源详情</span>
+                    <button onclick="closeOwnDataDetail()" class="text-gray-400 hover:text-[#1c7ffd] transition-colors">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+                <div class="flex-1 overflow-y-auto p-6 bg-[#f5f7fa]">
+                    <div class="bg-white rounded-lg p-6 shadow-sm mb-4">
+                        <div class="flex justify-between items-start">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-blue-50 text-[#1c7ffd] rounded-full flex items-center justify-center text-xl shrink-0">
+                                    <i class="fa-solid fa-database"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[18px] font-bold text-[#303133] mb-1">企业标签接口</div>
+                                    <div class="text-[#909399] text-[13px]">接口服务 | 数据要素事业部</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[#909399] text-[13px]">更新时间：2026-01-20 10:00:00</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <div class="flex border-b border-gray-100 px-6">
+                            <div id="own-drawer-tab-basic" class="py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer text-[14px]" onclick="switchOwnDrawerTab('basic')">基本信息</div>
+                            <div id="own-drawer-tab-sample" class="py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors text-[14px]" onclick="switchOwnDrawerTab('sample')">样例数据</div>
+                        </div>
+
+                        <div id="own-drawer-content-basic" class="p-6">
+                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">基本信息</h3>
+                            <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] pl-4">
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">资源名称</span>
+                                    <span class="text-[#303133] flex-1">企业标签接口</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">资源类型</span>
+                                    <span class="text-[#303133] flex-1">API</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">数据所属方</span>
+                                    <span class="text-[#303133] flex-1">数据要素事业部</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">状态</span>
+                                    <span class="text-[#303133] flex-1">已注册</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">是否公开</span>
+                                    <span class="text-[#303133] flex-1">是</span>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-[#909399] w-28 text-right pr-4">更新时间</span>
+                                    <span class="text-[#303133] flex-1">2026-01-20 10:00:00</span>
+                                </div>
+                            </div>
+
+                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none mt-8">接口信息</h3>
+                            <div class="bg-[#f8f8f9] rounded-lg p-4">
+                                <div class="grid grid-cols-2 gap-y-3 text-[13px]">
+                                    <div><span class="text-[#909399]">接口URL：</span><span class="text-[#303133]">http://10.193.3.15/tags</span></div>
+                                    <div><span class="text-[#909399]">接口Path：</span><span class="text-[#303133]">/enterprise-tags</span></div>
+                                    <div><span class="text-[#909399]">请求类型：</span><span class="text-[#303133]">GET</span></div>
+                                    <div><span class="text-[#909399]">返回类型：</span><span class="text-[#303133]">json</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="own-drawer-content-sample" class="p-6 hidden border-t border-gray-100">
+                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">样例数据</h3>
+                            <pre class="bg-[#f8f8f9] border border-gray-200 rounded-lg p-4 text-[13px] leading-6 text-[#606266] overflow-x-auto whitespace-pre-wrap">{
+  "enterpriseName": "亿云信息",
+  "creditCode": "91370100MA1234567X",
+  "tags": ["高新技术企业", "科技型中小企业", "专精特新"],
+  "status": "存续"
+}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function switchTaskTab(tabName) {
+                    ['taskDetail', 'processingResources', 'developers', 'models'].forEach(function(tab) {
+                        const tabEl = document.getElementById('tab-' + tab);
+                        const contentEl = document.getElementById('content-' + tab);
+                        if (tab === tabName) {
+                            tabEl.classList.add('bg-blue-50', 'text-[#1c7ffd]', 'font-medium');
+                            tabEl.classList.remove('text-[#606266]', 'hover:bg-gray-50', 'hover:text-[#1c7ffd]');
+                            contentEl.classList.remove('hidden');
+                        } else {
+                            tabEl.classList.remove('bg-blue-50', 'text-[#1c7ffd]', 'font-medium');
+                            tabEl.classList.add('text-[#606266]', 'hover:bg-gray-50', 'hover:text-[#1c7ffd]');
+                            contentEl.classList.add('hidden');
+                        }
+                    });
+                }
+
+                function switchDataTab(tabName) {
+                    const tabs = {
+                        'resource': document.getElementById('tab-data-resource'),
+                        'own-data': document.getElementById('tab-own-data')
+                    };
+                    const contents = {
+                        'resource': document.getElementById('content-data-resource'),
+                        'own-data': document.getElementById('content-own-data')
+                    };
+
+                    for (let key in tabs) {
+                        if (tabs[key]) tabs[key].className = 'py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors';
+                        if (contents[key]) contents[key].classList.add('hidden');
+                    }
+
+                    if (tabs[tabName]) tabs[tabName].className = 'py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer';
+                    if (contents[tabName]) contents[tabName].classList.remove('hidden');
+                }
+
+                // 已申请数据详情抽屉
+                function openAppliedDataDetail() {
+                    const overlay = document.getElementById('appliedDataDrawerOverlay');
+                    const drawer = document.getElementById('appliedDataDetailDrawer');
+                    overlay.classList.remove('hidden');
+                    setTimeout(() => {
+                        drawer.classList.remove('translate-x-full');
+                    }, 10);
+                }
+
+                function closeAppliedDataDetail() {
+                    const overlay = document.getElementById('appliedDataDrawerOverlay');
+                    const drawer = document.getElementById('appliedDataDetailDrawer');
+                    drawer.classList.add('translate-x-full');
+                    setTimeout(() => {
+                        overlay.classList.add('hidden');
+                    }, 300);
+                }
+
+                function switchAppliedDrawerTab(tabName) {
+                    const tabs = {
+                        'basic': document.getElementById('applied-drawer-tab-basic'),
+                        'sample': document.getElementById('applied-drawer-tab-sample'),
+                        'apply': document.getElementById('applied-drawer-tab-apply')
+                    };
+                    const contents = {
+                        'basic': document.getElementById('applied-drawer-content-basic'),
+                        'sample': document.getElementById('applied-drawer-content-sample'),
+                        'apply': document.getElementById('applied-drawer-content-apply')
+                    };
+
+                    for (let key in tabs) {
+                        tabs[key].className = 'py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors text-[14px]';
+                        contents[key].classList.add('hidden');
+                    }
+
+                    tabs[tabName].className = 'py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer text-[14px]';
+                    contents[tabName].classList.remove('hidden');
+                }
+
+                // 自用数据详情抽屉
+                function openOwnDataDetail() {
+                    const overlay = document.getElementById('ownDataDrawerOverlay');
+                    const drawer = document.getElementById('ownDataDetailDrawer');
+                    overlay.classList.remove('hidden');
+                    setTimeout(() => {
+                        drawer.classList.remove('translate-x-full');
+                    }, 10);
+                }
+
+                function closeOwnDataDetail() {
+                    const overlay = document.getElementById('ownDataDrawerOverlay');
+                    const drawer = document.getElementById('ownDataDetailDrawer');
+                    drawer.classList.add('translate-x-full');
+                    setTimeout(() => {
+                        overlay.classList.add('hidden');
+                    }, 300);
+                }
+
+                function switchOwnDrawerTab(tabName) {
+                    const tabs = {
+                        'basic': document.getElementById('own-drawer-tab-basic'),
+                        'sample': document.getElementById('own-drawer-tab-sample')
+                    };
+                    const contents = {
+                        'basic': document.getElementById('own-drawer-content-basic'),
+                        'sample': document.getElementById('own-drawer-content-sample')
+                    };
+
+                    for (let key in tabs) {
+                        tabs[key].className = 'py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors text-[14px]';
+                        contents[key].classList.add('hidden');
+                    }
+
+                    tabs[tabName].className = 'py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer text-[14px]';
+                    contents[tabName].classList.remove('hidden');
+                }
+            </script>
         </main>
     </div>
 </body>

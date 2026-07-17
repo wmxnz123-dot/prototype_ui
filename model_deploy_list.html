@@ -67,26 +67,16 @@
                             <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">模型名称：</label>
                             <input type="text" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
                         </div>
-                        <div class="flex items-center gap-3">
-                            <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">是否对外使用：</label>
-                            <div class="relative">
-                                <select class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd] appearance-none bg-white">
-                                    <option>请选择</option>
-                                    <option>是</option>
-                                    <option>否</option>
-                                </select>
-                                <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-gray-400 pointer-events-none"></i>
-                            </div>
+                        <div class="flex justify-end gap-3">
+                            <button class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px] flex items-center gap-1">
+                                <i class="fa-solid fa-rotate-right"></i> 重置
+                            </button>
+                            <button class="h-8 px-5 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px] flex items-center gap-1">
+                                <i class="fa-solid fa-magnifying-glass"></i> 查询
+                            </button>
                         </div>
                     </div>
-                    <div class="flex justify-end gap-3 mt-5">
-                        <button class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px] flex items-center gap-1">
-                            <i class="fa-solid fa-rotate-right"></i> 重置
-                        </button>
-                        <button class="h-8 px-5 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px] flex items-center gap-1">
-                            <i class="fa-solid fa-magnifying-glass"></i> 查询
-                        </button>
-                    </div>
+
                 </div>
 
                 <!-- 列表区 -->
@@ -111,8 +101,39 @@
                                     <th class="py-3 px-4 w-16">序号</th>
                                     <th class="py-3 px-4">任务名称</th>
                                     <th class="py-3 px-4">模型名称</th>
-                                    <th class="py-3 px-4">是否对外使用</th>
-                                    <th class="py-3 px-4 flex items-center gap-1 cursor-pointer hover:text-gray-600">状态 <i class="fa-solid fa-filter text-gray-300 text-[10px]"></i></th>
+                                    <th class="py-3 px-4 relative">
+                                        <div class="flex items-center gap-1 cursor-pointer hover:text-gray-600">
+                                            <span>是否公开</span>
+                                            <i class="fa-solid fa-filter text-gray-300 text-[10px]" onclick="toggleColumnFilter('externalUseFilter', event)"></i>
+                                        </div>
+                                        <div id="externalUseFilter" class="hidden absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded shadow-lg p-3 z-30 w-[160px]">
+                                            <div class="space-y-2 mb-3">
+                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]"><input type="checkbox" class="w-3.5 h-3.5"> 是</label>
+                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]"><input type="checkbox" class="w-3.5 h-3.5"> 否</label>
+                                            </div>
+                                            <div class="flex justify-end gap-2">
+                                                <button class="text-[#1c7ffd] text-[13px]" onclick="closeColumnFilter('externalUseFilter')">确定</button>
+                                                <button class="text-[#1c7ffd] text-[13px]" onclick="closeColumnFilter('externalUseFilter')">重置</button>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th class="py-3 px-4 relative">
+                                        <div class="flex items-center gap-1 cursor-pointer hover:text-gray-600">
+                                            <span>状态</span>
+                                            <i class="fa-solid fa-filter text-gray-300 text-[10px]" onclick="toggleColumnFilter('deployedStatusFilter', event)"></i>
+                                        </div>
+                                        <div id="deployedStatusFilter" class="hidden absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded shadow-lg p-3 z-30 w-[160px]">
+                                            <div class="space-y-2 mb-3">
+                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]"><input type="checkbox" class="w-3.5 h-3.5"> 已完成</label>
+                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]"><input type="checkbox" class="w-3.5 h-3.5"> 草稿</label>
+                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]"><input type="checkbox" class="w-3.5 h-3.5"> 已退回</label>
+                                            </div>
+                                            <div class="flex justify-end gap-2">
+                                                <button class="text-[#1c7ffd] text-[13px]" onclick="closeColumnFilter('deployedStatusFilter')">确定</button>
+                                                <button class="text-[#1c7ffd] text-[13px]" onclick="closeColumnFilter('deployedStatusFilter')">重置</button>
+                                            </div>
+                                        </div>
+                                    </th>
                                     <th class="py-3 px-4">申请时间 <i class="fa-solid fa-sort text-gray-300 ml-1"></i></th>
                                     <th class="py-3 px-4 w-28">操作</th>
                                 </tr>
@@ -257,37 +278,28 @@
                 
                 <!-- Tab 1: 模型信息 -->
                 <div id="tab1" class="p-8 flex flex-col gap-6 text-[14px]">
-                    <h3 class="font-bold text-[#303133] text-[15px] mb-2">基本信息</h3>
+                    <h3 class="font-bold text-[#303133] text-[15px] mb-2">模型信息</h3>
                     <div class="flex flex-col gap-5 px-2">
-                        <div class="flex"><span class="w-[140px] text-[#909399]">任务名称：</span><span class="text-[#303133]">zh测试任务_0310</span></div>
                         <div class="flex"><span class="w-[140px] text-[#909399]">模型名称：</span><span class="text-[#303133]">社保核验模型_0420</span></div>
-                        <div class="flex"><span class="w-[140px] text-[#909399]">模型镜像：</span><span class="text-[#1c7ffd] hover:underline cursor-pointer">sbhy04201/sbhy04201:1.0</span></div>
+                        <div class="flex"><span class="w-[140px] text-[#909399]">任务名称：</span><span class="text-[#303133]">zh测试任务_0310</span></div>
+                        <div class="flex"><span class="w-[140px] text-[#909399]">镜像名称：</span><span class="text-[#1c7ffd] hover:underline cursor-pointer">sbhy04201/sbhy04201:1.0</span></div>
                         <div class="flex"><span class="w-[140px] text-[#909399]">cpu限制 (Core)：</span><span class="text-[#303133]">0.1</span></div>
                         <div class="flex"><span class="w-[140px] text-[#909399]">cpu预留 (Core)：</span><span class="text-[#303133]">0.1</span></div>
                         <div class="flex"><span class="w-[140px] text-[#909399]">内存限制 (Mi)：</span><span class="text-[#303133]">128</span></div>
                         <div class="flex"><span class="w-[140px] text-[#909399]">内存预留 (Mi)：</span><span class="text-[#303133]">128</span></div>
                         <div class="flex"><span class="w-[140px] text-[#909399]">容器端口号：</span><span class="text-[#303133]">8089</span></div>
                         <div class="flex"><span class="w-[140px] text-[#909399]">模型所属方：</span><span class="text-[#303133]">山东亿云信息技术有限公司</span></div>
-                        <div class="flex"><span class="w-[140px] text-[#909399]">是否对外使用：</span><span class="text-[#303133]">是</span></div>
-                        <div class="flex"><span class="w-[140px] text-[#909399]">功能测试报告：</span><span class="text-[#303133]">--</span></div>
-                        <div class="flex"><span class="w-[140px] text-[#909399]">安全测试报告：</span><span class="text-[#303133]">--</span></div>
-                        <div class="flex"><span class="w-[140px] text-[#909399]">代码包：</span><span class="text-[#303133]">--</span></div>
-                        <div class="flex"><span class="w-[140px] text-[#909399]">其他文件：</span><span class="text-[#303133]">--</span></div>
-                        <div class="flex"><span class="w-[140px] text-[#909399]">联系人：</span><span class="text-[#303133]">亿云开发者1</span></div>
-                        <div class="flex"><span class="w-[140px] text-[#909399]">联系方式：</span><span class="text-[#303133]">18900000000</span></div>
+                        <div class="flex"><span class="w-[140px] text-[#909399]">是否公开：</span><span class="text-[#303133]">是</span></div>
                     </div>
                 </div>
 
                 <!-- Tab 2: 模型接口 -->
                 <div id="tab2" class="p-8 hidden flex-col gap-8 text-[14px]">
                     <div>
-                        <h3 class="font-bold text-[#303133] text-[15px] mb-5">基本信息</h3>
+                        <h3 class="font-bold text-[#303133] text-[15px] mb-5">模型接口</h3>
                         <div class="flex flex-col gap-5 px-2">
-                            <div class="flex"><span class="w-[120px] text-[#909399]">接口名称：</span><span class="text-[#303133]">社保核验_0420</span></div>
                             <div class="flex"><span class="w-[120px] text-[#909399]">接口URI：</span><span class="text-[#303133]">/api/social/person</span></div>
-                            <div class="flex"><span class="w-[120px] text-[#909399]">接口标识：</span><span class="text-[#303133]">social/person1</span></div>
                             <div class="flex"><span class="w-[120px] text-[#909399]">请求类型：</span><span class="text-[#303133]">GET</span></div>
-                            <div class="flex"><span class="w-[120px] text-[#909399]">是否开启心跳：</span><span class="text-[#303133]">是</span></div>
                             <div class="flex"><span class="w-[120px] text-[#909399]">接口描述：</span><span class="text-[#303133]">个人社保查询</span></div>
                         </div>
                     </div>

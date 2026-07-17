@@ -45,28 +45,24 @@
 <!-- 右侧内容区 -->
         <main class="flex-1 flex flex-col overflow-hidden relative">
 <div id="developer-top-nav" class="h-[52px] bg-white border-b border-gray-200 px-6 flex items-center gap-2 shrink-0 overflow-x-auto"></div>
-            <!-- 面包屑 -->
-            <div class="h-[52px] flex items-center px-6 text-[#606266] shrink-0 bg-transparent text-sm border-b border-gray-100 bg-white">
-    <span>数据模型</span>
-    <span class="mx-2">/</span>
-    <span>模型管理</span>
-    <span class="mx-2">/</span>
-    <a href="model_deploy_list.html" class="hover:text-[#1c7ffd] transition-colors">模型注册</a>
-    <span class="mx-2">/</span>
-    <span class="text-[#303133] font-medium">模型注册</span>
-</div>
+            
+            <div class="px-6 py-3 bg-white border-b border-gray-100 flex items-center shrink-0">
+                <a href="model_deploy_list.html?nav=model-register" class="text-[#1c7ffd] hover:opacity-80 transition-colors flex items-center gap-1 font-medium text-[15px]">
+                    <i class="fa-solid fa-arrow-rotate-left"></i> 返回列表
+                </a>
+            </div>
 
             <!-- 核心内容容器 -->
-            <div class="flex-1 p-6 flex flex-col gap-4 overflow-y-auto">
+            <div class="flex-1 p-6 flex flex-col gap-4 overflow-y-auto pb-[88px]">
                 <div class="bg-white rounded shadow-sm border border-gray-100 flex flex-col h-full">
                     
                     <!-- 步骤条 -->
-                    <div class="py-8 px-20 shrink-0">
+                    <div class="py-8 px-10 shrink-0">
                         <div class="flex items-center justify-between relative">
                             <!-- 连线 (已完成部分) -->
-                            <div class="absolute left-[10%] right-[50%] h-[1px] bg-[#1c7ffd] top-1/2 -translate-y-1/2 z-0"></div>
+                            <div class="absolute left-[5%] right-[33%] h-[1px] bg-[#1c7ffd] top-1/2 -translate-y-1/2 z-0"></div>
                             <!-- 连线 (未完成部分) -->
-                            <div class="absolute left-[50%] right-[10%] h-[1px] bg-gray-200 top-1/2 -translate-y-1/2 z-0"></div>
+                            <div class="absolute left-[33%] right-[5%] h-[1px] bg-gray-200 top-1/2 -translate-y-1/2 z-0"></div>
                             
                             <!-- 步骤1 (已完成) -->
                             <div class="relative z-10 flex items-center bg-white px-2 cursor-pointer" onclick="window.location.href='model_deploy_add.html'">
@@ -85,7 +81,13 @@
                             <!-- 步骤3 (未开始) -->
                             <div class="relative z-10 flex items-center bg-white px-2">
                                 <div class="w-8 h-8 rounded-full border border-gray-300 text-gray-400 bg-white flex items-center justify-center font-bold">3</div>
-                                <span class="ml-3 text-gray-400">接口测试</span>
+                                <span class="ml-3 text-gray-400">模型运行</span>
+                            </div>
+
+                            <!-- 步骤4 (未开始) -->
+                            <div class="relative z-10 flex items-center bg-white px-2">
+                                <div class="w-8 h-8 rounded-full border border-gray-300 text-gray-400 bg-white flex items-center justify-center font-bold">4</div>
+                                <span class="ml-3 text-gray-400">模型测试</span>
                             </div>
                         </div>
                     </div>
@@ -95,29 +97,10 @@
                         <div class="w-full max-w-[850px] flex flex-col gap-6 pt-4">
                             <!-- 接口基本信息配置 -->
                             <div class="flex items-center">
-                                <label class="w-[120px] text-right shrink-0 text-[#606266]"><span class="text-red-500 mr-1">*</span>接口名称：</label>
-                                <div class="ml-4 flex-1 relative">
-                                    <input type="text" value="ys4201接口" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#1c7ffd] text-[#303133]">
-                                    <i class="fa-solid fa-circle-xmark absolute right-3 top-1/2 -translate-y-1/2 text-gray-300 cursor-pointer hover:text-gray-400 transition-colors"></i>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center">
                                 <label class="w-[120px] text-right shrink-0 text-[#606266]"><span class="text-red-500 mr-1">*</span>接口URI：</label>
                                 <div class="ml-4 flex-1 relative">
                                     <input type="text" value="/api/credit/score" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#1c7ffd] text-[#303133]">
                                     <i class="fa-solid fa-circle-xmark absolute right-3 top-1/2 -translate-y-1/2 text-gray-300 cursor-pointer hover:text-gray-400 transition-colors"></i>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center">
-                                <label class="w-[120px] text-right shrink-0 text-[#606266]"><span class="text-red-500 mr-1">*</span>接口标识：</label>
-                                <div class="ml-4 flex-1 flex">
-                                    <div class="px-3 py-2 bg-gray-50 border border-gray-300 border-r-0 rounded-l text-[#909399] text-sm shrink-0">gzmx/</div>
-                                    <div class="flex-1 relative">
-                                        <input type="text" value="score4201" class="w-full border border-gray-300 rounded-r px-3 py-2 text-sm focus:outline-none focus:border-[#1c7ffd] text-[#303133]">
-                                        <i class="fa-solid fa-circle-xmark absolute right-3 top-1/2 -translate-y-1/2 text-gray-300 cursor-pointer hover:text-gray-400 transition-colors"></i>
-                                    </div>
                                 </div>
                             </div>
 
@@ -129,30 +112,6 @@
                                     </label>
                                     <label class="flex items-center cursor-pointer text-[#1c7ffd]">
                                         <input type="radio" name="request_type" checked class="mr-2 cursor-pointer w-3.5 h-3.5 text-[#1c7ffd] border-[#1c7ffd] focus:ring-[#1c7ffd]"> POST
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center">
-                                <label class="w-[120px] text-right shrink-0 text-[#606266]"><span class="text-red-500 mr-1">*</span>返回类型：</label>
-                                <div class="ml-4 flex gap-6">
-                                    <label class="flex items-center cursor-pointer text-[#1c7ffd]">
-                                        <input type="radio" name="return_type" checked class="mr-2 cursor-pointer w-3.5 h-3.5 text-[#1c7ffd] border-[#1c7ffd] focus:ring-[#1c7ffd]"> json
-                                    </label>
-                                    <label class="flex items-center cursor-pointer">
-                                        <input type="radio" name="return_type" class="mr-2 cursor-pointer w-3.5 h-3.5 text-[#1c7ffd]"> xml
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center">
-                                <label class="w-[120px] text-right shrink-0 text-[#606266]"><span class="text-red-500 mr-1">*</span>是否开启心跳：</label>
-                                <div class="ml-4 flex gap-6">
-                                    <label class="flex items-center cursor-pointer text-[#1c7ffd]">
-                                        <input type="radio" name="heartbeat" checked class="mr-2 cursor-pointer w-3.5 h-3.5 text-[#1c7ffd] border-[#1c7ffd] focus:ring-[#1c7ffd]"> 是
-                                    </label>
-                                    <label class="flex items-center cursor-pointer">
-                                        <input type="radio" name="heartbeat" class="mr-2 cursor-pointer w-3.5 h-3.5 text-[#1c7ffd]"> 否
                                     </label>
                                 </div>
                             </div>
@@ -170,7 +129,12 @@
 
                             <!-- 请求参数 -->
                             <div class="flex flex-col gap-3">
-                                <div class="text-[#606266] font-medium"><span class="text-red-500 mr-1">*</span>请求参数</div>
+                                <div class="flex justify-between items-center">
+                                    <div class="text-[#606266] font-medium"><span class="text-red-500 mr-1">*</span>请求参数</div>
+                                    <button onclick="openSmartFillModal('request')" class="text-[#1c7ffd] text-sm flex items-center gap-1 hover:opacity-80 transition-opacity">
+                                        <i class="fa-solid fa-wand-magic-sparkles"></i> 智能填写
+                                    </button>
+                                </div>
                                 <table class="w-full text-center text-[13px] text-[#606266] border-collapse">
                                     <thead class="bg-[#f8f8f9] text-[#909399] font-medium">
                                         <tr>
@@ -182,7 +146,7 @@
                                             <th class="py-3 px-4 font-medium border-b border-gray-100">操作</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="requestParamsBody">
                                         <tr class="border-b border-gray-100">
                                             <td class="py-3 px-4">id_card</td>
                                             <td class="py-3 px-4">身份证号</td>
@@ -203,7 +167,12 @@
 
                             <!-- 返回参数 -->
                             <div class="flex flex-col gap-3 mt-4">
-                                <div class="text-[#606266] font-medium"><span class="text-red-500 mr-1">*</span>返回参数</div>
+                                <div class="flex justify-between items-center">
+                                    <div class="text-[#606266] font-medium"><span class="text-red-500 mr-1">*</span>返回参数</div>
+                                    <button onclick="openSmartFillModal('response')" class="text-[#1c7ffd] text-sm flex items-center gap-1 hover:opacity-80 transition-opacity">
+                                        <i class="fa-solid fa-wand-magic-sparkles"></i> 智能填写
+                                    </button>
+                                </div>
                                 <table class="w-full text-center text-[13px] text-[#606266] border-collapse">
                                     <thead class="bg-[#f8f8f9] text-[#909399] font-medium">
                                         <tr>
@@ -212,7 +181,7 @@
                                             <th class="py-3 px-4 font-medium border-b border-gray-100 w-[20%]">操作</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="responseParamsBody">
                                         <tr class="border-b border-gray-100">
                                             <td class="py-3 px-4">request_id</td>
                                             <td class="py-3 px-4">请求追踪ID</td>
@@ -255,7 +224,7 @@
                     </div>
 
                     <!-- 底部操作按钮 -->
-                    <div class="px-6 py-4 border-t border-gray-100 flex justify-end gap-3 shrink-0">
+                    <div class="absolute bottom-0 left-0 right-0 h-[64px] px-6 flex items-center justify-end gap-3 bg-white border-t border-gray-200 shadow-[0_-4px_12px_rgba(0,0,0,0.06)] z-20">
                         <a href="model_deploy_add.html" class="px-6 py-1.5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-sm bg-white shadow-sm inline-block">上一步</a>
                         <button class="px-6 py-1.5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-sm bg-white shadow-sm">暂存</button>
                         <a href="model_deploy_add_step3.html" class="px-6 py-1.5 bg-[#1c7ffd] text-white rounded hover:bg-blue-500 transition-colors text-sm shadow-sm inline-block">下一步</a>
@@ -264,5 +233,147 @@
             </div>
         </main>
     </div>
+
+    <!-- 智能填写弹窗 -->
+    <div id="smartFillModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-30" onclick="closeSmartFillModal()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-xl w-[640px] flex flex-col max-h-[80vh]">
+            <div class="h-14 border-b border-gray-100 flex items-center justify-between px-6 shrink-0">
+                <span id="smartFillTitle" class="font-medium text-[#303133]">智能填写</span>
+                <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-[#1c7ffd] text-lg" onclick="closeSmartFillModal()"></i>
+            </div>
+            <div class="p-6 flex-1 overflow-y-auto">
+                <div class="mb-4">
+                    <div class="text-[#606266] text-sm mb-2">JSON样例：</div>
+                    <pre id="smartFillSample" class="bg-[#f8f8f9] rounded p-3 text-[13px] text-[#606266] overflow-x-auto"></pre>
+                </div>
+                <div>
+                    <div class="text-[#606266] text-sm mb-2">请输入JSON：</div>
+                    <textarea id="smartFillInput" rows="8" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#1c7ffd] resize-none" placeholder="请粘贴JSON数据"></textarea>
+                </div>
+            </div>
+            <div class="px-6 py-4 border-t border-gray-100 flex justify-end gap-3 shrink-0">
+                <button onclick="closeSmartFillModal()" class="px-5 h-8 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-sm">取消</button>
+                <button onclick="parseSmartFill()" class="px-5 h-8 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-sm">解析</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSmartFillType = '';
+        const smartFillSamples = {
+            request: `{
+    "id_card": "610103199501011001",
+    "name": "张三",
+    "phone": "13800138001"
+}`,
+            response: `{
+    "request_id": "req_20240101120000",
+    "data": {
+        "grade": "AAA",
+        "recommend": "3.85%",
+        "risk_factors": []
+    }
+}`
+        };
+
+        function openSmartFillModal(type) {
+            currentSmartFillType = type;
+            document.getElementById('smartFillTitle').textContent = type === 'request' ? '智能填写 - 请求参数' : '智能填写 - 返回参数';
+            document.getElementById('smartFillSample').textContent = smartFillSamples[type];
+            document.getElementById('smartFillInput').value = '';
+            document.getElementById('smartFillModal').classList.remove('hidden');
+        }
+
+        function closeSmartFillModal() {
+            document.getElementById('smartFillModal').classList.add('hidden');
+        }
+
+        function parseSmartFill() {
+            const input = document.getElementById('smartFillInput').value.trim();
+            if (!input) {
+                alert('请输入JSON数据');
+                return;
+            }
+            let json;
+            try {
+                json = JSON.parse(input);
+            } catch (e) {
+                alert('JSON格式错误，请检查');
+                return;
+            }
+
+            if (currentSmartFillType === 'request') {
+                fillRequestParams(json);
+            } else {
+                fillResponseParams(json);
+            }
+            closeSmartFillModal();
+        }
+
+        function fillRequestParams(json) {
+            const tbody = document.getElementById('requestParamsBody');
+            const keys = Object.keys(json);
+            if (keys.length === 0) return;
+            tbody.innerHTML = '';
+            keys.forEach(key => {
+                const value = json[key];
+                let example = '';
+                if (value === null) {
+                    example = 'null';
+                } else if (typeof value === 'object') {
+                    example = JSON.stringify(value);
+                } else {
+                    example = String(value);
+                }
+                const tr = document.createElement('tr');
+                tr.className = 'border-b border-gray-100';
+                tr.innerHTML = `
+                    <td class="py-3 px-4">${key}</td>
+                    <td class="py-3 px-4"></td>
+                    <td class="py-3 px-4">body</td>
+                    <td class="py-3 px-4">是</td>
+                    <td class="py-3 px-4">${example}</td>
+                    <td class="py-3 px-4 text-[#1c7ffd]">
+                        <a href="#" class="hover:underline">编辑</a>
+                        <a href="#" class="hover:underline ml-2">删除</a>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function fillResponseParams(json) {
+            const tbody = document.getElementById('responseParamsBody');
+            const params = [];
+            function extract(obj, prefix) {
+                Object.keys(obj).forEach(key => {
+                    const fullKey = prefix ? `${prefix}.${key}` : key;
+                    const value = obj[key];
+                    if (value !== null && typeof value === 'object' && !Array.isArray(value)) {
+                        extract(value, fullKey);
+                    } else {
+                        params.push(fullKey);
+                    }
+                });
+            }
+            extract(json, '');
+            if (params.length === 0) return;
+            tbody.innerHTML = '';
+            params.forEach(name => {
+                const tr = document.createElement('tr');
+                tr.className = 'border-b border-gray-100';
+                tr.innerHTML = `
+                    <td class="py-3 px-4 w-[30%]">${name}</td>
+                    <td class="py-3 px-4"></td>
+                    <td class="py-3 px-4 text-[#1c7ffd] w-[20%]">
+                        <a href="#" class="hover:underline">编辑</a>
+                        <a href="#" class="hover:underline ml-2">删除</a>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+    </script>
 </body>
 </html>
