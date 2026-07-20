@@ -100,7 +100,7 @@
                                 <div class="flex flex-col items-end gap-4">
                                     <div class="bg-[#1c7ffd] text-white px-3 py-1 rounded-full text-xs flex items-center shadow-sm">
                                         <i class="fa-solid fa-circle-check mr-1.5 text-sm"></i>
-                                        已授权
+                                        已创建
                                     </div>
                                     <span class="text-[#909399]">任务开始时间：2021年07月12日</span>
                                 </div>
@@ -120,10 +120,15 @@
                                     </div>
 
                                     <div class="flex">
-                                        <span class="text-[#909399] w-[100px] shrink-0">资源数量：</span>
+                                        <span class="text-[#909399] w-[100px] shrink-0">已申请数据：</span>
                                         <span class="text-[#303133]">3</span>
                                     </div>
                                     
+                                    <div class="flex">
+                                        <span class="text-[#909399] w-[100px] shrink-0">自用数据：</span>
+                                        <span class="text-[#303133]">3</span>
+                                    </div>
+
                                     <div class="flex">
                                         <span class="text-[#909399] w-[100px] shrink-0">开发人数：</span>
                                         <span class="text-[#303133]">2</span>
@@ -160,6 +165,11 @@
                             
                             <!-- 已申请数据列表 -->
                             <div id="content-data-resource" class="flex-1 flex flex-col overflow-hidden">
+                                <div class="flex justify-end mb-3 shrink-0">
+                                    <button onclick="openAddAppliedDataModal()" class="h-8 px-4 bg-[#1c7ffd] text-white rounded text-[13px] hover:bg-blue-600 transition-colors flex items-center gap-1">
+                                        <i class="fa-solid fa-plus text-[11px]"></i> 添加
+                                    </button>
+                                </div>
                                 <div class="flex-1 overflow-auto">
                                     <table class="w-full text-left text-[13px] text-[#606266]">
                                         <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
@@ -168,8 +178,7 @@
                                                 <th class="py-3 px-4">目录名称</th>
                                                 <th class="py-3 px-4">服务名称</th>
                                                 <th class="py-3 px-4">服务类型</th>
-                                                <th class="py-3 px-4">授权开始时间</th>
-                                                <th class="py-3 px-4">授权结束时间</th>
+                                                <th class="py-3 px-4">添加时间</th>
                                                 <th class="py-3 px-4 w-20">操作</th>
                                             </tr>
                                         </thead>
@@ -179,8 +188,7 @@
                                                 <td class="py-4 px-4">企业基础信息库</td>
                                                 <td class="py-4 px-4">企业基础信息查询服务</td>
                                                 <td class="py-4 px-4">API</td>
-                                                <td class="py-4 px-4">2026-06-23</td>
-                                                <td class="py-4 px-4">2026-08-23</td>
+                                                <td class="py-4 px-4">2026-06-23 10:00:00</td>
                                                 <td class="py-4 px-4"><a href="#" onclick="openAppliedDataDetail(); return false;" class="text-[#1c7ffd] hover:underline">查看</a></td>
                                             </tr>
                                             <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
@@ -188,8 +196,7 @@
                                                 <td class="py-4 px-4">经营变更记录表</td>
                                                 <td class="py-4 px-4">企业变更信息查询服务</td>
                                                 <td class="py-4 px-4">API</td>
-                                                <td class="py-4 px-4">2026-06-23</td>
-                                                <td class="py-4 px-4">2026-08-23</td>
+                                                <td class="py-4 px-4">2026-06-23 10:00:00</td>
                                                 <td class="py-4 px-4"><a href="#" onclick="openAppliedDataDetail(); return false;" class="text-[#1c7ffd] hover:underline">查看</a></td>
                                             </tr>
                                             <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
@@ -197,8 +204,7 @@
                                                 <td class="py-4 px-4">税务信息库</td>
                                                 <td class="py-4 px-4">税务信息查询服务</td>
                                                 <td class="py-4 px-4">数据库表</td>
-                                                <td class="py-4 px-4">2026-06-23</td>
-                                                <td class="py-4 px-4">2026-08-23</td>
+                                                <td class="py-4 px-4">2026-06-23 10:00:00</td>
                                                 <td class="py-4 px-4"><a href="#" onclick="openAppliedDataDetail(); return false;" class="text-[#1c7ffd] hover:underline">查看</a></td>
                                             </tr>
                                         </tbody>
@@ -208,6 +214,11 @@
                             
                             <!-- 自用数据列表 -->
                             <div id="content-own-data" class="hidden flex-1 flex flex-col overflow-hidden">
+                                <div class="flex justify-end mb-3 shrink-0">
+                                    <button onclick="openAddOwnDataModal()" class="h-8 px-4 bg-[#1c7ffd] text-white rounded text-[13px] hover:bg-blue-600 transition-colors flex items-center gap-1">
+                                        <i class="fa-solid fa-plus text-[11px]"></i> 添加
+                                    </button>
+                                </div>
                                 <div class="flex-1 overflow-auto">
                                     <table class="w-full text-left text-[13px] text-[#606266]">
                                         <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
@@ -215,7 +226,7 @@
                                                 <th class="py-3 px-4 w-16">序号</th>
                                                 <th class="py-3 px-4">资源名称</th>
                                                 <th class="py-3 px-4">资源类型</th>
-                                                <th class="py-3 px-4">更新时间</th>
+                                                <th class="py-3 px-4">添加时间</th>
                                                 <th class="py-3 px-4 w-20">操作</th>
                                             </tr>
                                         </thead>
@@ -254,7 +265,7 @@
                                             <th class="py-3 px-4">账号</th>
                                             <th class="py-3 px-4">姓名</th>
                                             <th class="py-3 px-4">手机号</th>
-                                            <th class="py-3 px-4">时间</th>
+                                            <th class="py-3 px-4">添加时间</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -338,8 +349,8 @@
             </div>
 
             <!-- 已申请数据详情抽屉 -->
-            <div id="appliedDataDrawerOverlay" class="fixed inset-0 bg-black bg-opacity-30 z-40 hidden" onclick="closeAppliedDataDetail()"></div>
-            <div id="appliedDataDetailDrawer" class="fixed top-0 right-0 h-full w-[800px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+            <div id="appliedDataDrawerOverlay" class="fixed inset-0 bg-black bg-opacity-30 z-[70] hidden" onclick="closeAppliedDataDetail()"></div>
+            <div id="appliedDataDetailDrawer" class="fixed top-0 right-0 h-full w-[800px] bg-white shadow-2xl z-[70] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
                 <div class="h-14 border-b border-gray-100 flex items-center justify-between px-6 shrink-0 bg-white">
                     <span class="font-medium text-[#303133]">资源详情</span>
                     <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-[#1c7ffd] text-lg" onclick="closeAppliedDataDetail()"></i>
@@ -388,7 +399,7 @@
                                 </div>
                                 <div class="flex">
                                     <span class="text-[#909399] w-28 text-right pr-4">状态</span>
-                                    <span class="text-[#1c7ffd] flex-1">已授权</span>
+                                    <span class="text-[#1c7ffd] flex-1">已创建</span>
                                 </div>
                                 <div class="flex">
                                     <span class="text-[#909399] w-28 text-right pr-4">更新时间</span>
@@ -453,8 +464,8 @@
             </div>
 
             <!-- 自用数据详情抽屉 -->
-            <div id="ownDataDrawerOverlay" class="fixed inset-0 bg-black bg-opacity-30 z-40 hidden" onclick="closeOwnDataDetail()"></div>
-            <div id="ownDataDetailDrawer" class="fixed top-0 right-0 h-full w-[800px] bg-[#f5f7fa] z-50 transform translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
+            <div id="ownDataDrawerOverlay" class="fixed inset-0 bg-black bg-opacity-30 z-[70] hidden" onclick="closeOwnDataDetail()"></div>
+            <div id="ownDataDetailDrawer" class="fixed top-0 right-0 h-full w-[800px] bg-[#f5f7fa] z-[70] transform translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
                 <div class="h-14 bg-white border-b border-gray-100 flex items-center justify-between px-6 shrink-0">
                     <span class="font-medium text-[#303133]">资源详情</span>
                     <button onclick="closeOwnDataDetail()" class="text-gray-400 hover:text-[#1c7ffd] transition-colors">
@@ -534,6 +545,139 @@
   "status": "存续"
 }</pre>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 添加已申请数据弹窗 -->
+            <div id="addAppliedDataModal" class="fixed inset-0 bg-black bg-opacity-30 z-[60] hidden flex items-center justify-center">
+                <div class="bg-white rounded-lg shadow-2xl w-[900px] max-h-[80vh] flex flex-col overflow-hidden">
+                    <div class="h-12 border-b border-gray-100 flex items-center justify-between px-5 shrink-0">
+                        <span class="font-medium text-[#303133]">添加已申请数据</span>
+                        <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-[#1c7ffd] text-lg" onclick="closeAddAppliedDataModal()"></i>
+                    </div>
+                    <div class="p-5 shrink-0 border-b border-gray-100">
+                        <div class="grid grid-cols-3 gap-x-6 gap-y-3">
+                            <div class="flex items-center gap-2">
+                                <label class="text-[#606266] text-[13px] whitespace-nowrap">目录名称：</label>
+                                <input type="text" placeholder="请输入" class="flex-1 h-7 px-2 border border-gray-300 rounded text-[12px] focus:outline-none focus:border-[#1c7ffd]">
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <label class="text-[#606266] text-[13px] whitespace-nowrap">服务名称：</label>
+                                <input type="text" placeholder="请输入" class="flex-1 h-7 px-2 border border-gray-300 rounded text-[12px] focus:outline-none focus:border-[#1c7ffd]">
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <label class="text-[#606266] text-[13px] whitespace-nowrap">服务类型：</label>
+                                <select class="flex-1 h-7 px-2 border border-gray-300 rounded text-[12px] focus:outline-none focus:border-[#1c7ffd] appearance-none bg-white">
+                                    <option value="">全部</option>
+                                    <option value="api">API</option>
+                                    <option value="table">库表</option>
+                                </select>
+                            </div>
+                            <div class="flex justify-end gap-2">
+                                <button class="h-7 px-3 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[12px]">重置</button>
+                                <button class="h-7 px-3 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[12px]">查询</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 overflow-auto p-5">
+                        <table class="w-full text-left text-[13px] text-[#606266]">
+                            <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
+                                <tr>
+                                    <th class="py-2 px-3 w-12">序号</th>
+                                    <th class="py-2 px-3">目录名称</th>
+                                    <th class="py-2 px-3">服务名称</th>
+                                    <th class="py-2 px-3">服务类型</th>
+                                    <th class="py-2 px-3">授权时间<i class="fa-solid fa-sort text-gray-300"></i></th>
+                                    <th class="py-2 px-3 w-16">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                    <td class="py-3 px-3">1</td>
+                                    <td class="py-3 px-3">企业基础信息库</td>
+                                    <td class="py-3 px-3">企业基础信息查询服务</td>
+                                    <td class="py-3 px-3">API</td>
+                                    <td class="py-3 px-3">2026-06-23 20:00:00</td>
+                                    <td class="py-3 px-3"><a href="#" onclick="openAppliedDataDetail(); return false;" class="text-[#1c7ffd] hover:underline">查看</a></td>
+                                </tr>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                    <td class="py-3 px-3">2</td>
+                                    <td class="py-3 px-3">社保信息库</td>
+                                    <td class="py-3 px-3">社保信息查询服务</td>
+                                    <td class="py-3 px-3">库表</td>
+                                    <td class="py-3 px-3">2026-06-23 20:00:00</td>
+                                    <td class="py-3 px-3"><a href="#" onclick="openAppliedDataDetail(); return false;" class="text-[#1c7ffd] hover:underline">查看</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="border-t border-gray-100 p-4 flex justify-end gap-3 bg-white shrink-0">
+                        <button class="px-5 h-8 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px]" onclick="closeAddAppliedDataModal()">取消</button>
+                        <button class="px-5 h-8 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px]" onclick="closeAddAppliedDataModal(); showAlert('添加成功')">确定</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 添加自用数据弹窗 -->
+            <div id="addOwnDataModal" class="fixed inset-0 bg-black bg-opacity-30 z-[60] hidden flex items-center justify-center">
+                <div class="bg-white rounded-lg shadow-2xl w-[800px] max-h-[80vh] flex flex-col overflow-hidden">
+                    <div class="h-12 border-b border-gray-100 flex items-center justify-between px-5 shrink-0">
+                        <span class="font-medium text-[#303133]">添加自用数据</span>
+                        <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-[#1c7ffd] text-lg" onclick="closeAddOwnDataModal()"></i>
+                    </div>
+                    <div class="p-5 shrink-0 border-b border-gray-100">
+                        <div class="grid grid-cols-3 gap-x-6 gap-y-3">
+                            <div class="flex items-center gap-2">
+                                <label class="text-[#606266] text-[13px] whitespace-nowrap">资源名称：</label>
+                                <input type="text" placeholder="请输入" class="flex-1 h-7 px-2 border border-gray-300 rounded text-[12px] focus:outline-none focus:border-[#1c7ffd]">
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <label class="text-[#606266] text-[13px] whitespace-nowrap">资源类型：</label>
+                                <select class="flex-1 h-7 px-2 border border-gray-300 rounded text-[12px] focus:outline-none focus:border-[#1c7ffd] appearance-none bg-white">
+                                    <option value="">全部</option>
+                                    <option value="api">API</option>
+                                    <option value="table">库表</option>
+                                </select>
+                            </div>
+                            <div class="flex justify-end gap-2 col-start-3">
+                                <button class="h-7 px-3 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[12px]">重置</button>
+                                <button class="h-7 px-3 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[12px]">查询</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 overflow-auto p-5">
+                        <table class="w-full text-left text-[13px] text-[#606266]">
+                            <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
+                                <tr>
+                                    <th class="py-2 px-3 w-12">序号</th>
+                                    <th class="py-2 px-3">资源名称</th>
+                                    <th class="py-2 px-3">资源类型</th>
+                                    <th class="py-2 px-3">更新时间<i class="fa-solid fa-sort text-gray-300"></i></th>
+                                    <th class="py-2 px-3 w-16">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                    <td class="py-3 px-3">1</td>
+                                    <td class="py-3 px-3">企业标签接口</td>
+                                    <td class="py-3 px-3">API</td>
+                                    <td class="py-3 px-3">2026-01-20 10:00:00</td>
+                                    <td class="py-3 px-3"><a href="#" onclick="openOwnDataDetail(); return false;" class="text-[#1c7ffd] hover:underline">查看</a></td>
+                                </tr>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                    <td class="py-3 px-3">2</td>
+                                    <td class="py-3 px-3">税务风险评估接口</td>
+                                    <td class="py-3 px-3">API</td>
+                                    <td class="py-3 px-3">2026-01-22 10:00:00</td>
+                                    <td class="py-3 px-3"><a href="#" onclick="openOwnDataDetail(); return false;" class="text-[#1c7ffd] hover:underline">查看</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="border-t border-gray-100 p-4 flex justify-end gap-3 bg-white shrink-0">
+                        <button class="px-5 h-8 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px]" onclick="closeAddOwnDataModal()">取消</button>
+                        <button class="px-5 h-8 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px]" onclick="closeAddOwnDataModal(); showAlert('添加成功')">确定</button>
                     </div>
                 </div>
             </div>
@@ -650,6 +794,26 @@
 
                     tabs[tabName].className = 'py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer text-[14px]';
                     contents[tabName].classList.remove('hidden');
+                }
+
+                // 添加已申请数据弹窗
+                function openAddAppliedDataModal() {
+                    document.getElementById('addAppliedDataModal').classList.remove('hidden');
+                }
+                function closeAddAppliedDataModal() {
+                    document.getElementById('addAppliedDataModal').classList.add('hidden');
+                }
+
+                // 添加自用数据弹窗
+                function openAddOwnDataModal() {
+                    document.getElementById('addOwnDataModal').classList.remove('hidden');
+                }
+                function closeAddOwnDataModal() {
+                    document.getElementById('addOwnDataModal').classList.add('hidden');
+                }
+
+                function showAlert(message) {
+                    alert(message);
                 }
             </script>
         </main>
