@@ -3,7 +3,7 @@ const developerTopNavItems = [
     { id: 'resource', label: '数据中心', href: 'data_source_manage.html?nav=resource-source' },
     { id: 'sandbox', label: '数据沙箱', href: 'scene_center.html?nav=sandbox-task' },
     { id: 'model', label: '数据模型', href: 'image_repo_manage.html?nav=result-repo' },
-    { id: 'approval', label: '审批中心', href: 'data_resource_apply.html?nav=initiated-resource' },
+    { id: 'approval', label: '审批中心', href: 'model_deploy_work_order.html?nav=initiated-deploy' },
     { id: 'monitor', label: '监控中心', href: 'call_alarm.html?nav=monitor-call' },
     { id: 'help', label: '帮助中心', href: 'help_center.html?nav=help' }
 ];
