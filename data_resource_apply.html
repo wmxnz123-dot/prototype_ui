@@ -271,147 +271,69 @@
                         <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-4">
                             <div class="flex border-b border-gray-100 px-6">
                                 <div id="drawer-tab-basic" class="py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer text-[14px]" onclick="switchDrawerTab('basic')">基本信息</div>
-                                <div id="drawer-tab-apply" class="py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors text-[14px]" onclick="switchDrawerTab('apply')">申请信息</div>
+                                <div id="drawer-tab-audit" class="py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors text-[14px]" onclick="switchDrawerTab('audit')">审批记录</div>
                             </div>
 
                             <!-- 基本信息内容 -->
                             <div id="drawer-content-basic" class="p-6">
-                                <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">基本信息</h3>
-                                <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] mb-8 pl-4">
-                                    <div class="flex">
-                                        <span class="text-[#909399] w-28 text-right pr-4">数据资源名称</span>
-                                        <span class="text-[#303133] flex-1">这是数据资源名称</span>
-                                    </div>
-                                    <div class="flex">
-                                        <span class="text-[#909399] w-28 text-right pr-4">数据资源标识码</span>
-                                        <span class="text-[#303133] flex-1">example</span>
-                                    </div>
-                                    <div class="flex">
-                                        <span class="text-[#909399] w-28 text-right pr-4">资源格式</span>
-                                        <span class="text-[#303133] flex-1">电子表格/XLSX</span>
-                                    </div>
-                                    <div class="flex">
-                                        <span class="text-[#909399] w-28 text-right pr-4">行业分类</span>
-                                        <span class="text-[#303133] flex-1">--</span>
-                                    </div>
-                                    <div class="flex">
-                                        <span class="text-[#909399] w-28 text-right pr-4">数据来源</span>
-                                        <span class="text-[#303133] flex-1">原始取得</span>
-                                    </div>
-                                    <div class="flex">
-                                        <span class="text-[#909399] w-28 text-right pr-4">是否涉及个人信息</span>
-                                        <span class="text-[#303133] flex-1">--</span>
-                                    </div>
-                                    <div class="flex col-span-2">
-                                        <span class="text-[#909399] w-28 text-right pr-4">应用任务</span>
-                                        <span class="text-[#303133] flex-1">--</span>
-                                    </div>
-                                    <div class="flex col-span-2">
-                                        <span class="text-[#909399] w-28 text-right pr-4">资源摘要</span>
-                                        <span class="text-[#303133] flex-1">--</span>
+                                <h3 class="font-bold text-[#303133] text-[15px] mb-4">资源信息</h3>
+                                <div class="border border-gray-200 rounded-lg p-4 mb-6">
+                                    <div class="grid grid-cols-2 gap-y-4 text-[13px]">
+                                        <div class="flex">
+                                            <span class="text-[#909399] w-28 text-right pr-4">资源名称</span>
+                                            <span class="text-[#303133]">企业工商数据</span>
+                                        </div>
+                                        <div class="flex">
+                                            <span class="text-[#909399] w-28 text-right pr-4">资源类型</span>
+                                            <span class="text-[#303133]">库表</span>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <!-- 附件信息 -->
-                                <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none mt-8">附件</h3>
-                                <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] pl-4">
-                                    <div class="flex">
-                                        <span class="text-[#909399] w-28 text-right pr-4">数据来源声明</span>
-                                        <span class="text-[#303133] flex-1">--</span>
-                                    </div>
-                                    <div class="flex">
-                                        <span class="text-[#909399] w-28 text-right pr-4">合法合规声明</span>
-                                        <span class="text-[#303133] flex-1">--</span>
-                                    </div>
-                                    <div class="flex col-span-2">
-                                        <span class="text-[#909399] w-28 text-right pr-4">其他</span>
-                                        <span class="text-[#303133] flex-1">--</span>
+                                <h3 class="font-bold text-[#303133] text-[15px] mb-4">申请信息</h3>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <div class="grid grid-cols-2 gap-y-4 text-[13px]">
+                                        <div class="flex">
+                                            <span class="text-[#909399] w-36 text-right pr-4">申请时间</span>
+                                            <span class="text-[#303133]">2024-01-10 09:00:00</span>
+                                        </div>
+                                        <div class="flex">
+                                            <span class="text-[#909399] w-36 text-right pr-4">字段名称</span>
+                                            <span class="text-[#303133]">id, name, id_card, insurance_type</span>
+                                        </div>
+                                        <div class="flex">
+                                            <span class="text-[#909399] w-36 text-right pr-4">下载附件</span>
+                                            <span class="text-[#303133]"><a href="#" class="text-[#1c7ffd] hover:underline">点击下载</a></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- 申请信息内容 -->
-                            <div id="drawer-content-apply" class="p-6 hidden border-t border-gray-100">
-                                <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none mt-4">申请信息</h3>
-                                <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] mb-8 pl-4">
-                                    <div class="flex">
-                                        <span class="text-[#909399] w-28 text-right pr-4">提供方名称</span>
-                                        <span class="text-[#303133] flex-1">XXXXXX公司</span>
-                                    </div>
-                                    <div class="flex">
-                                        <span class="text-[#909399] w-28 text-right pr-4">联系人</span>
-                                        <span class="text-[#303133] flex-1">--</span>
-                                    </div>
-                                    <div class="flex">
-                                        <span class="text-[#909399] w-28 text-right pr-4">联系方式</span>
-                                        <span class="text-[#303133] flex-1">--</span>
-                                    </div>
-                                    <div class="flex">
-                                        <span class="text-[#909399] w-28 text-right pr-4">工单编号</span>
-                                        <span class="text-[#303133] flex-1">2015727178516242434</span>
-                                    </div>
-                                    <div class="flex">
-                                        <span class="text-[#909399] w-28 text-right pr-4">使用方名称</span>
-                                        <span class="text-[#303133] flex-1">XXXXXXX公司</span>
-                                    </div>
-                                    <div class="flex">
-                                        <span class="text-[#909399] w-28 text-right pr-4">授权起止时间</span>
-                                        <span class="text-[#303133] flex-1">2026-01-01 06:00:00 - 2027-01-01 06:00:00</span>
-                                    </div>
-                                </div>
-
-                                <div class="pl-4">
-                                    <div class="flex items-start">
-                                        <span class="text-[#909399] w-28 text-right pr-4 pt-2 text-[13px]">信息项</span>
-                                        <div class="flex-1">
-                                            <table class="w-full text-left text-[13px] text-[#606266] border border-gray-200">
-                                                <thead class="bg-[#f0f5ff] text-[#303133] font-medium border-b border-gray-200">
-                                                    <tr>
-                                                        <th class="py-2.5 px-4 w-20">序号</th>
-                                                        <th class="py-2.5 px-4">信息项名称</th>
-                                                        <th class="py-2.5 px-4">数据格式</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr class="border-b border-gray-100">
-                                                        <td class="py-3 px-4">1</td>
-                                                        <td class="py-3 px-4">名称1</td>
-                                                        <td class="py-3 px-4">对应的数据格式</td>
-                                                    </tr>
-                                                    <tr class="border-b border-gray-100">
-                                                        <td class="py-3 px-4">2</td>
-                                                        <td class="py-3 px-4">名称1</td>
-                                                        <td class="py-3 px-4">对应的数据格式</td>
-                                                    </tr>
-                                                    <tr class="border-b border-gray-100">
-                                                        <td class="py-3 px-4">3</td>
-                                                        <td class="py-3 px-4">名称1</td>
-                                                        <td class="py-3 px-4">对应的数据格式</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                            <!-- 审批记录内容 -->
+                            <div id="drawer-content-audit" class="p-6 hidden border-t border-gray-100">
+                                <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">审批记录</h3>
+                                <div class="space-y-4 pl-4">
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-8 h-8 bg-blue-50 text-[#1c7ffd] rounded-full flex items-center justify-center text-sm shrink-0">1</div>
+                                        <div>
+                                            <div class="text-[#303133] font-medium text-[13px]">提交申请</div>
+                                            <div class="text-[#909399] text-[12px] mt-1">申请人：张三 | 2024-01-10 09:00:00</div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="pl-4 mt-8">
-                                    <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none -ml-4">资源授权使用策略</h3>
-                                    <div class="flex gap-4">
-                                        <div class="border border-gray-200 rounded-lg p-4 flex-1">
-                                            <div class="font-bold text-[#303133] mb-4">限定使用环境</div>
-                                            <div class="text-[#606266] text-center mb-3">数据沙箱平台-数据沙箱</div>
-                                            <div class="text-[#606266] text-center">数据沙箱平台-隐私计算</div>
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-8 h-8 bg-blue-50 text-[#1c7ffd] rounded-full flex items-center justify-center text-sm shrink-0">2</div>
+                                        <div>
+                                            <div class="text-[#303133] font-medium text-[13px]">平台方审核通过</div>
+                                            <div class="text-[#909399] text-[12px] mt-1">审核人：李四 | 2024-01-11 10:30:00</div>
+                                            <div class="text-[#909399] text-[12px] mt-1">审批意见：同意授权</div>
                                         </div>
-                                        <div class="border border-gray-200 rounded-lg p-4 flex-1">
-                                            <div class="font-bold text-[#303133] mb-4">限定使用频率</div>
-                                            <div class="text-[#606266] text-center">10次/小时</div>
-                                        </div>
-                                        <div class="border border-gray-200 rounded-lg p-4 flex-1">
-                                            <div class="font-bold text-[#303133] mb-4">限定可使用字段</div>
-                                            <div class="flex justify-center gap-4 text-[#606266]">
-                                                <span>字段名称1</span>
-                                                <span>字段名称2</span>
-                                            </div>
+                                    </div>
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-8 h-8 bg-green-50 text-green-600 rounded-full flex items-center justify-center text-sm shrink-0">3</div>
+                                        <div>
+                                            <div class="text-[#303133] font-medium text-[13px]">数据方审核通过</div>
+                                            <div class="text-[#909399] text-[12px] mt-1">审核人：王五 | 2024-01-12 14:00:00</div>
+                                            <div class="text-[#909399] text-[12px] mt-1">审批意见：同意授权，请遵守数据使用规范</div>
                                         </div>
                                     </div>
                                 </div>
@@ -442,11 +364,11 @@
                     function switchDrawerTab(tabName) {
                         const tabs = {
                             'basic': document.getElementById('drawer-tab-basic'),
-                            'apply': document.getElementById('drawer-tab-apply')
+                            'audit': document.getElementById('drawer-tab-audit')
                         };
                         const contents = {
                             'basic': document.getElementById('drawer-content-basic'),
-                            'apply': document.getElementById('drawer-content-apply')
+                            'audit': document.getElementById('drawer-content-audit')
                         };
 
                         for (let key in tabs) {

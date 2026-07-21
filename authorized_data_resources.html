@@ -61,7 +61,7 @@
                             <label class="text-[#606266] whitespace-nowrap w-[100px] text-right">资源类型：</label>
                             <select class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd] bg-white">
                                 <option value="">全部</option>
-                                <option value="api">API</option>
+                                <option value="api">接口</option>
                                 <option value="table">库表</option>
                             </select>
                         </div>
@@ -130,7 +130,7 @@
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">1</td>
                                     <td class="py-4 px-4">企业基础信息查询服务</td>
-                                    <td class="py-4 px-4">API</td>
+                                    <td class="py-4 px-4">接口</td>
                                     <td class="py-4 px-4">山东省数据管理局</td>
                                     <td class="py-4 px-4">山东亿云信息技术有限公司</td>
                                     <td class="py-4 px-4">
@@ -141,8 +141,8 @@
                                     </td>
                                     <td class="py-4 px-4">2024-01-15 10:30:00</td>
                                     <td class="py-4 px-4">
-                                        <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openResourceDetail()">查看</a>
-                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="showConfirm('确定取消授权吗？取消后将不可恢复'); return false;">取消授权</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openResourceDetail(0)">查看</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="showConfirm('确定取消吗？取消后将不可恢复'); return false;">取消</a>
                                     </td>
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
@@ -159,13 +159,13 @@
                                     </td>
                                     <td class="py-4 px-4">2024-01-20 09:15:00</td>
                                     <td class="py-4 px-4">
-                                        <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openResourceDetail()">查看</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openResourceDetail(1)">查看</a>
                                     </td>
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">3</td>
                                     <td class="py-4 px-4">医疗健康数据查询服务</td>
-                                    <td class="py-4 px-4">API</td>
+                                    <td class="py-4 px-4">接口</td>
                                     <td class="py-4 px-4">山东亿云信息技术有限公司</td>
                                     <td class="py-4 px-4">济南市卫健委</td>
                                     <td class="py-4 px-4">
@@ -176,8 +176,8 @@
                                     </td>
                                     <td class="py-4 px-4">2024-01-22 16:45:00</td>
                                     <td class="py-4 px-4">
-                                        <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openResourceDetail()">查看</a>
-                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="showConfirm('确定取消授权吗？取消后将不可恢复'); return false;">取消授权</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openResourceDetail(2)">查看</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="showConfirm('确定取消吗？取消后将不可恢复'); return false;">取消</a>
                                     </td>
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
@@ -194,8 +194,8 @@
                                     </td>
                                     <td class="py-4 px-4">2024-01-25 11:00:00</td>
                                     <td class="py-4 px-4">
-                                        <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openResourceDetail()">查看</a>
-                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="showConfirm('确定取消授权吗？取消后将不可恢复'); return false;">取消授权</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline mr-3" onclick="openResourceDetail(3)">查看</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="showConfirm('确定取消吗？取消后将不可恢复'); return false;">取消</a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -224,121 +224,356 @@
             </div>
 
             <div id="drawerOverlay" class="fixed inset-0 bg-black bg-opacity-30 z-40 hidden transition-opacity" onclick="closeResourceDetail()"></div>
-            <div id="resourceDetailDrawer" class="fixed top-0 right-0 h-full w-[800px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
-                <div class="h-14 border-b border-gray-100 flex items-center justify-between px-6 shrink-0 bg-white">
+            <div id="resourceDetailDrawer" class="fixed top-0 right-0 h-full w-[800px] bg-[#f5f7fa] z-50 transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col">
+                <div class="h-14 bg-white border-b border-gray-100 flex items-center justify-between px-6 shrink-0">
                     <span class="font-medium text-[#303133]">资源详情</span>
-                    <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-[#1c7ffd] text-lg" onclick="closeResourceDetail()"></i>
+                    <button onclick="closeResourceDetail()" class="text-gray-400 hover:text-[#1c7ffd] transition-colors">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
                 </div>
                 <div class="flex-1 overflow-y-auto p-6 bg-[#f5f7fa]">
+                    <!-- 标题区域 -->
                     <div class="bg-white rounded-lg p-6 shadow-sm mb-4">
-                        <div class="flex justify-between items-start">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-blue-50 text-[#1c7ffd] rounded-full flex items-center justify-center text-xl shrink-0">
-                                    <i class="fa-solid fa-envelope-open-text"></i>
-                                </div>
-                                <div>
-                                    <div class="text-[18px] font-bold text-[#303133] mb-1 flex items-center gap-2">
-                                        企业基础信息查询服务
-                                        <span class="bg-blue-50 text-[#1c7ffd] text-[12px] px-2 py-0.5 rounded border border-blue-100 font-normal">API</span>
-                                    </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-blue-50 text-[#1c7ffd] rounded-full flex items-center justify-center text-xl shrink-0">
+                                <i id="resDrawerIcon" class="fa-solid fa-database"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div id="resDrawerTitle" class="text-[18px] font-bold text-[#303133] mb-1"></div>
+                                <div class="flex items-center gap-6 text-[13px] text-[#909399] mt-1">
+                                    <span id="resDrawerOwner">资源所属方：--</span>
                                 </div>
                             </div>
-                            <div class="text-right">
-                                <div class="text-[#909399] text-[13px]">更新时间：2024-01-15 10:30:00</div>
+                            <div class="text-right shrink-0">
+                                <div id="resDrawerStatus" class="flex items-center gap-1.5 text-[13px] mb-1"></div>
+                                <div id="resDrawerUpdateTime" class="text-[#909399] text-[13px]"></div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-4">
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
                         <div class="flex border-b border-gray-100 px-6">
-                            <div id="detail-drawer-tab-basic" class="py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer text-[14px]" onclick="switchDetailDrawerTab('basic')">基本信息</div>
-                            <div id="detail-drawer-tab-sample" class="py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors text-[14px]" onclick="switchDetailDrawerTab('sample')">样例数据</div>
-                            <div id="detail-drawer-tab-auth" class="py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors text-[14px]" onclick="switchDetailDrawerTab('auth')">授权信息</div>
+                            <div id="res-drawer-tab-basic" class="py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer text-[14px]" onclick="switchResDrawerTab('basic')">基本信息</div>
+                            <div id="res-drawer-tab-sample" class="py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors text-[14px]" onclick="switchResDrawerTab('sample')">样例数据</div>
+                            <div id="res-drawer-tab-apply" class="py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors text-[14px]" onclick="switchResDrawerTab('apply')">申请信息</div>
                         </div>
 
-                        <div id="detail-drawer-content-basic" class="p-6">
+                        <div id="res-drawer-content-basic" class="p-6">
                             <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">基本信息</h3>
-                            <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] pl-4">
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">资源名称</span>
-                                    <span class="text-[#303133] flex-1">企业基础信息查询服务</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">资源类型</span>
-                                    <span class="text-[#303133] flex-1">API</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">资源使用单位</span>
-                                    <span class="text-[#303133] flex-1">山东亿云信息技术有限公司</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">状态</span>
-                                    <span class="text-green-500 flex-1">已授权</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">更新时间</span>
-                                    <span class="text-[#303133] flex-1">2024-01-15 10:30:00</span>
-                                </div>
-                                <div class="flex col-span-2">
-                                    <span class="text-[#909399] w-28 text-right pr-4">资源摘要</span>
-                                    <span class="text-[#303133] flex-1">包含企业工商登记基本信息，包括企业名称、统一社会信用代码、法定代表人、注册地址等字段</span>
-                                </div>
-                            </div>
-
-                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none mt-8">接口信息</h3>
-                            <div class="bg-[#f8f8f9] rounded-lg p-4">
-                                <div class="grid grid-cols-2 gap-y-3 text-[13px]">
-                                    <div><span class="text-[#909399]">接口URL：</span><span class="text-[#303133]">http://api.example.com/enterprise</span></div>
-                                    <div><span class="text-[#909399]">接口Path：</span><span class="text-[#303133]">/basic-info</span></div>
-                                    <div><span class="text-[#909399]">请求类型：</span><span class="text-[#303133]">GET</span></div>
-                                    <div><span class="text-[#909399]">返回类型：</span><span class="text-[#303133]">json</span></div>
-                                </div>
-                            </div>
+                            <div id="resDrawerBasicInfo" class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] pl-4"></div>
+                            <div id="resDrawerExtInfo" class="mt-8"></div>
                         </div>
 
-                        <div id="detail-drawer-content-sample" class="p-6 hidden">
-                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">样例数据</h3>
-                            <pre class="bg-[#f8f8f9] border border-gray-200 rounded-lg p-4 text-[13px] leading-6 text-[#606266] overflow-x-auto whitespace-pre-wrap">{
-  "creditCode": "91370100MA1234567X",
-  "enterpriseName": "山东数据科技有限公司",
-  "legalRepresentative": "张三",
-  "registeredAddress": "山东省济南市高新区",
-  "registrationDate": "2018-06-15",
-  "businessScope": "数据处理、技术服务"
-}</pre>
+                        <div id="res-drawer-content-sample" class="p-6 hidden border-t border-gray-100">
+                            <div id="resDrawerSampleContent"></div>
                         </div>
 
-                        <div id="detail-drawer-content-auth" class="p-6 hidden border-t border-gray-100">
-                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none mt-4">授权信息</h3>
-                            <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] pl-4">
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">授权时间</span>
-                                    <span class="text-[#303133] flex-1">2024-01-15 10:30:00</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">授权有效期</span>
-                                    <span class="text-[#303133] flex-1">2024-01-15 至 2025-01-15</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">授权人</span>
-                                    <span class="text-[#303133] flex-1">李四</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">使用单位</span>
-                                    <span class="text-[#303133] flex-1">山东亿云信息技术有限公司</span>
-                                </div>
-                                <div class="flex col-span-2">
-                                    <span class="text-[#909399] w-28 text-right pr-4">授权说明</span>
-                                    <span class="text-[#303133] flex-1">用于企业信用评估分析项目</span>
-                                </div>
-                            </div>
+                        <div id="res-drawer-content-apply" class="p-6 hidden border-t border-gray-100">
+                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">申请信息</h3>
+                            <div id="resDrawerApplyInfo" class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] pl-4"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <script>
-                function openResourceDetail() {
+                const resourceDetailList = [
+                    {
+                        title: '企业基础信息查询服务',
+                        owner: '山东省数据管理局',
+                        status: '已授权',
+                        statusColor: { dot: 'bg-[#1c7ffd]', text: 'text-[#1c7ffd]' },
+                        updateTime: '2024-01-15 10:30:00',
+                        type: '接口',
+                        basicInfo: [
+                            ['资源名称', '企业基础信息查询服务'],
+                            ['资源类型', '接口'],
+                            ['数据所属方', '山东省数据管理局'],
+                            ['是否公开', '是'],
+                            ['数据更新周期', '每周']
+                        ],
+                        apiInfo: {
+                            url: 'http://api.example.com/enterprise',
+                            requestType: 'GET',
+                            description: '企业基础信息查询',
+                            requestParams: [
+                                { serial: 1, name: 'creditCode', desc: '统一社会信用代码' }
+                            ],
+                            returnParams: [
+                                { serial: 1, name: 'enterpriseName', desc: '企业名称' },
+                                { serial: 2, name: 'legalRepresentative', desc: '法定代表人' }
+                            ],
+                            errorCodes: [
+                                { serial: 1, code: '400', desc: '参数错误' },
+                                { serial: 2, code: '500', desc: '系统错误' }
+                            ]
+                        },
+                        sampleData: '{\n  "creditCode": "91370100MA1234567X",\n  "enterpriseName": "山东数据科技有限公司",\n  "legalRepresentative": "张三",\n  "registeredAddress": "山东省济南市高新区"\n}',
+                        applyInfo: [
+                            ['调用频次（平均）（次/天）', '1200次/小时'],
+                            ['调用频次（峰值）（次/天）', '3500次/小时'],
+                            ['申请时间', '2024-01-10 09:00:00'],
+                            ['下载附件', '<a href="#" class="text-[#1c7ffd] hover:underline">点击下载</a>']
+                        ]
+                    },
+                    {
+                        title: '社保信息查询服务',
+                        owner: '山东省人社厅',
+                        status: '已取消',
+                        statusColor: { dot: 'bg-[#f56c6c]', text: 'text-[#f56c6c]' },
+                        updateTime: '2024-01-20 09:15:00',
+                        type: '库表',
+                        basicInfo: [
+                            ['资源名称', '社保信息查询服务'],
+                            ['资源类型', '库表'],
+                            ['数据所属方', '山东省人社厅'],
+                            ['是否公开', '否'],
+                            ['数据更新周期', '每月']
+                        ],
+                        tableInfo: {
+                            dataSourceName: '社保数据源01',
+                            tableName: 'social_insurance.employee_info',
+                            tableFields: [
+                                { serial: 1, name: 'id', type: 'bigint', desc: '主键ID' },
+                                { serial: 2, name: 'name', type: 'varchar(64)', desc: '姓名' },
+                                { serial: 3, name: 'id_card', type: 'varchar(18)', desc: '身份证号' },
+                                { serial: 4, name: 'insurance_type', type: 'varchar(32)', desc: '保险类型' }
+                            ]
+                        },
+                        sampleData: 'id,name,id_card,insurance_type\n1,张三,370101199001011234,养老保险\n2,李四,370101199002021234,医疗保险',
+                        applyInfo: [
+                            ['字段名称', 'id, name, id_card, insurance_type'],
+                            ['申请时间', '2024-01-15 14:30:00'],
+                            ['下载附件', '<a href="#" class="text-[#1c7ffd] hover:underline">点击下载</a>']
+                        ]
+                    },
+                    {
+                        title: '医疗健康数据查询服务',
+                        owner: '山东亿云信息技术有限公司',
+                        status: '已授权',
+                        statusColor: { dot: 'bg-[#1c7ffd]', text: 'text-[#1c7ffd]' },
+                        updateTime: '2024-01-22 16:45:00',
+                        type: '接口',
+                        basicInfo: [
+                            ['资源名称', '医疗健康数据查询服务'],
+                            ['资源类型', '接口'],
+                            ['数据所属方', '山东亿云信息技术有限公司'],
+                            ['是否公开', '否'],
+                            ['数据更新周期', '每天']
+                        ],
+                        apiInfo: {
+                            url: 'http://api.example.com/health',
+                            requestType: 'POST',
+                            description: '医疗健康数据查询',
+                            requestParams: [
+                                { serial: 1, name: 'idCard', desc: '身份证号' }
+                            ],
+                            returnParams: [
+                                { serial: 1, name: 'hospitalRecords', desc: '就诊记录' },
+                                { serial: 2, name: 'medicalHistory', desc: '病史信息' }
+                            ],
+                            errorCodes: [
+                                { serial: 1, code: '400', desc: '参数错误' }
+                            ]
+                        },
+                        sampleData: '{\n  "idCard": "370101199001011234",\n  "hospitalRecords": [{"date": "2024-01-01", "hospital": "省立医院"}],\n  "medicalHistory": ["高血压"]\n}',
+                        applyInfo: [
+                            ['申请时间', '2024-01-18 10:00:00'],
+                            ['调用频次（平均）（次/天）', '800次/小时'],
+                            ['调用频次（峰值）（次/天）', '2000次/小时'],
+                            ['下载附件', '<a href="#" class="text-[#1c7ffd] hover:underline">点击下载</a>']
+                        ]
+                    },
+                    {
+                        title: '房产登记信息查询服务',
+                        owner: '青岛市政务服务中心',
+                        status: '已授权',
+                        statusColor: { dot: 'bg-[#1c7ffd]', text: 'text-[#1c7ffd]' },
+                        updateTime: '2024-01-25 11:00:00',
+                        type: '库表',
+                        basicInfo: [
+                            ['资源名称', '房产登记信息查询服务'],
+                            ['资源类型', '库表'],
+                            ['数据所属方', '青岛市政务服务中心'],
+                            ['是否公开', '是'],
+                            ['数据更新周期', '每季度']
+                        ],
+                        tableInfo: {
+                            dataSourceName: '房产数据源01',
+                            tableName: 'property.estate_info',
+                            tableFields: [
+                                { serial: 1, name: 'property_id', type: 'varchar(32)', desc: '房产编号' },
+                                { serial: 2, name: 'owner_name', type: 'varchar(64)', desc: '产权人姓名' },
+                                { serial: 3, name: 'address', type: 'varchar(256)', desc: '房产地址' },
+                                { serial: 4, name: 'area', type: 'decimal(10,2)', desc: '面积(m²)' }
+                            ]
+                        },
+                        sampleData: 'property_id,owner_name,address,area\nA001,张三,济南市历下区xxx路1号,120.50\nA002,李四,济南市市中区yyy路2号,89.30',
+                        applyInfo: [
+                            ['申请时间', '2024-01-20 09:30:00'],
+                            ['字段名称', 'property_id, owner_name, address, area'],
+                            ['下载附件', '<a href="#" class="text-[#1c7ffd] hover:underline">点击下载</a>']
+                        ]
+                    }
+                ];
+
+                function renderCsvTable(csvText) {
+                    const lines = csvText.trim().split('\n');
+                    if (lines.length === 0) return '';
+                    const headers = lines[0].split(',');
+                    const rows = lines.slice(1);
+                    return `
+                        <div class="bg-white border border-gray-200 rounded overflow-hidden">
+                            <table class="w-full text-[13px] text-[#606266]">
+                                <thead class="bg-[#f8f8f9] text-[#909399] font-medium">
+                                    <tr>
+                                        <th class="py-2 px-3 text-left w-12">序号</th>
+                                        ${headers.map(h => `<th class="py-2 px-3 text-left">${h}</th>`).join('')}
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100">
+                                    ${rows.map((row, idx) => {
+                                        const cols = row.split(',');
+                                        return `<tr class="hover:bg-gray-50">
+                                            <td class="py-3 px-3">${idx + 1}</td>
+                                            ${cols.map(c => `<td class="py-3 px-3">${c}</td>`).join('')}
+                                        </tr>`;
+                                    }).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                }
+
+                function openResourceDetail(index) {
+                    const data = resourceDetailList[index];
+                    const isApi = data.type === '接口';
+
+                    // 图标
+                    document.getElementById('resDrawerIcon').className = isApi ? 'fa-solid fa-link' : 'fa-solid fa-database';
+
+                    // 标题
+                    document.getElementById('resDrawerTitle').textContent = data.title;
+
+                    // 资源所属方
+                    document.getElementById('resDrawerOwner').textContent = '资源所属方：' + data.owner;
+
+                    // 状态
+                    const sc = data.statusColor;
+                    document.getElementById('resDrawerStatus').innerHTML = `<span class="w-2 h-2 rounded-full ${sc.dot}"></span><span class="${sc.text}">${data.status}</span>`;
+
+                    // 更新时间
+                    document.getElementById('resDrawerUpdateTime').textContent = '更新时间：' + data.updateTime;
+
+                    // 基本信息
+                    const basicFields = ['资源名称', '资源类型', '数据所属方', '是否公开', '数据更新周期'];
+                    document.getElementById('resDrawerBasicInfo').innerHTML = data.basicInfo
+                        .filter(([label]) => basicFields.includes(label))
+                        .map(([label, value]) => `
+                            <div class="flex">
+                                <span class="text-[#909399] w-28 text-right pr-4">${label}</span>
+                                <span class="text-[#303133] flex-1">${value}</span>
+                            </div>
+                        `).join('');
+
+                    // 扩展信息
+                    if (isApi && data.apiInfo) {
+                        const api = data.apiInfo;
+                        document.getElementById('resDrawerExtInfo').innerHTML = `
+                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">接口信息</h3>
+                            <div class="text-[13px] text-[#606266] space-y-4 pl-4">
+                                <div class="grid grid-cols-2 gap-y-4">
+                                    <div><span class="text-[#909399]">接口URL：</span><span class="text-[#303133]">${api.url}</span></div>
+                                    <div><span class="text-[#909399]">请求类型：</span><span class="text-[#303133]">${api.requestType}</span></div>
+                                </div>
+                                <div><span class="text-[#909399]">接口描述：</span><span class="text-[#303133]">${api.description}</span></div>
+                                <div class="mt-4">
+                                    <h4 class="font-bold text-[#303133] mb-3">请求参数</h4>
+                                    <div class="bg-[#f8f8f9] rounded overflow-hidden">
+                                        <table class="w-full text-[13px]">
+                                            <thead class="bg-[#f0f0f0]">
+                                                <tr><th class="py-2 px-4 text-left font-medium text-[#909399]">序号</th><th class="py-2 px-4 text-left font-medium text-[#909399]">名称</th><th class="py-2 px-4 text-left font-medium text-[#909399]">描述</th></tr>
+                                            </thead>
+                                            <tbody>
+                                                ${api.requestParams.map(p => `<tr class="border-t border-gray-200"><td class="py-3 px-4">${p.serial}</td><td class="py-3 px-4">${p.name}</td><td class="py-3 px-4">${p.desc}</td></tr>`).join('')}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-[#303133] mb-3">返回参数</h4>
+                                    <div class="bg-[#f8f8f9] rounded overflow-hidden">
+                                        <table class="w-full text-[13px]">
+                                            <thead class="bg-[#f0f0f0]">
+                                                <tr><th class="py-2 px-4 text-left font-medium text-[#909399]">序号</th><th class="py-2 px-4 text-left font-medium text-[#909399]">名称</th><th class="py-2 px-4 text-left font-medium text-[#909399]">描述</th></tr>
+                                            </thead>
+                                            <tbody>
+                                                ${api.returnParams.map(p => `<tr class="border-t border-gray-200"><td class="py-3 px-4">${p.serial}</td><td class="py-3 px-4">${p.name}</td><td class="py-3 px-4">${p.desc}</td></tr>`).join('')}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-[#303133] mb-3">错误代码</h4>
+                                    <div class="bg-[#f8f8f9] rounded overflow-hidden">
+                                        <table class="w-full text-[13px]">
+                                            <thead class="bg-[#f0f0f0]">
+                                                <tr><th class="py-2 px-4 text-left font-medium text-[#909399]">序号</th><th class="py-2 px-4 text-left font-medium text-[#909399]">错误代码</th><th class="py-2 px-4 text-left font-medium text-[#909399]">参数描述</th></tr>
+                                            </thead>
+                                            <tbody>
+                                                ${api.errorCodes.map(p => `<tr class="border-t border-gray-200"><td class="py-3 px-4">${p.serial}</td><td class="py-3 px-4">${p.code}</td><td class="py-3 px-4">${p.desc}</td></tr>`).join('')}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    } else if (data.tableInfo) {
+                        const table = data.tableInfo;
+                        document.getElementById('resDrawerExtInfo').innerHTML = `
+                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">库表信息</h3>
+                            <div class="text-[13px] text-[#606266] space-y-4 pl-4">
+                                <div class="grid grid-cols-2 gap-y-4">
+                                    <div><span class="text-[#909399]">数据源名称：</span><span class="text-[#303133]">${table.dataSourceName}</span></div>
+                                    <div><span class="text-[#909399]">数据表名称：</span><span class="text-[#303133]">${table.tableName}</span></div>
+                                </div>
+                                <div class="mt-4">
+                                    <h4 class="font-bold text-[#303133] mb-3">表字段列表</h4>
+                                    <div class="bg-[#f8f8f9] rounded overflow-hidden">
+                                        <table class="w-full text-[13px]">
+                                            <thead class="bg-[#f0f0f0]">
+                                                <tr><th class="py-2 px-4 text-left font-medium text-[#909399]">序号</th><th class="py-2 px-4 text-left font-medium text-[#909399]">字段名称</th><th class="py-2 px-4 text-left font-medium text-[#909399]">字段类型</th><th class="py-2 px-4 text-left font-medium text-[#909399]">字段描述</th></tr>
+                                            </thead>
+                                            <tbody>
+                                                ${table.tableFields.map(f => `<tr class="border-t border-gray-200"><td class="py-3 px-4">${f.serial}</td><td class="py-3 px-4">${f.name}</td><td class="py-3 px-4">${f.type}</td><td class="py-3 px-4">${f.desc}</td></tr>`).join('')}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    // 样例数据
+                    if (isApi) {
+                        document.getElementById('resDrawerSampleContent').innerHTML = `<pre class="bg-[#f8f8f9] border border-gray-200 rounded-lg p-4 text-[13px] leading-6 text-[#606266] overflow-x-auto whitespace-pre-wrap">${data.sampleData}</pre>`;
+                    } else {
+                        document.getElementById('resDrawerSampleContent').innerHTML = renderCsvTable(data.sampleData);
+                    }
+
+                    // 申请信息
+                    document.getElementById('resDrawerApplyInfo').innerHTML = data.applyInfo
+                        .map(([label, value]) => `
+                            <div class="flex">
+                                <span class="text-[#909399] w-36 text-right pr-4">${label}</span>
+                                <span class="text-[#303133] flex-1">${value}</span>
+                            </div>
+                        `).join('');
+
+                    // 默认显示基本信息tab
+                    switchResDrawerTab('basic');
+
+                    // 打开抽屉
                     const overlay = document.getElementById('drawerOverlay');
                     const drawer = document.getElementById('resourceDetailDrawer');
                     overlay.classList.remove('hidden');
@@ -356,16 +591,16 @@
                     }, 300);
                 }
 
-                function switchDetailDrawerTab(tabName) {
+                function switchResDrawerTab(tabName) {
                     const tabs = {
-                        'basic': document.getElementById('detail-drawer-tab-basic'),
-                        'sample': document.getElementById('detail-drawer-tab-sample'),
-                        'auth': document.getElementById('detail-drawer-tab-auth')
+                        'basic': document.getElementById('res-drawer-tab-basic'),
+                        'sample': document.getElementById('res-drawer-tab-sample'),
+                        'apply': document.getElementById('res-drawer-tab-apply')
                     };
                     const contents = {
-                        'basic': document.getElementById('detail-drawer-content-basic'),
-                        'sample': document.getElementById('detail-drawer-content-sample'),
-                        'auth': document.getElementById('detail-drawer-content-auth')
+                        'basic': document.getElementById('res-drawer-content-basic'),
+                        'sample': document.getElementById('res-drawer-content-sample'),
+                        'apply': document.getElementById('res-drawer-content-apply')
                     };
 
                     for (let key in tabs) {

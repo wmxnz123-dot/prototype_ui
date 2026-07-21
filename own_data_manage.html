@@ -246,22 +246,23 @@
             </button>
         </div>
         <div class="flex-1 overflow-y-auto p-6 bg-[#f5f7fa]">
+            <!-- 标题区域 -->
             <div class="bg-white rounded-lg p-6 shadow-sm mb-4">
-                <div class="flex justify-between items-start">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-blue-50 text-[#1c7ffd] rounded-full flex items-center justify-center text-xl shrink-0">
-                            <i class="fa-solid fa-database"></i>
-                        </div>
-                        <div>
-                            <div id="drawerTitle" class="text-[18px] font-bold text-[#303133] mb-1 flex items-center gap-2"></div>
-                            <div id="drawerSubTitle" class="text-[#909399] text-[13px]"></div>
+                <div class="flex items-start gap-3">
+                    <div class="w-10 h-10 bg-blue-50 text-[#1c7ffd] rounded-full flex items-center justify-center text-xl shrink-0">
+                        <i id="drawerIcon" class="fa-solid fa-database"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div id="drawerTitle" class="text-[18px] font-bold text-[#303133] mb-1"></div>
+                        <div class="flex items-center gap-6 text-[13px] text-[#909399] mt-1">
+                            <span id="drawerOwner">资源所属方：--</span>
                         </div>
                     </div>
-                    <div id="drawerUpdateTime" class="text-right">
-                        <div class="text-[#909399] text-[13px]"></div>
+                    <div class="text-right shrink-0">
+                        <div id="drawerStatus" class="flex items-center gap-1.5 text-[13px] mb-1"></div>
+                        <div id="drawerUpdateTime" class="text-[#909399] text-[13px]"></div>
                     </div>
                 </div>
-                <div id="drawerTitleContent" class="text-[13px] text-[#606266] leading-6 mt-3 pl-12"></div>
             </div>
 
             <div class="bg-white rounded-lg shadow-sm overflow-hidden">
@@ -271,14 +272,15 @@
                 </div>
 
                 <div id="drawer-content-basic" class="p-6">
+                    <!-- 基本信息 -->
                     <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">基本信息</h3>
                     <div id="drawerBasicInfo" class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] pl-4"></div>
-                    <div id="drawerExtInfo" class="mt-6"></div>
+                    <!-- 扩展信息（库表/接口） -->
+                    <div id="drawerExtInfo" class="mt-8"></div>
                 </div>
 
                 <div id="drawer-content-sample" class="p-6 hidden border-t border-gray-100">
-                    <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">样例数据</h3>
-                    <pre id="drawerSampleData" class="bg-[#f8f9fb] border border-gray-200 rounded-lg p-4 text-[13px] leading-6 text-[#606266] overflow-x-auto whitespace-pre-wrap"></pre>
+                    <div id="drawerSampleContent"></div>
                 </div>
             </div>
         </div>
@@ -296,6 +298,7 @@
                     ['数据所属方', '数据要素事业部'],
                     ['状态', '草稿'],
                     ['是否公开', '是'],
+                    ['数据更新周期', '每天'],
                     ['更新时间', '2026-06-24 15:50:26']
                 ],
                 apiInfo: {
@@ -326,15 +329,19 @@
                     ['数据所属方', '数据要素事业部'],
                     ['状态', '已注册'],
                     ['是否公开', '否'],
+                    ['数据更新周期', '每周'],
                     ['更新时间', '2026-06-23 10:26:19']
                 ],
                 tableInfo: {
                     dataSourceName: '数据源测试01',
                     tableName: 'test1_1782113731545.test1.gateway_config_ip_limit',
-                    hasSampleData: '是',
-                    sampleDataFile: '样例数据模板 (4).xlsx',
-                    hasQualityReport: '否',
-                    qualityReportFile: '--'
+                    tableFields: [
+                        { serial: 1, name: 'id', type: 'bigint', desc: '主键ID' },
+                        { serial: 2, name: 'ip', type: 'varchar(64)', desc: 'IP地址' },
+                        { serial: 3, name: 'type', type: 'varchar(32)', desc: '类型' },
+                        { serial: 4, name: 'create_by', type: 'varchar(64)', desc: '创建人' },
+                        { serial: 5, name: 'update_by', type: 'varchar(64)', desc: '更新人' }
+                    ]
                 },
                 sampleData: 'credit_code,enterprise_name,register_time,status\n91370100MA1234567X,亿云信息,2020-03-10,存续\n91370100MA7654321Y,智算科技,2019-08-22,存续'
             },
@@ -348,6 +355,7 @@
                     ['数据所属方', '数据要素事业部'],
                     ['状态', '已注册'],
                     ['是否公开', '是'],
+                    ['数据更新周期', '每月'],
                     ['更新时间', '2026-06-23 10:16:48']
                 ],
                 apiInfo: {
@@ -380,15 +388,19 @@
                     ['数据所属方', '数据要素事业部'],
                     ['状态', '已注册'],
                     ['是否公开', '否'],
+                    ['数据更新周期', '每季度'],
                     ['更新时间', '2026-06-22 16:10:30']
                 ],
                 tableInfo: {
                     dataSourceName: '数据源测试02',
                     tableName: 'test1_1782113731546.test1.enterprise_change_history',
-                    hasSampleData: '是',
-                    sampleDataFile: '企业变更历史.xlsx',
-                    hasQualityReport: '是',
-                    qualityReportFile: '企业变更质量报告.pdf'
+                    tableFields: [
+                        { serial: 1, name: 'credit_code', type: 'varchar(32)', desc: '统一社会信用代码' },
+                        { serial: 2, name: 'change_item', type: 'varchar(128)', desc: '变更事项' },
+                        { serial: 3, name: 'change_before', type: 'varchar(512)', desc: '变更前内容' },
+                        { serial: 4, name: 'change_after', type: 'varchar(512)', desc: '变更后内容' },
+                        { serial: 5, name: 'change_date', type: 'date', desc: '变更日期' }
+                    ]
                 },
                 sampleData: 'credit_code,change_item,change_before,change_after,change_date\n91370100MA1234567X,注册资本,100万,300万,2026-05-16'
             },
@@ -402,6 +414,7 @@
                     ['数据所属方', '数据要素事业部'],
                     ['状态', '已注册'],
                     ['是否公开', '是'],
+                    ['数据更新周期', '每年'],
                     ['更新时间', '2026-06-22 16:09:54']
                 ],
                 apiInfo: {
@@ -425,33 +438,88 @@
             }
         ];
 
+        function renderCsvTable(csvText) {
+            const lines = csvText.trim().split('\n');
+            if (lines.length === 0) return '';
+            const headers = lines[0].split(',');
+            const rows = lines.slice(1);
+            return `
+                <div class="bg-white border border-gray-200 rounded overflow-hidden">
+                    <table class="w-full text-[13px] text-[#606266]">
+                        <thead class="bg-[#f8f8f9] text-[#909399] font-medium">
+                            <tr>
+                                <th class="py-2 px-3 text-left w-12">序号</th>
+                                ${headers.map(h => `<th class="py-2 px-3 text-left">${h}</th>`).join('')}
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            ${rows.map((row, idx) => {
+                                const cols = row.split(',');
+                                return `<tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-3">${idx + 1}</td>
+                                    ${cols.map(c => `<td class="py-3 px-3">${c}</td>`).join('')}
+                                </tr>`;
+                            }).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
         function openDetailDrawer(index) {
             const data = ownDataList[index];
+            const isApi = data.apiInfo !== undefined;
+            const isTable = data.tableInfo !== undefined;
+
+            // 图标
+            document.getElementById('drawerIcon').className = isApi ? 'fa-solid fa-link' : 'fa-solid fa-database';
+
+            // 标题
             document.getElementById('drawerTitle').textContent = data.title;
-            document.getElementById('drawerSubTitle').textContent = data.subTitle;
-            document.getElementById('drawerTitleContent').textContent = data.titleContent;
-            document.getElementById('drawerBasicInfo').innerHTML = data.basicInfo.map(([label, value]) => `
-                <div class="flex">
-                    <span class="text-[#909399] w-28 text-right pr-4">${label}</span>
-                    <span class="text-[#303133] flex-1">${value}</span>
-                </div>
-            `).join('');
-            
-            if (data.apiInfo) {
+
+            // 资源所属方
+            const ownerText = data.subTitle.split(' | ')[1] || '--';
+            document.getElementById('drawerOwner').textContent = '资源所属方：' + ownerText;
+
+            // 状态（从basicInfo中提取）
+            const statusItem = data.basicInfo.find(item => item[0] === '状态');
+            const statusValue = statusItem ? statusItem[1] : '--';
+            let statusColor = 'text-gray-500';
+            let dotColor = 'bg-gray-400';
+            if (statusValue === '已注册') { statusColor = 'text-green-600'; dotColor = 'bg-green-500'; }
+            else if (statusValue === '草稿') { statusColor = 'text-gray-500'; dotColor = 'bg-gray-400'; }
+            else if (statusValue === '已下线') { statusColor = 'text-red-500'; dotColor = 'bg-red-500'; }
+            document.getElementById('drawerStatus').innerHTML = `<span class="w-2 h-2 rounded-full ${dotColor}"></span><span class="${statusColor}">${statusValue}</span>`;
+
+            // 更新时间
+            const timeItem = data.basicInfo.find(item => item[0] === '更新时间');
+            document.getElementById('drawerUpdateTime').textContent = '更新时间：' + (timeItem ? timeItem[1] : '--');
+
+            // 基本信息：显示资源名称、资源类型、资源所属方、是否公开、数据更新周期
+            const basicFields = ['资源名称', '资源类型', '资源所属方', '是否公开', '数据更新周期'];
+            document.getElementById('drawerBasicInfo').innerHTML = data.basicInfo
+                .filter(([label]) => basicFields.includes(label))
+                .map(([label, value]) => `
+                    <div class="flex">
+                        <span class="text-[#909399] w-28 text-right pr-4">${label}</span>
+                        <span class="text-[#303133] flex-1">${value}</span>
+                    </div>
+                `).join('');
+
+            // 扩展信息
+            if (isApi && data.apiInfo) {
                 const api = data.apiInfo;
                 document.getElementById('drawerExtInfo').innerHTML = `
                     <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">接口信息</h3>
                     <div class="text-[13px] text-[#606266] space-y-4 pl-4">
-                        <div class="grid grid-cols-2 gap-y-3">
-                            <div><span class="text-[#909399]">接口URL：</span>${api.url}</div>
-                            <div><span class="text-[#909399]">接口Path：</span>${api.path}</div>
-                            <div><span class="text-[#909399]">请求类型：</span>${api.requestType}</div>
-                            <div><span class="text-[#909399]">返回类型：</span>${api.returnType}</div>
+                        <div class="grid grid-cols-2 gap-y-4">
+                            <div><span class="text-[#909399]">接口URL：</span><span class="text-[#303133]">${api.url}</span></div>
+                            <div><span class="text-[#909399]">请求类型：</span><span class="text-[#303133]">${api.requestType}</span></div>
                         </div>
-                        <div><span class="text-[#909399]">接口描述：</span>${api.description}</div>
+                        <div><span class="text-[#909399]">接口描述：</span><span class="text-[#303133]">${api.description}</span></div>
                         <div class="mt-4">
                             <h4 class="font-bold text-[#303133] mb-3">请求参数</h4>
-                            <div class="bg-[#f8f8f9] rounded-lg overflow-hidden">
+                            <div class="bg-[#f8f8f9] rounded overflow-hidden">
                                 <table class="w-full text-[13px]">
                                     <thead class="bg-[#f0f0f0]">
                                         <tr>
@@ -474,7 +542,7 @@
                         </div>
                         <div>
                             <h4 class="font-bold text-[#303133] mb-3">返回参数</h4>
-                            <div class="bg-[#f8f8f9] rounded-lg overflow-hidden">
+                            <div class="bg-[#f8f8f9] rounded overflow-hidden">
                                 <table class="w-full text-[13px]">
                                     <thead class="bg-[#f0f0f0]">
                                         <tr>
@@ -497,7 +565,7 @@
                         </div>
                         <div>
                             <h4 class="font-bold text-[#303133] mb-3">错误代码</h4>
-                            <div class="bg-[#f8f8f9] rounded-lg overflow-hidden">
+                            <div class="bg-[#f8f8f9] rounded overflow-hidden">
                                 <table class="w-full text-[13px]">
                                     <thead class="bg-[#f0f0f0]">
                                         <tr>
@@ -520,26 +588,60 @@
                         </div>
                     </div>
                 `;
-            } else if (data.tableInfo) {
+            } else if (isTable && data.tableInfo) {
                 const table = data.tableInfo;
                 document.getElementById('drawerExtInfo').innerHTML = `
                     <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">库表信息</h3>
-                    <div class="text-[13px] text-[#606266] space-y-3 pl-4">
-                        <div class="grid grid-cols-2 gap-y-3">
-                            <div><span class="text-[#909399]">数据源名称：</span>${table.dataSourceName}</div>
-                            <div><span class="text-[#909399]">数据表名称：</span>${table.tableName}</div>
-                            <div><span class="text-[#909399]">是否接入样例数据：</span>${table.hasSampleData}</div>
-                            <div><span class="text-[#909399]">样例数据文件：</span><span class="text-[#1c7ffd]">${table.sampleDataFile}</span></div>
-                            <div><span class="text-[#909399]">是否上传质量报告：</span>${table.hasQualityReport}</div>
-                            <div><span class="text-[#909399]">质量报告文件：</span>${table.qualityReportFile}</div>
+                    <div class="text-[13px] text-[#606266] space-y-4 pl-4">
+                        <div class="grid grid-cols-2 gap-y-4">
+                            <div><span class="text-[#909399]">数据源名称：</span><span class="text-[#303133]">${table.dataSourceName}</span></div>
+                            <div><span class="text-[#909399]">数据表名称：</span><span class="text-[#303133]">${table.tableName}</span></div>
+                        </div>
+                        <div class="mt-4">
+                            <h4 class="font-bold text-[#303133] mb-3">表字段列表</h4>
+                            <div class="bg-[#f8f8f9] rounded overflow-hidden">
+                                <table class="w-full text-[13px]">
+                                    <thead class="bg-[#f0f0f0]">
+                                        <tr>
+                                            <th class="py-2 px-4 text-left font-medium text-[#909399]">序号</th>
+                                            <th class="py-2 px-4 text-left font-medium text-[#909399]">字段名称</th>
+                                            <th class="py-2 px-4 text-left font-medium text-[#909399]">字段类型</th>
+                                            <th class="py-2 px-4 text-left font-medium text-[#909399]">字段描述</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${table.tableFields.map(f => `
+                                            <tr class="border-t border-gray-200">
+                                                <td class="py-3 px-4">${f.serial}</td>
+                                                <td class="py-3 px-4">${f.name}</td>
+                                                <td class="py-3 px-4">${f.type}</td>
+                                                <td class="py-3 px-4">${f.desc}</td>
+                                            </tr>
+                                        `).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 `;
             } else {
                 document.getElementById('drawerExtInfo').innerHTML = '';
             }
-            
-            document.getElementById('drawerSampleData').textContent = data.sampleData;
+
+            // 样例数据
+            if (isTable) {
+                document.getElementById('drawerSampleContent').innerHTML = `
+                    <div class="flex justify-end mb-4">
+                        <button class="h-8 px-4 bg-[#1c7ffd] text-white rounded text-[13px] hover:bg-blue-600 transition-colors">导出</button>
+                    </div>
+                    ${renderCsvTable(data.sampleData)}
+                `;
+            } else {
+                document.getElementById('drawerSampleContent').innerHTML = `
+                    <textarea readonly class="w-full h-[200px] bg-[#f8f9fb] border border-gray-200 rounded p-4 text-[13px] leading-6 text-[#606266] resize-none font-mono">${data.sampleData}</textarea>
+                `;
+            }
+
             document.getElementById('drawerOverlay').classList.remove('hidden');
             document.getElementById('detailDrawer').classList.remove('translate-x-full');
             switchDrawerTab('basic');

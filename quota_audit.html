@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数据沙箱平台 - 模型申请审核</title>
+    <title>数据沙箱平台 - 配额分配审核</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -47,11 +47,10 @@
                 <span class="mx-2">/</span>
                 <span>待处理</span>
                 <span class="mx-2">/</span>
-                <span class="font-medium text-[#303133]">模型申请审核</span>
+                <span class="font-medium text-[#303133]">配额分配审核</span>
             </div>
 
             <div class="flex-1 p-6 flex flex-col gap-5 overflow-y-auto">
-                <!-- 标签页切换 -->
                 <div class="bg-white rounded-t-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] px-6 pt-4 shrink-0">
                     <div class="flex border-b border-gray-100">
                         <div id="pendingTab" class="pb-3 px-4 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium cursor-pointer transition-colors" onclick="switchTab('pending')">待审核</div>
@@ -59,23 +58,14 @@
                     </div>
                 </div>
 
-                <!-- 搜索区 -->
                 <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] p-6 shrink-0">
                     <div class="grid grid-cols-3 gap-x-8 gap-y-4">
                         <div class="flex items-center gap-3">
-                            <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">模型名称：</label>
-                            <input type="text" placeholder="请输入模型名称" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
+                            <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">部门名称：</label>
+                            <input type="text" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
                         </div>
-                        <div class="flex items-center gap-3">
-                            <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">模型所属方：</label>
-                            <input type="text" placeholder="请输入模型所属方" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">模型申请方：</label>
-                            <input type="text" placeholder="请输入模型申请方" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
-                        </div>
-                    </div>
-                    <div class="flex justify-end gap-3 mt-5">
+                        <div class="flex items-center gap-3"></div>
+                         <div class="flex justify-end gap-3">
                         <button class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px] flex items-center gap-1">
                             <i class="fa-solid fa-rotate-right"></i> 重置
                         </button>
@@ -83,12 +73,13 @@
                             <i class="fa-solid fa-magnifying-glass"></i> 查询
                         </button>
                     </div>
+                    </div>
                 </div>
 
                 <!-- 待审核列表 -->
                 <div id="pending-list" class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] flex-1 flex flex-col p-6">
                     <div class="flex justify-between items-center mb-4">
-                        <h3 class="font-bold text-[#303133]">模型申请待审核列表</h3>
+                        <h3 class="font-bold text-[#303133]">配额分配待审核列表</h3>
                         <div class="flex gap-3 text-gray-400">
                             <i class="fa-solid fa-rotate-right cursor-pointer hover:text-[#1c7ffd] transition-colors"></i>
                             <i class="fa-solid fa-gear cursor-pointer hover:text-[#1c7ffd] transition-colors"></i>
@@ -99,9 +90,7 @@
                             <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
                                 <tr>
                                     <th class="py-3 px-4 w-16">序号</th>
-                                    <th class="py-3 px-4">模型名称</th>
-                                    <th class="py-3 px-4">模型所属方</th>
-                                    <th class="py-3 px-4">模型申请方</th>
+                                    <th class="py-3 px-4">部门名称</th>
                                     <th class="py-3 px-4 cursor-pointer hover:text-[#1c7ffd] transition-colors">申请时间 <i class="fa-solid fa-sort"></i></th>
                                     <th class="py-3 px-4 w-36">操作</th>
                                 </tr>
@@ -109,42 +98,25 @@
                             <tbody>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">1</td>
-                                    
-                                    <td class="py-4 px-4">社保核验模型_0420</td>
-                                    <td class="py-4 px-4">山东亿云信息技术有限公司</td>
-                                    <td class="py-4 px-4">山东省人社厅</td>
-                                    <td class="py-4 px-4">2026-07-14 10:30:15</td>
+                                    <td class="py-4 px-4">数据要素事业部</td>
+                                    <td class="py-4 px-4">2026-07-17 10:30:15</td>
                                     <td class="py-4 px-4">
-                                        <a href="#" class="text-[#1c7ffd] hover:underline">审核</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline">分配</a>
                                     </td>
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">2</td>
-                                    
-                                    <td class="py-4 px-4">zh0319001模型</td>
-                                    <td class="py-4 px-4">济南**数据科技有限公司</td>
-                                    <td class="py-4 px-4">济南市科技局</td>
-                                    <td class="py-4 px-4">2026-07-14 09:20:30</td>
+                                    <td class="py-4 px-4">数据研发部</td>
+                                    <td class="py-4 px-4">2026-07-16 14:20:30</td>
                                     <td class="py-4 px-4">
-                                        <a href="#" class="text-[#1c7ffd] hover:underline">审核</a>
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                                    <td class="py-4 px-4">3</td>
-                                    
-                                    <td class="py-4 px-4">zhou模型测试_0310001</td>
-                                    <td class="py-4 px-4">青岛**信息服务有限公司</td>
-                                    <td class="py-4 px-4">青岛市经信局</td>
-                                    <td class="py-4 px-4">2026-07-13 16:15:00</td>
-                                    <td class="py-4 px-4">
-                                        <a href="#" class="text-[#1c7ffd] hover:underline">审核</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline">分配</a>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="flex justify-end items-center mt-4 text-[#606266] text-sm">
-                        <span class="mr-4">共 3 条</span>
+                        <span class="mr-4">共 2 条</span>
                         <div class="flex items-center gap-1">
                             <button class="w-7 h-7 flex items-center justify-center border border-gray-200 rounded text-gray-400 bg-gray-50 cursor-not-allowed">
                                 <i class="fa-solid fa-angle-left"></i>
@@ -166,7 +138,7 @@
                 <!-- 已审核列表 -->
                 <div id="approved-list" class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] flex-1 flex flex-col p-6 hidden">
                     <div class="flex justify-between items-center mb-4">
-                        <h3 class="font-bold text-[#303133]">模型申请已审核列表</h3>
+                        <h3 class="font-bold text-[#303133]">配额分配已审核列表</h3>
                         <div class="flex gap-3 text-gray-400">
                             <i class="fa-solid fa-rotate-right cursor-pointer hover:text-[#1c7ffd] transition-colors"></i>
                             <i class="fa-solid fa-gear cursor-pointer hover:text-[#1c7ffd] transition-colors"></i>
@@ -177,9 +149,7 @@
                             <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
                                 <tr>
                                     <th class="py-3 px-4 w-16">序号</th>
-                                    <th class="py-3 px-4">模型名称</th>
-                                    <th class="py-3 px-4">模型所属方</th>
-                                    <th class="py-3 px-4">模型申请方</th>
+                                    <th class="py-3 px-4">部门名称</th>
                                     <th class="py-3 px-4 text-center relative">
                                         <div class="flex items-center justify-center gap-1">
                                             <span>审核结果</span>
@@ -187,7 +157,7 @@
                                         </div>
                                         <div id="auditResultFilter" class="hidden absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded shadow-lg p-3 z-30 w-[160px]">
                                             <div class="space-y-2 mb-3">
-                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]"><input type="checkbox" class="w-3.5 h-3.5"> 已通过</label>
+                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]"><input type="checkbox" class="w-3.5 h-3.5"> 已分配</label>
                                                 <label class="flex items-center gap-2 cursor-pointer text-[13px]"><input type="checkbox" class="w-3.5 h-3.5"> 已驳回</label>
                                             </div>
                                             <div class="flex justify-end gap-2">
@@ -203,42 +173,22 @@
                             <tbody>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">1</td>
-                                    
-                                    <td class="py-4 px-4">lxmceshimodel0311</td>
-                                    <td class="py-4 px-4">烟台**数据运营有限公司</td>
-                                    <td class="py-4 px-4">烟台市大数据局</td>
+                                    <td class="py-4 px-4">市场运营部</td>
                                     <td class="py-4 px-4 text-center">
-                                        <span class="inline-flex items-center justify-center h-5 px-2.5 bg-green-50 text-green-600 rounded-sm text-[12px]">已通过</span>
+                                        <span class="inline-flex items-center justify-center h-5 px-2.5 bg-green-50 text-green-600 rounded-sm text-[12px]">已分配</span>
                                     </td>
-                                    <td class="py-4 px-4">2026-07-12 14:30:00</td>
+                                    <td class="py-4 px-4">2026-07-15 09:15:00</td>
                                     <td class="py-4 px-4">
                                         <a href="#" class="text-[#1c7ffd] hover:underline">查看</a>
                                     </td>
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                     <td class="py-4 px-4">2</td>
-                                    
-                                    <td class="py-4 px-4">测试就业模型_20260224001</td>
-                                    <td class="py-4 px-4">山东**健康科技有限公司</td>
-                                    <td class="py-4 px-4">山东省人社厅</td>
+                                    <td class="py-4 px-4">平台架构部</td>
                                     <td class="py-4 px-4 text-center">
                                         <span class="inline-flex items-center justify-center h-5 px-2.5 bg-red-50 text-red-600 rounded-sm text-[12px]">已驳回</span>
                                     </td>
-                                    <td class="py-4 px-4">2026-07-11 10:15:00</td>
-                                    <td class="py-4 px-4">
-                                        <a href="#" class="text-[#1c7ffd] hover:underline">查看</a>
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                                    <td class="py-4 px-4">3</td>
-                                    
-                                    <td class="py-4 px-4">房产登记模型_0501</td>
-                                    <td class="py-4 px-4">潍坊**信息科技有限公司</td>
-                                    <td class="py-4 px-4">潍坊市住建局</td>
-                                    <td class="py-4 px-4 text-center">
-                                        <span class="inline-flex items-center justify-center h-5 px-2.5 bg-green-50 text-green-600 rounded-sm text-[12px]">已通过</span>
-                                    </td>
-                                    <td class="py-4 px-4">2026-07-10 16:45:00</td>
+                                    <td class="py-4 px-4">2026-07-14 16:45:00</td>
                                     <td class="py-4 px-4">
                                         <a href="#" class="text-[#1c7ffd] hover:underline">查看</a>
                                     </td>
@@ -247,7 +197,7 @@
                         </table>
                     </div>
                     <div class="flex justify-end items-center mt-4 text-[#606266] text-sm">
-                        <span class="mr-4">共 3 条</span>
+                        <span class="mr-4">共 2 条</span>
                         <div class="flex items-center gap-1">
                             <button class="w-7 h-7 flex items-center justify-center border border-gray-200 rounded text-gray-400 bg-gray-50 cursor-not-allowed">
                                 <i class="fa-solid fa-angle-left"></i>
@@ -269,12 +219,13 @@
         </main>
     </div>
 
-    <div id="modelApplyAuditDrawer" class="fixed inset-0 z-50 hidden">
-        <div class="absolute inset-0 bg-black/50" onclick="closeModelApplyAuditDrawer()"></div>
+    <!-- 配额分配审核抽屉 -->
+    <div id="quotaAssignDrawer" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/50" onclick="closeQuotaAssignDrawer()"></div>
         <div class="absolute right-0 top-0 h-full w-[520px] bg-white shadow-2xl flex flex-col">
             <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
-                <span class="font-medium text-[#303133]">模型申请审核</span>
-                <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeModelApplyAuditDrawer()"></i>
+                <span class="font-medium text-[#303133]">配额分配审核</span>
+                <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeQuotaAssignDrawer()"></i>
             </div>
             <div class="flex-1 overflow-y-auto p-6">
                 <div class="space-y-6">
@@ -282,27 +233,27 @@
                         <h3 class="text-[15px] font-medium text-[#303133] mb-4">基本信息</h3>
                         <div class="grid grid-cols-2 gap-x-6 gap-y-4">
                             <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[100px]">模型名称：</label>
-                                <span class="text-[#303133]">社保核验模型_0420</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[100px]">模型所属方：</label>
-                                <span class="text-[#303133]">山东亿云信息技术有限公司</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[100px]">模型申请方：</label>
-                                <span class="text-[#303133]">山东省人社厅</span>
+                                <label class="text-[#606266] whitespace-nowrap w-[100px]">部门名称：</label>
+                                <span class="text-[#303133]">数据要素事业部</span>
                             </div>
                             <div class="flex items-center gap-3">
                                 <label class="text-[#606266] whitespace-nowrap w-[100px]">申请时间：</label>
-                                <span class="text-[#303133]">2026-07-14 10:30:15</span>
+                                <span class="text-[#303133]">2026-07-17 10:30:15</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <label class="text-[#606266] whitespace-nowrap w-[100px]">CPU配额（核）：</label>
+                                <span class="text-[#303133]">2</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <label class="text-[#606266] whitespace-nowrap w-[100px]">内存配额（Mb）：</label>
+                                <span class="text-[#303133]">2048</span>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <h3 class="text-[15px] font-medium text-[#303133] mb-4">申请说明</h3>
+                        <h3 class="text-[15px] font-medium text-[#303133] mb-4">申请原因</h3>
                         <div class="bg-gray-50 rounded p-4 text-[#606266] text-[13px]">
-                            申请使用社保核验模型，用于就业服务业务场景，需要获取相关数据进行核验。
+                            因业务发展需要，申请增加配额用于数据处理。
                         </div>
                     </div>
                     <div>
@@ -311,7 +262,7 @@
                             <div class="flex items-center gap-4">
                                 <label class="flex items-center gap-2 cursor-pointer">
                                     <input type="radio" name="auditResult" value="approve" class="w-4 h-4 text-[#1c7ffd]">
-                                    <span class="text-[#303133]">通过</span>
+                                    <span class="text-[#303133]">分配</span>
                                 </label>
                                 <label class="flex items-center gap-2 cursor-pointer">
                                     <input type="radio" name="auditResult" value="reject" class="w-4 h-4 text-[#1c7ffd]">
@@ -327,18 +278,20 @@
                 </div>
             </div>
             <div class="flex justify-end gap-3 px-6 py-4 border-t border-gray-200">
-                <button class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px]" onclick="closeModelApplyAuditDrawer()">取消</button>
-                <button class="h-8 px-5 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px]" onclick="submitAudit()">提交审核</button>
+                <button class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px]" onclick="closeQuotaAssignDrawer()">取消</button>
+                <button class="h-8 px-5 bg-red-500 text-white rounded hover:bg-red-600 transition-colors text-[13px]" onclick="closeQuotaAssignDrawer()">驳回</button>
+                <button class="h-8 px-5 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px]" onclick="closeQuotaAssignDrawer()">分配</button>
             </div>
         </div>
     </div>
 
-    <div id="modelApplyViewDrawer" class="fixed inset-0 z-50 hidden">
-        <div class="absolute inset-0 bg-black/50" onclick="closeModelApplyViewDrawer()"></div>
+    <!-- 配额分配查看抽屉 -->
+    <div id="quotaViewDrawer" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/50" onclick="closeQuotaViewDrawer()"></div>
         <div class="absolute right-0 top-0 h-full w-[480px] bg-white shadow-2xl flex flex-col">
             <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
-                <span class="font-medium text-[#303133]">模型申请详情</span>
-                <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeModelApplyViewDrawer()"></i>
+                <span class="font-medium text-[#303133]">配额分配详情</span>
+                <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeQuotaViewDrawer()"></i>
             </div>
             <div class="flex-1 overflow-y-auto p-6">
                 <div class="space-y-6">
@@ -346,47 +299,47 @@
                         <h3 class="text-[15px] font-medium text-[#303133] mb-4">基本信息</h3>
                         <div class="grid grid-cols-2 gap-x-6 gap-y-4">
                             <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[100px]">模型名称：</label>
-                                <span class="text-[#303133]">lxmceshimodel0311</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[100px]">模型所属方：</label>
-                                <span class="text-[#303133]">烟台**数据运营有限公司</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[100px]">模型申请方：</label>
-                                <span class="text-[#303133]">烟台市大数据局</span>
+                                <label class="text-[#606266] whitespace-nowrap w-[100px]">部门名称：</label>
+                                <span class="text-[#303133]">市场运营部</span>
                             </div>
                             <div class="flex items-center gap-3">
                                 <label class="text-[#606266] whitespace-nowrap w-[100px]">申请时间：</label>
-                                <span class="text-[#303133]">2026-07-12 14:30:00</span>
+                                <span class="text-[#303133]">2026-07-15 09:00:00</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <label class="text-[#606266] whitespace-nowrap w-[100px]">CPU配额（核）：</label>
+                                <span class="text-[#303133]">1</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <label class="text-[#606266] whitespace-nowrap w-[100px]">内存配额（Mb）：</label>
+                                <span class="text-[#303133]">1024</span>
                             </div>
                             <div class="flex items-center gap-3">
                                 <label class="text-[#606266] whitespace-nowrap w-[100px]">审核结果：</label>
-                                <span class="inline-flex items-center justify-center h-5 px-2.5 bg-green-50 text-green-600 rounded-sm text-[12px]">已通过</span>
+                                <span class="inline-flex items-center justify-center h-5 px-2.5 bg-green-50 text-green-600 rounded-sm text-[12px]">已分配</span>
                             </div>
                             <div class="flex items-center gap-3">
                                 <label class="text-[#606266] whitespace-nowrap w-[100px]">审核时间：</label>
-                                <span class="text-[#303133]">2026-07-12 15:00:00</span>
+                                <span class="text-[#303133]">2026-07-15 09:15:00</span>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <h3 class="text-[15px] font-medium text-[#303133] mb-4">申请说明</h3>
+                        <h3 class="text-[15px] font-medium text-[#303133] mb-4">申请原因</h3>
                         <div class="bg-gray-50 rounded p-4 text-[#606266] text-[13px]">
-                            申请使用模型进行数据分析处理。
+                            申请配额用于市场数据分析。
                         </div>
                     </div>
                     <div>
                         <h3 class="text-[15px] font-medium text-[#303133] mb-4">审核意见</h3>
                         <div class="bg-gray-50 rounded p-4 text-[#606266] text-[13px]">
-                            同意申请，允许使用该模型。
+                            同意分配。
                         </div>
                     </div>
                 </div>
             </div>
             <div class="flex justify-end gap-3 px-6 py-4 border-t border-gray-200">
-                <button class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px]" onclick="closeModelApplyViewDrawer()">关闭</button>
+                <button class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px]" onclick="closeQuotaViewDrawer()">关闭</button>
             </div>
         </div>
     </div>
@@ -428,25 +381,20 @@
             }
         });
 
-        function openModelApplyAuditDrawer() {
-            document.getElementById('modelApplyAuditDrawer').classList.remove('hidden');
+        function openQuotaAssignDrawer() {
+            document.getElementById('quotaAssignDrawer').classList.remove('hidden');
         }
 
-        function closeModelApplyAuditDrawer() {
-            document.getElementById('modelApplyAuditDrawer').classList.add('hidden');
+        function closeQuotaAssignDrawer() {
+            document.getElementById('quotaAssignDrawer').classList.add('hidden');
         }
 
-        function openModelApplyViewDrawer() {
-            document.getElementById('modelApplyViewDrawer').classList.remove('hidden');
+        function openQuotaViewDrawer() {
+            document.getElementById('quotaViewDrawer').classList.remove('hidden');
         }
 
-        function closeModelApplyViewDrawer() {
-            document.getElementById('modelApplyViewDrawer').classList.add('hidden');
-        }
-
-        function submitAudit() {
-            closeModelApplyAuditDrawer();
-            alert('审核提交成功');
+        function closeQuotaViewDrawer() {
+            document.getElementById('quotaViewDrawer').classList.add('hidden');
         }
     </script>
 </body>

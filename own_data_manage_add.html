@@ -59,7 +59,7 @@
                             </div>
                             <div class="relative z-10 flex items-center bg-white px-2">
                                 <div id="step2Badge" class="w-8 h-8 rounded-full border border-gray-300 text-gray-400 bg-white flex items-center justify-center font-bold">2</div>
-                                <span id="step2Label" class="ml-3 text-gray-400">服务接口调试信息</span>
+                                <span id="step2Label" class="ml-3 text-gray-400">接口调试信息</span>
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                     <div class="flex-1 min-h-0 overflow-y-auto px-6 pb-6 flex justify-center">
                         <div class="w-full max-w-[900px] flex flex-col gap-6 pt-2">
                             <div class="flex items-center">
-                                <label class="w-[160px] text-right shrink-0 text-[#606266]"><span class="text-red-500 mr-1">*</span>服务名称：</label>
+                                <label class="w-[160px] text-right shrink-0 text-[#606266]"><span class="text-red-500 mr-1">*</span>资源名称：</label>
                                 <input type="text" placeholder="请输入" class="ml-4 flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#1c7ffd]">
                             </div>
 
@@ -102,11 +102,6 @@
                                 </div>
 
                                 <div class="flex items-center">
-                                    <label class="w-[160px] text-right shrink-0 text-[#606266]"><span class="text-red-500 mr-1">*</span>接口Path：</label>
-                                    <input type="text" placeholder="请输入" class="ml-4 flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#1c7ffd]">
-                                </div>
-
-                                <div class="flex items-center">
                                     <label class="w-[160px] text-right shrink-0 text-[#606266]"><span class="text-red-500 mr-1">*</span>请求类型：</label>
                                     <div class="ml-4 flex gap-8">
                                         <label class="flex items-center cursor-pointer text-[#1c7ffd]">
@@ -118,23 +113,24 @@
                                     </div>
                                 </div>
 
-                                <div class="flex items-center">
-                                    <label class="w-[160px] text-right shrink-0 text-[#606266]">返回类型：</label>
-                                    <div class="ml-4 flex gap-8">
-                                        <label class="flex items-center cursor-pointer text-[#1c7ffd]">
-                                            <input type="radio" name="returnType" checked class="mr-2 w-3.5 h-3.5 text-[#1c7ffd] border-[#1c7ffd] focus:ring-[#1c7ffd]">json
-                                        </label>
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" name="returnType" class="mr-2 w-3.5 h-3.5 text-[#1c7ffd]">xml
-                                        </label>
-                                    </div>
-                                </div>
-
                                 <div class="flex items-start">
                                     <label class="w-[160px] text-right shrink-0 text-[#606266] mt-2"><span class="text-red-500 mr-1">*</span>接口描述：</label>
                                     <textarea rows="3" class="ml-4 flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#1c7ffd] resize-none" placeholder="请输入"></textarea>
                                 </div>
 
+                            <div class="flex items-center">
+                                <label class="w-[160px] text-right shrink-0 text-[#606266]"><span class="text-red-500 mr-1">*</span>数据更新周期：</label>
+                                <div class="relative ml-4">
+                                    <select class="flex-1 min-w-[200px] h-10 px-3 border border-gray-300 rounded text-sm focus:outline-none focus:border-[#1c7ffd] appearance-none cursor-pointer bg-white">
+                                        <option>每天</option>
+                                        <option>每周</option>
+                                        <option>每月</option>
+                                        <option>每季度</option>
+                                        <option>每年</option>
+                                    </select>
+                                    <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-gray-400 pointer-events-none"></i>
+                                </div>
+                            </div>
                                 <div class="flex items-start">
                                     <label class="w-[160px] text-right shrink-0 text-[#606266] mt-2"><span class="text-red-500 mr-1">*</span>样例数据：</label>
                                     <textarea rows="4" class="ml-4 flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#1c7ffd] resize-none" placeholder="请输入样例数据"></textarea>
@@ -143,7 +139,12 @@
                                 <div class="border-b border-gray-100"></div>
 
                                 <div class="flex flex-col gap-3">
-                                    <div class="text-[#606266] font-medium"><span class="text-red-500 mr-1">*</span>请求参数</div>
+                                    <div class="flex justify-between items-center">
+                                        <div class="text-[#606266] font-medium"><span class="text-red-500 mr-1">*</span>请求参数</div>
+                                        <button onclick="openSmartFillModal('request')" class="text-[#1c7ffd] text-sm flex items-center gap-1 hover:opacity-80 transition-opacity">
+                                            <i class="fa-solid fa-wand-magic-sparkles"></i> 智能填写
+                                        </button>
+                                    </div>
                                     <table class="w-full text-center text-[13px] text-[#606266] border-collapse">
                                         <thead class="bg-[#f8f8f9] text-[#909399] font-medium">
                                             <tr>
@@ -155,7 +156,7 @@
                                                 <th class="py-3 px-4 font-medium border-b border-gray-100">操作</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="requestParamsBody">
                                             <tr class="border-b border-gray-100">
                                                 <td class="py-3 px-4">qymc</td>
                                                 <td class="py-3 px-4">企业名称</td>
@@ -175,7 +176,12 @@
                                 </div>
 
                                 <div class="flex flex-col gap-3">
-                                    <div class="text-[#606266] font-medium"><span class="text-red-500 mr-1">*</span>返回参数</div>
+                                    <div class="flex justify-between items-center">
+                                        <div class="text-[#606266] font-medium"><span class="text-red-500 mr-1">*</span>返回参数</div>
+                                        <button onclick="openSmartFillModal('response')" class="text-[#1c7ffd] text-sm flex items-center gap-1 hover:opacity-80 transition-opacity">
+                                            <i class="fa-solid fa-wand-magic-sparkles"></i> 智能填写
+                                        </button>
+                                    </div>
                                     <table class="w-full text-center text-[13px] text-[#606266] border-collapse">
                                         <thead class="bg-[#f8f8f9] text-[#909399] font-medium">
                                             <tr>
@@ -184,7 +190,7 @@
                                                 <th class="py-3 px-4 font-medium border-b border-gray-100 w-[20%]">操作</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="responseParamsBody">
                                             <tr class="border-b border-gray-100">
                                                 <td class="py-3 px-4">creditCode</td>
                                                 <td class="py-3 px-4">统一社会信用代码</td>
@@ -201,7 +207,12 @@
                                 </div>
 
                                 <div class="flex flex-col gap-3">
-                                    <div class="text-[#606266] font-medium"><span class="text-red-500 mr-1">*</span>错误代码</div>
+                                    <div class="flex justify-between items-center">
+                                        <div class="text-[#606266] font-medium"><span class="text-red-500 mr-1">*</span>错误代码</div>
+                                        <button onclick="openSmartFillModal('error')" class="text-[#1c7ffd] text-sm flex items-center gap-1 hover:opacity-80 transition-opacity">
+                                            <i class="fa-solid fa-wand-magic-sparkles"></i> 智能填写
+                                        </button>
+                                    </div>
                                     <table class="w-full text-center text-[13px] text-[#606266] border-collapse">
                                         <thead class="bg-[#f8f8f9] text-[#909399] font-medium">
                                             <tr>
@@ -210,7 +221,7 @@
                                                 <th class="py-3 px-4 font-medium border-b border-gray-100 w-[20%]">操作</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="errorCodeBody">
                                             <tr class="border-b border-gray-100">
                                                 <td class="py-3 px-4">400</td>
                                                 <td class="py-3 px-4">请求参数不合法</td>
@@ -299,7 +310,19 @@
                                         </table>
                                     </div>
                                 </div>
-
+                            <div class="flex items-center">
+                                <label class="w-[160px] text-right shrink-0 text-[#606266]"><span class="text-red-500 mr-1">*</span>数据更新周期：</label>
+                                <div class="relative ml-4">
+                                    <select class="flex-1 min-w-[200px] h-10 px-3 border border-gray-300 rounded text-sm focus:outline-none focus:border-[#1c7ffd] appearance-none cursor-pointer bg-white">
+                                        <option>每天</option>
+                                        <option>每周</option>
+                                        <option>每月</option>
+                                        <option>每季度</option>
+                                        <option>每年</option>
+                                    </select>
+                                    <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-gray-400 pointer-events-none"></i>
+                                </div>
+                            </div>
                                 <div class="flex items-start">
                                     <label class="w-[160px] text-right shrink-0 text-[#606266] mt-2"><span class="text-red-500 mr-1">*</span>样例数据文件：</label>
                                     <div class="ml-4 flex-1">
@@ -318,16 +341,6 @@
                                     </div>
                                 </div>
 
-                                <div class="flex items-start">
-                                    <label class="w-[160px] text-right shrink-0 text-[#606266] mt-2">质量报告文件：</label>
-                                    <div class="ml-4 flex-1">
-                                        <label class="px-4 py-2 border border-gray-300 rounded text-sm text-[#606266] hover:border-[#1c7ffd] hover:text-[#1c7ffd] cursor-pointer transition-colors flex items-center gap-1 w-fit">
-                                            <i class="fa-solid fa-upload"></i> 上传文件
-                                            <input type="file" accept=".docx,.doc,.pdf" class="hidden" onchange="handleQualityFile(this)">
-                                        </label>
-                                        <div class="text-[12px] text-[#909399] mt-2">支持扩展名：.docx,.doc,.pdf，可上传一个，每个文件最大10MB</div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -384,7 +397,7 @@
         function submitOwnData() {
             const toast = document.getElementById('toast');
             const toastText = document.getElementById('toastText');
-            toastText.textContent = '库表服务提交成功';
+            toastText.textContent = '库表资源提交成功';
             toast.classList.remove('opacity-0', '-translate-y-4');
             toast.classList.add('opacity-100', 'translate-y-0');
 
@@ -429,6 +442,166 @@
                 switchServiceType('api');
             }
         });
+    </script>
+
+    <!-- 智能填写弹窗 -->
+    <div id="smartFillModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-30" onclick="closeSmartFillModal()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-xl w-[640px] flex flex-col max-h-[80vh]">
+            <div class="h-14 border-b border-gray-100 flex items-center justify-between px-6 shrink-0">
+                <span id="smartFillTitle" class="font-medium text-[#303133]">智能填写</span>
+                <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-[#1c7ffd] text-lg" onclick="closeSmartFillModal()"></i>
+            </div>
+            <div class="p-6 flex-1 overflow-y-auto">
+                <div class="mb-4">
+                    <div class="text-[#606266] text-sm mb-2">JSON样例：</div>
+                    <pre id="smartFillSample" class="bg-[#f8f8f9] rounded p-3 text-[13px] text-[#606266] overflow-x-auto"></pre>
+                </div>
+                <div>
+                    <div class="text-[#606266] text-sm mb-2">请输入JSON：</div>
+                    <textarea id="smartFillInput" rows="8" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#1c7ffd] resize-none" placeholder="请粘贴JSON数据"></textarea>
+                </div>
+            </div>
+            <div class="px-6 py-4 border-t border-gray-100 flex justify-end gap-3 shrink-0">
+                <button onclick="closeSmartFillModal()" class="px-5 h-8 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-sm">取消</button>
+                <button onclick="parseSmartFill()" class="px-5 h-8 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-sm">解析</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSmartFillType = '';
+        const smartFillSamples = {
+            request: `{\n    "id_card": "610103199501011001",\n    "name": "张三",\n    "phone": "13800138001"\n}`,
+            response: `{\n    "request_id": "req_20240101120000",\n    "data": {\n        "grade": "AAA",\n        "recommend": "3.85%",\n        "risk_factors": []\n    }\n}`,
+            error: `{\n    "400": "请求参数不合法",\n    "401": "未授权访问",\n    "500": "资源器内部错误",\n    "502": "网关错误",\n    "503": "资源不可用"\n}`
+        };
+
+        function openSmartFillModal(type) {
+            currentSmartFillType = type;
+            const titles = {
+                request: '智能填写 - 请求参数',
+                response: '智能填写 - 返回参数',
+                error: '智能填写 - 错误代码'
+            };
+            document.getElementById('smartFillTitle').textContent = titles[type] || '智能填写';
+            document.getElementById('smartFillSample').textContent = smartFillSamples[type] || '';
+            document.getElementById('smartFillInput').value = '';
+            document.getElementById('smartFillModal').classList.remove('hidden');
+        }
+
+        function closeSmartFillModal() {
+            document.getElementById('smartFillModal').classList.add('hidden');
+        }
+
+        function parseSmartFill() {
+            const input = document.getElementById('smartFillInput').value.trim();
+            if (!input) {
+                alert('请输入JSON数据');
+                return;
+            }
+            let json;
+            try {
+                json = JSON.parse(input);
+            } catch (e) {
+                alert('JSON格式错误，请检查');
+                return;
+            }
+
+            if (currentSmartFillType === 'request') {
+                fillRequestParams(json);
+            } else if (currentSmartFillType === 'response') {
+                fillResponseParams(json);
+            } else if (currentSmartFillType === 'error') {
+                fillErrorCodes(json);
+            }
+            closeSmartFillModal();
+        }
+
+        function fillRequestParams(json) {
+            const tbody = document.getElementById('requestParamsBody');
+            const keys = Object.keys(json);
+            if (keys.length === 0) return;
+            tbody.innerHTML = '';
+            keys.forEach(key => {
+                const value = json[key];
+                let example = '';
+                if (value === null) {
+                    example = 'null';
+                } else if (typeof value === 'object') {
+                    example = JSON.stringify(value);
+                } else {
+                    example = String(value);
+                }
+                const tr = document.createElement('tr');
+                tr.className = 'border-b border-gray-100';
+                tr.innerHTML = `
+                    <td class="py-3 px-4">${key}</td>
+                    <td class="py-3 px-4"></td>
+                    <td class="py-3 px-4">body</td>
+                    <td class="py-3 px-4">是</td>
+                    <td class="py-3 px-4">${example}</td>
+                    <td class="py-3 px-4 text-[#1c7ffd]">
+                        <a href="#" class="hover:underline">编辑</a>
+                        <a href="#" class="hover:underline ml-2">删除</a>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function fillResponseParams(json) {
+            const tbody = document.getElementById('responseParamsBody');
+            const params = [];
+            function extract(obj, prefix) {
+                Object.keys(obj).forEach(key => {
+                    const fullKey = prefix ? `${prefix}.${key}` : key;
+                    const value = obj[key];
+                    if (value !== null && typeof value === 'object' && !Array.isArray(value)) {
+                        extract(value, fullKey);
+                    } else {
+                        params.push(fullKey);
+                    }
+                });
+            }
+            extract(json, '');
+            if (params.length === 0) return;
+            tbody.innerHTML = '';
+            params.forEach(name => {
+                const tr = document.createElement('tr');
+                tr.className = 'border-b border-gray-100';
+                tr.innerHTML = `
+                    <td class="py-3 px-4 w-[35%]">${name}</td>
+                    <td class="py-3 px-4"></td>
+                    <td class="py-3 px-4 text-[#1c7ffd] w-[20%]">
+                        <a href="#" class="hover:underline">编辑</a>
+                        <a href="#" class="hover:underline ml-2">删除</a>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function fillErrorCodes(json) {
+            const tbody = document.getElementById('errorCodeBody');
+            const keys = Object.keys(json);
+            if (keys.length === 0) return;
+            tbody.innerHTML = '';
+            keys.forEach(key => {
+                const desc = json[key];
+                const tr = document.createElement('tr');
+                tr.className = 'border-b border-gray-100';
+                tr.innerHTML = `
+                    <td class="py-3 px-4">${key}</td>
+                    <td class="py-3 px-4">${desc}</td>
+                    <td class="py-3 px-4 text-[#1c7ffd]">
+                        <a href="#" class="hover:underline">编辑</a>
+                        <a href="#" class="hover:underline ml-2">删除</a>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
     </script>
 </body>
 </html>

@@ -93,10 +93,6 @@
                                     <span class="text-[#303133] flex-1">数据要素数据资源-接口003</span>
                                 </div>
                                 <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">资源编码</span>
-                                    <span class="text-[#303133] flex-1">PD202508140002</span>
-                                </div>
-                                <div class="flex">
                                     <span class="text-[#909399] w-28 text-right pr-4">所属分类</span>
                                     <span class="text-[#303133] flex-1">经济</span>
                                 </div>
@@ -109,12 +105,8 @@
                                     <span class="text-[#303133] flex-1">2026-06-23 10:16:48</span>
                                 </div>
                                 <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">提供方</span>
+                                    <span class="text-[#909399] w-28 text-right pr-4">数据所属方</span>
                                     <span class="text-[#303133] flex-1">数据管理局</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">服务名称</span>
-                                    <span class="text-[#303133] flex-1">数据要素数据资源-接口服务003</span>
                                 </div>
                                 <div class="flex">
                                     <span class="text-[#909399] w-28 text-right pr-4">资源类型</span>
@@ -129,6 +121,80 @@
                                     <div><span class="text-[#909399]">接口Path：</span><span class="text-[#303133]">/company/risk-tags</span></div>
                                     <div><span class="text-[#909399]">请求类型：</span><span class="text-[#303133]">POST</span></div>
                                     <div><span class="text-[#909399]">返回类型：</span><span class="text-[#303133]">json</span></div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <h4 class="font-bold text-[#303133] mb-3">请求参数</h4>
+                                <div class="bg-[#f8f8f9] rounded overflow-hidden">
+                                    <table class="w-full text-[13px]">
+                                        <thead class="bg-[#f0f0f0]">
+                                            <tr>
+                                                <th class="py-2 px-4 text-left font-medium text-[#909399]">序号</th>
+                                                <th class="py-2 px-4 text-left font-medium text-[#909399]">名称</th>
+                                                <th class="py-2 px-4 text-left font-medium text-[#909399]">描述</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-t border-gray-200">
+                                                <td class="py-3 px-4">1</td>
+                                                <td class="py-3 px-4">creditCode</td>
+                                                <td class="py-3 px-4">统一社会信用代码</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="font-bold text-[#303133] mb-3">返回参数</h4>
+                                <div class="bg-[#f8f8f9] rounded overflow-hidden">
+                                    <table class="w-full text-[13px]">
+                                        <thead class="bg-[#f0f0f0]">
+                                            <tr>
+                                                <th class="py-2 px-4 text-left font-medium text-[#909399]">序号</th>
+                                                <th class="py-2 px-4 text-left font-medium text-[#909399]">名称</th>
+                                                <th class="py-2 px-4 text-left font-medium text-[#909399]">描述</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-t border-gray-200">
+                                                <td class="py-3 px-4">1</td>
+                                                <td class="py-3 px-4">riskTags</td>
+                                                <td class="py-3 px-4">风险标签列表</td>
+                                            </tr>
+                                            <tr class="border-t border-gray-200">
+                                                <td class="py-3 px-4">2</td>
+                                                <td class="py-3 px-4">score</td>
+                                                <td class="py-3 px-4">风险评分</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="font-bold text-[#303133] mb-3">错误代码</h4>
+                                <div class="bg-[#f8f8f9] rounded overflow-hidden">
+                                    <table class="w-full text-[13px]">
+                                        <thead class="bg-[#f0f0f0]">
+                                            <tr>
+                                                <th class="py-2 px-4 text-left font-medium text-[#909399]">序号</th>
+                                                <th class="py-2 px-4 text-left font-medium text-[#909399]">错误代码</th>
+                                                <th class="py-2 px-4 text-left font-medium text-[#909399]">参数描述</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-t border-gray-200">
+                                                <td class="py-3 px-4">1</td>
+                                                <td class="py-3 px-4">400</td>
+                                                <td class="py-3 px-4">参数错误</td>
+                                            </tr>
+                                            <tr class="border-t border-gray-200">
+                                                <td class="py-3 px-4">2</td>
+                                                <td class="py-3 px-4">500</td>
+                                                <td class="py-3 px-4">系统错误</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -161,6 +227,7 @@
                     <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeDataBasket()"></i>
                 </div>
                 <div class="flex-1 overflow-y-auto p-4 space-y-6">
+                    <!-- 接口类 -->
                     <div>
                         <div class="text-[#303133] font-medium mb-2 flex items-center gap-2">
                             <i class="fa-solid fa-plug text-[#1c7ffd]"></i>接口类
@@ -168,17 +235,15 @@
                         <table class="w-full text-[13px]">
                             <thead>
                                 <tr class="bg-[#f8f8f9]">
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">目录名称</th>
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">服务名称</th>
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">调用频次平均</th>
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">调用频次峰值</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">资源名称</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">调用频次（平均）（次/天）</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">调用频次（峰值）（次/天）</th>
                                     <th class="py-2 px-3 text-left text-[#909399] font-medium">附件上传状态</th>
                                     <th class="py-2 px-3 text-left text-[#909399] font-medium">操作</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="border-b border-gray-100">
-                                    <td class="py-3 px-3">企业风险信息</td>
                                     <td class="py-3 px-3">数据要素数据资源-接口003</td>
                                     <td class="py-3 px-3">1200次/小时</td>
                                     <td class="py-3 px-3">3500次/小时</td>
@@ -189,9 +254,21 @@
                                         <a href="#" class="hover:underline">上传附件</a>
                                     </td>
                                 </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-3">数据要素数据资源-接口002</td>
+                                    <td class="py-3 px-3">800次/小时</td>
+                                    <td class="py-3 px-3">2500次/小时</td>
+                                    <td class="py-3 px-3"><span class="text-green-600">已上传</span></td>
+                                    <td class="py-3 px-3 text-[#1c7ffd]">
+                                        <a href="#" class="hover:underline mr-2" onclick="openApiAddToBasketModal()">编辑</a>
+                                        <a href="#" class="hover:underline mr-2">移除</a>
+                                        <a href="#" class="hover:underline">重新上传</a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
+                    <!-- 库表类 -->
                     <div>
                         <div class="text-[#303133] font-medium mb-2 flex items-center gap-2">
                             <i class="fa-solid fa-table text-[#1c7ffd]"></i>库表类
@@ -199,8 +276,7 @@
                         <table class="w-full text-[13px]">
                             <thead>
                                 <tr class="bg-[#f8f8f9]">
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">目录名称</th>
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">服务名称</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">资源名称</th>
                                     <th class="py-2 px-3 text-left text-[#909399] font-medium">字段名称</th>
                                     <th class="py-2 px-3 text-left text-[#909399] font-medium">附件上传状态</th>
                                     <th class="py-2 px-3 text-left text-[#909399] font-medium">操作</th>
@@ -208,7 +284,6 @@
                             </thead>
                             <tbody>
                                 <tr class="border-b border-gray-100">
-                                    <td class="py-3 px-3">企业基础信息库</td>
                                     <td class="py-3 px-3">数据要素数据资源-库表003</td>
                                     <td class="py-3 px-3">id, ip, type, create_by, create_time</td>
                                     <td class="py-3 px-3"><span class="text-green-600">已上传</span></td>
@@ -218,13 +293,53 @@
                                         <a href="#" class="hover:underline">重新上传</a>
                                     </td>
                                 </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-3">数据要素数据资源-库表002</td>
+                                    <td class="py-3 px-3">credit_code, change_item, change_before, change_after</td>
+                                    <td class="py-3 px-3"><span class="text-gray-500">未上传</span></td>
+                                    <td class="py-3 px-3 text-[#1c7ffd]">
+                                        <a href="#" class="hover:underline mr-2">编辑</a>
+                                        <a href="#" class="hover:underline mr-2">移除</a>
+                                        <a href="#" class="hover:underline">上传附件</a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
                 <div class="h-14 border-t border-gray-100 flex items-center justify-between px-6 shrink-0 bg-white">
-                    <span class="text-[#606266] text-sm">共 <span class="text-[#1c7ffd] font-medium">2</span> 项资源</span>
-                    <button class="px-5 py-1.5 bg-[#1c7ffd] text-white rounded text-sm hover:bg-blue-600 transition-colors">提交申请</button>
+                    <span class="text-[#606266] text-sm">共 <span class="text-[#1c7ffd] font-medium">4</span> 项资源</span>
+                    <button class="px-5 py-1.5 bg-[#1c7ffd] text-white rounded text-sm hover:bg-blue-600 transition-colors" onclick="openSubmitApplyModal()">提交申请</button>
+                </div>
+            </div>
+
+            <!-- 发起申请工单弹窗 -->
+            <div id="submitApplyModal" class="fixed inset-0 bg-black bg-opacity-30 z-[70] hidden flex items-center justify-center">
+                <div class="bg-white rounded-lg shadow-2xl w-[500px] overflow-hidden">
+                    <div class="h-12 border-b border-gray-100 flex items-center justify-between px-6">
+                        <span class="font-medium text-[#303133]">发起申请工单</span>
+                        <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeSubmitApplyModal()"></i>
+                    </div>
+                    <div class="px-6 py-5">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex items-center gap-3">
+                                <label class="text-[#606266] whitespace-nowrap w-[130px] text-right">使用单位：</label>
+                                <input type="text" id="applyUnit" value="数据要素事业部" readonly class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] bg-gray-50">
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <label class="text-[#606266] whitespace-nowrap w-[130px] text-right"><span class="text-red-500 mr-1">*</span>联系人：</label>
+                                <input type="text" id="applyContact" value="数据要素" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <label class="text-[#606266] whitespace-nowrap w-[130px] text-right"><span class="text-red-500 mr-1">*</span>联系方式：</label>
+                                <input type="text" id="applyPhone" value="13388889999" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 py-4 flex justify-end gap-3 bg-white border-t border-gray-100">
+                        <button class="px-5 h-8 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-sm" onclick="closeSubmitApplyModal()">取 消</button>
+                        <button class="px-5 h-8 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-sm" onclick="submitApply()">确 定</button>
+                    </div>
                 </div>
             </div>
 
@@ -308,6 +423,25 @@
                     setTimeout(() => {
                         overlay.classList.add('hidden');
                     }, 300);
+                }
+
+                function openSubmitApplyModal() {
+                    document.getElementById('submitApplyModal').classList.remove('hidden');
+                }
+
+                function closeSubmitApplyModal() {
+                    document.getElementById('submitApplyModal').classList.add('hidden');
+                }
+
+                function submitApply() {
+                    const contact = document.getElementById('applyContact').value;
+                    const phone = document.getElementById('applyPhone').value;
+                    if (!contact || !phone) {
+                        showAlert('请填写联系人和联系方式');
+                        return;
+                    }
+                    showAlert('工单提交成功！');
+                    closeSubmitApplyModal();
                 }
             </script>
 

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据沙箱平台 - 部门配额管理</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col overflow-hidden bg-[#f0f2f5] text-[14px] text-gray-700">
+    <header class="h-14 bg-[#1c7ffd] flex justify-between items-center px-6 text-white shrink-0 shadow-sm z-10">
+        <div class="flex items-center gap-2">
+            <i class="fa-solid fa-cubes-stacked text-2xl"></i>
+            <span class="text-lg font-medium tracking-wider ml-1">数据沙箱平台</span>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="relative cursor-pointer hover:text-gray-200 transition-colors" onclick="window.location.href='my_messages.html'">
+                <i class="fa-regular fa-bell text-xl"></i>
+                <span class="absolute -top-1.5 -right-2 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-[#1c7ffd] leading-none">20</span>
+            </div>
+            <div class="flex items-center gap-2 cursor-pointer hover:text-gray-200 transition-colors">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=yiyun&backgroundColor=b6e3f4" alt="avatar" class="w-8 h-8 rounded-full border border-blue-300 bg-white">
+                <span>yiyun</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-1 flex overflow-hidden">
+        <aside class="w-[220px] bg-white border-r border-gray-200 shrink-0 overflow-y-auto">
+            <div id="developer-side-nav" class="py-4"></div>
+        </aside>
+
+        <script src="./developer_nav.js"></script>
+
+        <main class="flex-1 flex flex-col overflow-hidden relative bg-[#f0f2f5]">
+            <div id="developer-top-nav" class="h-[52px] bg-white border-b border-gray-200 px-6 flex items-center gap-2 shrink-0 overflow-x-auto"></div>
+
+            <div class="h-[52px] flex items-center px-6 text-[#606266] shrink-0 bg-white border-b border-gray-100 text-[14px]">
+                <span>数据沙箱</span>
+                <span class="mx-2">/</span>
+                <span>配额管理</span>
+                <span class="mx-2">/</span>
+                <span class="font-medium text-[#303133]">部门配额管理</span>
+            </div>
+
+            <div class="flex-1 p-6 flex flex-col gap-5 overflow-y-auto">
+                <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] p-6 shrink-0">
+                    <div class="grid grid-cols-3 gap-x-8 gap-y-4">
+                        <div class="flex items-center gap-3">
+                            <label class="text-[#606266] whitespace-nowrap w-[110px] text-right">部门名称：</label>
+                            <input type="text" placeholder="请输入" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
+                        </div>
+                        <div class="flex justify-end gap-3 col-start-3">
+                            <button class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px] flex items-center gap-1">
+                                <i class="fa-solid fa-rotate-right"></i> 重置
+                            </button>
+                            <button class="h-8 px-5 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px] flex items-center gap-1">
+                                <i class="fa-solid fa-magnifying-glass"></i> 查询
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] flex-1 flex flex-col p-6 min-h-0">
+                    <div class="flex justify-between items-center mb-4 shrink-0">
+                        <h2 class="text-[15px] font-medium text-[#303133]">部门配额管理列表</h2>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-rotate-right text-gray-400 cursor-pointer hover:text-[#1c7ffd]"></i>
+                            <i class="fa-solid fa-up-down text-gray-400 cursor-pointer hover:text-[#1c7ffd]"></i>
+                            <i class="fa-solid fa-gear text-gray-400 cursor-pointer hover:text-[#1c7ffd]"></i>
+                        </div>
+                    </div>
+
+                    <div class="flex-1 overflow-auto">
+                        <table class="w-full text-left text-[13px] text-[#606266]">
+                            <thead class="bg-[#f8f8f9] text-[#909399] font-medium sticky top-0 z-10 shadow-[0_1px_0_0_#f0f0f0]">
+                                <tr>
+                                    <th class="py-3 px-4 w-16 text-center">序号</th>
+                                    <th class="py-3 px-4">部门名称</th>
+                                    <th class="py-3 px-4">CPU配额(核) <i class="fa-solid fa-sort text-gray-300 ml-1"></i></th>
+                                    <th class="py-3 px-4">内存配额(Mb) <i class="fa-solid fa-sort text-gray-300 ml-1"></i></th>
+                                    <th class="py-3 px-4">CPU使用(核) <i class="fa-solid fa-sort text-gray-300 ml-1"></i></th>
+                                    <th class="py-3 px-4">内存使用(Mb) <i class="fa-solid fa-sort text-gray-300 ml-1"></i></th>
+                                    <th class="py-3 px-4 text-center relative">
+                                        <div class="flex items-center justify-center gap-1">
+                                            <span>状态</span>
+                                            <i class="fa-solid fa-filter text-gray-400 text-[10px] cursor-pointer" onclick="toggleColumnFilter('statusFilter', event)"></i>
+                                        </div>
+                                        <div id="statusFilter" class="hidden absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded shadow-lg p-3 z-30 w-[160px]">
+                                            <div class="space-y-2 mb-3">
+                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]"><input type="checkbox" class="w-3.5 h-3.5"> 已分配</label>
+                                                <label class="flex items-center gap-2 cursor-pointer text-[13px]"><input type="checkbox" class="w-3.5 h-3.5"> 申请中</label>
+                                            </div>
+                                            <div class="flex justify-end gap-2">
+                                                <button class="text-[#1c7ffd] text-[13px]" onclick="closeColumnFilter('statusFilter')">确定</button>
+                                                <button class="text-[#1c7ffd] text-[13px]" onclick="closeColumnFilter('statusFilter')">重置</button>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th class="py-3 px-4 text-center w-32">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="py-3 px-4 text-center">1</td>
+                                    <td class="py-3 px-4">数据要素事业部</td>
+                                    <td class="py-3 px-4">1</td>
+                                    <td class="py-3 px-4">1024</td>
+                                    <td class="py-3 px-4">0.1</td>
+                                    <td class="py-3 px-4">128</td>
+                                    <td class="py-3 px-4 text-center">
+                                        <span class="inline-flex items-center justify-center h-6 px-2.5 bg-green-50 text-green-600 rounded-sm text-[12px] border border-green-200">
+                                            <i class="fa-solid fa-circle text-[8px] mr-1.5"></i>已分配
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-4 text-center">
+                                        <div class="flex items-center justify-center gap-3">
+                                            <button class="text-[#1c7ffd] hover:underline">查看</button>
+                                            <button class="text-[#1c7ffd] hover:underline" onclick="openQuotaApplyModal()">申请</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="flex justify-end items-center gap-3 pt-4 mt-auto border-t border-gray-100 text-[13px] text-[#606266] shrink-0">
+                        <span>共 2 条</span>
+                        <div class="flex items-center gap-1">
+                            <button class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded hover:border-[#1c7ffd] hover:text-[#1c7ffd] disabled:text-gray-300 disabled:border-gray-200 disabled:cursor-not-allowed">
+                                <i class="fa-solid fa-chevron-left text-xs"></i>
+                            </button>
+                            <button class="w-8 h-8 flex items-center justify-center border border-[#1c7ffd] text-[#1c7ffd] rounded">1</button>
+                            <button class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded hover:border-[#1c7ffd] hover:text-[#1c7ffd] disabled:text-gray-300 disabled:border-gray-200 disabled:cursor-not-allowed">
+                                <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <select class="h-8 px-2 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
+                                <option>10 条/页</option>
+                                <option>20 条/页</option>
+                                <option>50 条/页</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 配额申请弹窗 -->
+    <div id="quotaApplyModal" class="fixed inset-0 bg-black bg-opacity-30 z-50 hidden flex items-center justify-center">
+        <div class="bg-white rounded-lg shadow-2xl w-[500px] flex flex-col overflow-hidden">
+            <div class="h-12 border-b border-gray-100 flex items-center justify-between px-5 shrink-0">
+                <span class="font-medium text-[#303133]">配额申请</span>
+                <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-[#1c7ffd] text-lg" onclick="closeQuotaApplyModal()"></i>
+            </div>
+            <div class="p-6 space-y-5">
+                <div class="flex items-center">
+                    <label class="w-[120px] text-right shrink-0 text-[#606266]"><span class="text-red-500 mr-1">*</span>CPU配额（核）：</label>
+                    <input type="number" placeholder="请输入CPU配额" class="ml-4 flex-1 border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:border-[#1c7ffd] placeholder-gray-300">
+                </div>
+                <div class="flex items-center">
+                    <label class="w-[120px] text-right shrink-0 text-[#606266]"><span class="text-red-500 mr-1">*</span>内存配额（Mb）：</label>
+                    <input type="number" placeholder="请输入内存配额" class="ml-4 flex-1 border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:border-[#1c7ffd] placeholder-gray-300">
+                </div>
+                <div class="flex items-start">
+                    <label class="w-[120px] text-right shrink-0 text-[#606266] mt-1.5"><span class="text-red-500 mr-1">*</span>申请原因：</label>
+                    <textarea placeholder="请输入申请原因" rows="4" class="ml-4 flex-1 border border-gray-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:border-[#1c7ffd] placeholder-gray-300 resize-none"></textarea>
+                </div>
+            </div>
+            <div class="border-t border-gray-100 p-4 flex justify-end gap-3 bg-white shrink-0">
+                <button class="px-5 h-8 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px]" onclick="closeQuotaApplyModal()">取消</button>
+                <button class="px-5 h-8 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px]" onclick="submitQuotaApply()">提交</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleColumnFilter(id, event) {
+            event.stopPropagation();
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+        function closeColumnFilter(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+        document.addEventListener('click', function(e) {
+            const filter = document.getElementById('statusFilter');
+            if (filter && !filter.contains(e.target) && !e.target.closest('.fa-filter')) {
+                filter.classList.add('hidden');
+            }
+        });
+
+        function openQuotaApplyModal() {
+            document.getElementById('quotaApplyModal').classList.remove('hidden');
+        }
+        function closeQuotaApplyModal() {
+            document.getElementById('quotaApplyModal').classList.add('hidden');
+        }
+        function submitQuotaApply() {
+            closeQuotaApplyModal();
+            alert('申请已提交');
+        }
+    </script>
+</body>
+</html>

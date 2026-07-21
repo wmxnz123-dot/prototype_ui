@@ -133,7 +133,8 @@
                                     </td>
                                     <td class="py-4 px-4">2026-03-10 09:30:00</td>
                                     <td class="py-4 px-4">
-                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="openModelDetail(); return false;">查看</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline mr-3">查看</a>
+                                        <a href="#" class="text-[#e6a23c] hover:underline" onclick="showConfirm('确定取消该模型申请吗？'); return false;">取消</a>
                                     </td>
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
@@ -149,7 +150,8 @@
                                     </td>
                                     <td class="py-4 px-4">2026-03-09 14:20:00</td>
                                     <td class="py-4 px-4">
-                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="openModelDetail(); return false;">查看</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline mr-3">查看</a>
+                                        <a href="#" class="text-[#e6a23c] hover:underline" onclick="showConfirm('确定取消该模型申请吗？'); return false;">取消</a>
                                     </td>
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
@@ -165,7 +167,8 @@
                                     </td>
                                     <td class="py-4 px-4">2026-03-07 16:45:00</td>
                                     <td class="py-4 px-4">
-                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="openModelDetail(); return false;">查看</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline mr-3">查看</a>
+                                        <a href="#" class="text-[#e6a23c] hover:underline" onclick="showConfirm('确定取消该模型申请吗？'); return false;">取消</a>
                                     </td>
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
@@ -181,7 +184,8 @@
                                     </td>
                                     <td class="py-4 px-4">2026-03-06 10:00:00</td>
                                     <td class="py-4 px-4">
-                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="openModelDetail(); return false;">查看</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline mr-3">查看</a>
+                                        <a href="#" class="text-[#e6a23c] hover:underline" onclick="showConfirm('确定取消该模型申请吗？'); return false;">取消</a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -223,149 +227,51 @@
                                     <i class="fa-solid fa-cube"></i>
                                 </div>
                                 <div>
-                                    <div class="text-[18px] font-bold text-[#303133] mb-1">信用评分模型</div>
-                                    <div class="text-[#909399] text-[13px]">模型提供方：山东省金融办</div>
+                                    <div class="text-[18px] font-bold text-[#303133] mb-1">模型名称：信用评分模型</div>
+                                    <div class="text-[#909399] text-[13px]">数据需求方：山东华迪智能技术有限公司</div>
                                 </div>
                             </div>
                             <div class="text-right">
-                                <div class="text-[#909399] text-[13px]">更新时间：2026-03-10 09:30:00</div>
+                                <div class="flex items-center gap-1.5 text-[13px] mb-1">
+                                    <span class="w-2 h-2 rounded-full bg-[#e6a23c]"></span>
+                                    <span class="text-[#e6a23c]">平台方待审核</span>
+                                </div>
+                                <div class="text-[#909399] text-[13px]">申请时间：2026-03-01 10:00:00</div>
                             </div>
                         </div>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-4">
                         <div class="flex border-b border-gray-100 px-6">
-                            <div id="detail-drawer-tab-basic" class="py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer text-[14px]" onclick="switchDetailDrawerTab('basic')">模型信息</div>
-                            <div id="detail-drawer-tab-interface" class="py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors text-[14px]" onclick="switchDetailDrawerTab('interface')">模型接口</div>
-                            <div id="detail-drawer-tab-apply" class="py-3 px-2 text-[#606266] hover:text-[#1c7ffd] mr-8 cursor-pointer transition-colors text-[14px]" onclick="switchDetailDrawerTab('apply')">申请信息</div>
+                            <div class="py-3 px-2 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium mr-8 cursor-pointer text-[14px]">基本信息</div>
                         </div>
 
-                        <div id="detail-drawer-content-basic" class="p-6">
-                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none">模型信息</h3>
-                            <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] pl-4">
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">模型名称</span>
-                                    <span class="text-[#303133] flex-1">信用评分模型</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">任务名称</span>
-                                    <span class="text-[#303133] flex-1">zh测试任务_0310</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">镜像名称</span>
-                                    <span class="text-[#303133] flex-1">ys4201/ys4201:1.0</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">cpu限制（Core）</span>
-                                    <span class="text-[#303133] flex-1">0.2</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">cpu预留（Core）</span>
-                                    <span class="text-[#303133] flex-1">0.2</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">内存限制（Mi）</span>
-                                    <span class="text-[#303133] flex-1">256</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">内存预留（Mi）</span>
-                                    <span class="text-[#303133] flex-1">256</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">容器端口号</span>
-                                    <span class="text-[#303133] flex-1">8081</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">模型所属方</span>
-                                    <span class="text-[#303133] flex-1">山东亿云信息技术有限公司</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">是否公开</span>
-                                    <span class="text-[#303133] flex-1">是</span>
+                        <div class="p-6">
+                            <h3 class="font-bold text-[#303133] text-[15px] mb-4">模型信息</h3>
+                            <div class="border border-gray-200 rounded-lg p-4 mb-6">
+                                <div class="grid grid-cols-2 gap-y-4 text-[13px]">
+                                    <div class="flex">
+                                        <span class="text-[#909399] w-28 text-right pr-4">模型名称</span>
+                                        <span class="text-[#1c7ffd] hover:underline cursor-pointer">信用评分模型</span>
+                                    </div>
+                                    <div class="flex">
+                                        <span class="text-[#909399] w-28 text-right pr-4">模型提供方</span>
+                                        <span class="text-[#303133]">数据要素事业部</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div id="detail-drawer-content-interface" class="p-6 hidden border-t border-gray-100">
-                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none mt-4">模型接口</h3>
-                            <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] pl-4 mb-6">
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">接口URI</span>
-                                    <span class="text-[#303133] flex-1">/api/credit/score</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">请求类型</span>
-                                    <span class="text-[#303133] flex-1">POST</span>
-                                </div>
-                                <div class="flex col-span-2">
-                                    <span class="text-[#909399] w-28 text-right pr-4">接口描述</span>
-                                    <span class="text-[#303133] flex-1">ys4201接口</span>
-                                </div>
-                            </div>
-                            <h4 class="font-bold text-[#303133] text-[14px] mb-3 pl-4">请求参数</h4>
-                            <table class="w-full text-left text-[13px] text-[#606266] mb-6 pl-4">
-                                <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
-                                    <tr>
-                                        <th class="py-2.5 px-4">名称</th>
-                                        <th class="py-2.5 px-4">描述</th>
-                                        <th class="py-2.5 px-4">位置</th>
-                                        <th class="py-2.5 px-4">是否必填</th>
-                                        <th class="py-2.5 px-4">示例值</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="border-b border-gray-100">
-                                        <td class="py-3 px-4">id_card</td>
-                                        <td class="py-3 px-4">身份证号</td>
-                                        <td class="py-3 px-4">body</td>
-                                        <td class="py-3 px-4">是</td>
-                                        <td class="py-3 px-4">610103199501011001</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <h4 class="font-bold text-[#303133] text-[14px] mb-3 pl-4">返回参数</h4>
-                            <table class="w-full text-left text-[13px] text-[#606266]">
-                                <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
-                                    <tr>
-                                        <th class="py-2.5 px-4">名称</th>
-                                        <th class="py-2.5 px-4">描述</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="border-b border-gray-100">
-                                        <td class="py-3 px-4">request_id</td>
-                                        <td class="py-3 px-4">请求追踪ID</td>
-                                    </tr>
-                                    <tr class="border-b border-gray-100">
-                                        <td class="py-3 px-4">data.grade</td>
-                                        <td class="py-3 px-4">信用等级（AAA/AA/A/B/C/D）</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div id="detail-drawer-content-apply" class="p-6 hidden border-t border-gray-100">
-                            <h3 class="font-bold border-l-2 border-[#1c7ffd] pl-2 text-[#303133] text-[15px] mb-6 leading-none mt-4">申请信息</h3>
-                            <div class="grid grid-cols-2 gap-y-6 gap-x-12 text-[13px] pl-4">
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">申请时间</span>
-                                    <span class="text-[#303133] flex-1">2026-03-01 10:00:00</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">授权时间</span>
-                                    <span class="text-[#303133] flex-1">2026-03-05 14:30:00</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">授权有效期</span>
-                                    <span class="text-[#303133] flex-1">2026-03-05 至 2027-03-05</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">申请人</span>
-                                    <span class="text-[#303133] flex-1">张三</span>
-                                </div>
-                                <div class="flex col-span-2">
-                                    <span class="text-[#909399] w-28 text-right pr-4">申请事由</span>
-                                    <span class="text-[#303133] flex-1">用于企业信用评估分析场景</span>
+                            <h3 class="font-bold text-[#303133] text-[15px] mb-4">授权信息</h3>
+                            <div class="border border-gray-200 rounded-lg p-4">
+                                <div class="text-[13px] space-y-3">
+                                    <div class="flex">
+                                        <span class="text-[#909399] w-28 text-right pr-4">接口名称</span>
+                                        <span class="text-[#303133]">数据要素-模型接口001</span>
+                                    </div>
+                                    <div class="flex">
+                                        <span class="text-[#909399] w-28 text-right pr-4">token</span>
+                                        <span class="text-[#303133]">f3ac5f8c081f448dbfc6b209529e3526</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>

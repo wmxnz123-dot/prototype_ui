@@ -19,7 +19,7 @@ const developerSideNavMap = {
             label: '数据接入',
             icon: 'fa-plug',
             children: [
-                { type: 'link', label: '数据源管理', href: 'data_source_manage.html?nav=resource-source', navKey: 'resource-source' },
+                { type: 'link', label: '数据源管理', href: 'data_source_manage.html?nav=resource-source', navKey: 'resource-source', disabled: true },
                 { type: 'link', label: '数据注册', href: 'own_data_manage.html?nav=resource-own', navKey: 'resource-own' },
                 { type: 'link', label: '数据分类', href: '', navKey: 'resource-category', disabled: true }
             ]
@@ -49,7 +49,7 @@ const developerSideNavMap = {
             icon: 'fa-chart-pie',
             children: [
                 { type: 'link', label: '总配额管理', href: '', navKey: 'sandbox-quota-total', disabled: true },
-                { type: 'link', label: '部门配额管理', href: '', navKey: 'sandbox-quota-dept', disabled: true }
+                { type: 'link', label: '部门配额管理', href: 'dept_quota_manage.html?nav=sandbox-quota-dept', navKey: 'sandbox-quota-dept' }
             ]
         },
         {
@@ -91,7 +91,7 @@ const developerSideNavMap = {
             label: '镜像管理',
             icon: 'fa-code-branch',
             children: [
-                { type: 'link', label: '镜像仓库管理', href: 'image_repo_manage.html?nav=result-repo', navKey: 'result-repo' },
+                { type: 'link', label: '镜像仓库管理', href: 'image_repo_manage.html?nav=result-repo', navKey: 'result-repo', disabled: true },
                 { type: 'link', label: '镜像上传', href: 'image_upload.html?nav=result-upload', navKey: 'result-upload' }
             ]
         },
@@ -109,7 +109,7 @@ const developerSideNavMap = {
                             label: '模型申请',
                             icon: 'fa-paper-plane',
                             children: [
-                                { type: 'link', label: '模型超市', href: 'model_market.html?nav=model-market', navKey: 'model-market' },
+                                { type: 'link', label: '模型超市', href: 'model_market.html?nav=model-market', navKey: 'model-market', disabled: true },
                                 { type: 'link', label: '已申请模型', href: 'model_applied.html?nav=model-applied', navKey: 'model-applied' }
                             ]
                         },
@@ -128,10 +128,10 @@ const developerSideNavMap = {
             label: '已发起',
             icon: 'fa-paper-plane',
             children: [
-                { type: 'link', label: '数据申请工单', href: 'data_resource_apply.html?nav=initiated-resource', navKey: 'initiated-resource' },
                 { type: 'link', label: '模型部署申请工单', href: 'model_deploy_work_order.html?nav=initiated-deploy', navKey: 'initiated-deploy' },
                 { type: 'link', label: '模型变更申请工单', href: 'model_change_work_order.html?nav=initiated-change', navKey: 'initiated-change' },
-                { type: 'link', label: '模型申请工单', href: 'model_apply_work_order.html?nav=initiated-model-apply', navKey: 'initiated-model-apply' }
+                { type: 'link', label: '模型申请工单', href: 'model_apply_work_order.html?nav=initiated-model-apply', navKey: 'initiated-model-apply' },
+                { type: 'link', label: '配额申请工单', href: 'quota_apply_work_order.html?nav=initiated-quota', navKey: 'initiated-quota' }
             ]
         },
         {
@@ -142,7 +142,8 @@ const developerSideNavMap = {
                 { type: 'link', label: '数据资源审核', href: 'data_resource_audit.html?nav=pending-resource', navKey: 'pending-resource' },
                 { type: 'link', label: '模型注册部署', href: 'model_deploy_audit.html?nav=pending-deploy', navKey: 'pending-deploy' },
                 { type: 'link', label: '模型变更部署', href: 'model_change_audit.html?nav=pending-change', navKey: 'pending-change' },
-                { type: 'link', label: '模型申请审核', href: 'model_apply_audit.html?nav=pending-model-apply', navKey: 'pending-model-apply' }
+                { type: 'link', label: '模型申请审核', href: 'model_apply_audit.html?nav=pending-model-apply', navKey: 'pending-model-apply' },
+                { type: 'link', label: '配额分配审核', href: 'quota_audit.html?nav=pending-quota', navKey: 'pending-quota' }
             ]
         }
     ],
@@ -177,6 +178,9 @@ const developerPathDefaults = {
     'authorized_data_resources.html': { group: 'resource', navKey: 'resource-authorized' },
     'data_source_manage.html': { group: 'resource', navKey: 'resource-source' },
     'data_resource_apply.html': { group: 'approval', navKey: 'initiated-resource' },
+    'dept_quota_manage.html': { group: 'sandbox', navKey: 'sandbox-quota-dept' },
+    'quota_apply_work_order.html': { group: 'approval', navKey: 'initiated-quota' },
+    'quota_audit.html': { group: 'approval', navKey: 'pending-quota' },
     'scene_center.html': { group: 'sandbox', navKey: 'sandbox-task' },
     'scene_detail.html': { group: 'sandbox', navKey: 'sandbox-quota' },
     'data_resources.html': { group: 'sandbox', navKey: 'sandbox-quota' },

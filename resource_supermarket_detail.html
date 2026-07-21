@@ -93,10 +93,6 @@
                                     <span class="text-[#303133] flex-1">数据要素数据资源-库表003</span>
                                 </div>
                                 <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">资源编码</span>
-                                    <span class="text-[#303133] flex-1">PD202508140001</span>
-                                </div>
-                                <div class="flex">
                                     <span class="text-[#909399] w-28 text-right pr-4">所属分类</span>
                                     <span class="text-[#303133] flex-1">经济</span>
                                 </div>
@@ -109,12 +105,8 @@
                                     <span class="text-[#303133] flex-1">2026-06-23 10:26:19</span>
                                 </div>
                                 <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">提供方</span>
+                                    <span class="text-[#909399] w-28 text-right pr-4">数据所属方</span>
                                     <span class="text-[#303133] flex-1">数据管理局</span>
-                                </div>
-                                <div class="flex">
-                                    <span class="text-[#909399] w-28 text-right pr-4">服务名称</span>
-                                    <span class="text-[#303133] flex-1">数据要素数据资源-库表服务003</span>
                                 </div>
                                 <div class="flex">
                                     <span class="text-[#909399] w-28 text-right pr-4">资源类型</span>
@@ -238,6 +230,48 @@
                     <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeDataBasket()"></i>
                 </div>
                 <div class="flex-1 overflow-y-auto p-4 space-y-6">
+                    <!-- 接口类 -->
+                    <div>
+                        <div class="text-[#303133] font-medium mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-plug text-[#1c7ffd]"></i>接口类
+                        </div>
+                        <table class="w-full text-[13px]">
+                            <thead>
+                                <tr class="bg-[#f8f8f9]">
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">资源名称</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">调用频次（平均）（次/天）</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">调用频次（峰值）（次/天）</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">附件上传状态</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-3">数据要素数据资源-接口003</td>
+                                    <td class="py-3 px-3">1200次/小时</td>
+                                    <td class="py-3 px-3">3500次/小时</td>
+                                    <td class="py-3 px-3"><span class="text-gray-500">未上传</span></td>
+                                    <td class="py-3 px-3 text-[#1c7ffd]">
+                                        <a href="#" class="hover:underline mr-2">编辑</a>
+                                        <a href="#" class="hover:underline mr-2">移除</a>
+                                        <a href="#" class="hover:underline">上传附件</a>
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-3">数据要素数据资源-接口002</td>
+                                    <td class="py-3 px-3">800次/小时</td>
+                                    <td class="py-3 px-3">2500次/小时</td>
+                                    <td class="py-3 px-3"><span class="text-green-600">已上传</span></td>
+                                    <td class="py-3 px-3 text-[#1c7ffd]">
+                                        <a href="#" class="hover:underline mr-2">编辑</a>
+                                        <a href="#" class="hover:underline mr-2">移除</a>
+                                        <a href="#" class="hover:underline">重新上传</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- 库表类 -->
                     <div>
                         <div class="text-[#303133] font-medium mb-2 flex items-center gap-2">
                             <i class="fa-solid fa-table text-[#1c7ffd]"></i>库表类
@@ -245,8 +279,7 @@
                         <table class="w-full text-[13px]">
                             <thead>
                                 <tr class="bg-[#f8f8f9]">
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">目录名称</th>
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">服务名称</th>
+                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">资源名称</th>
                                     <th class="py-2 px-3 text-left text-[#909399] font-medium">字段名称</th>
                                     <th class="py-2 px-3 text-left text-[#909399] font-medium">附件上传状态</th>
                                     <th class="py-2 px-3 text-left text-[#909399] font-medium">操作</th>
@@ -254,7 +287,6 @@
                             </thead>
                             <tbody>
                                 <tr class="border-b border-gray-100">
-                                    <td class="py-3 px-3">企业基础信息库</td>
                                     <td class="py-3 px-3">数据要素数据资源-库表003</td>
                                     <td class="py-3 px-3">id, ip, type, create_by, create_time</td>
                                     <td class="py-3 px-3"><span class="text-green-600">已上传</span></td>
@@ -264,30 +296,9 @@
                                         <a href="#" class="hover:underline">重新上传</a>
                                     </td>
                                 </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                        <div class="text-[#303133] font-medium mb-2 flex items-center gap-2">
-                            <i class="fa-solid fa-plug text-[#1c7ffd]"></i>接口类
-                        </div>
-                        <table class="w-full text-[13px]">
-                            <thead>
-                                <tr class="bg-[#f8f8f9]">
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">目录名称</th>
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">服务名称</th>
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">调用频次平均</th>
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">调用频次峰值</th>
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">附件上传状态</th>
-                                    <th class="py-2 px-3 text-left text-[#909399] font-medium">操作</th>
-                                </tr>
-                            </thead>
-                            <tbody>
                                 <tr class="border-b border-gray-100">
-                                    <td class="py-3 px-3">企业风险信息</td>
-                                    <td class="py-3 px-3">数据要素数据资源-接口003</td>
-                                    <td class="py-3 px-3">1200次/小时</td>
-                                    <td class="py-3 px-3">3500次/小时</td>
+                                    <td class="py-3 px-3">数据要素数据资源-库表002</td>
+                                    <td class="py-3 px-3">credit_code, change_item, change_before, change_after</td>
                                     <td class="py-3 px-3"><span class="text-gray-500">未上传</span></td>
                                     <td class="py-3 px-3 text-[#1c7ffd]">
                                         <a href="#" class="hover:underline mr-2">编辑</a>
@@ -300,7 +311,7 @@
                     </div>
                 </div>
                 <div class="h-14 border-t border-gray-100 flex items-center justify-between px-6 shrink-0 bg-white">
-                    <span class="text-[#606266] text-sm">共 <span class="text-[#1c7ffd] font-medium">2</span> 项资源</span>
+                    <span class="text-[#606266] text-sm">共 <span class="text-[#1c7ffd] font-medium">4</span> 项资源</span>
                     <button class="px-5 py-1.5 bg-[#1c7ffd] text-white rounded text-sm hover:bg-blue-600 transition-colors" onclick="openSubmitApplyModal()">提交申请</button>
                 </div>
             </div>

@@ -82,6 +82,10 @@
                         <i class="fa-solid fa-users w-6 text-center mr-2 text-lg"></i>
                         开发者
                     </a>
+                    <a href="#" onclick="switchTaskTab('images'); return false;" id="tab-images" class="flex items-center px-4 py-3 text-[#606266] hover:bg-gray-50 hover:text-[#1c7ffd] rounded-md transition-colors">
+                        <i class="fa-solid fa-layer-group w-6 text-center mr-2 text-lg"></i>
+                        镜像
+                    </a>
                     <a href="#" onclick="switchTaskTab('models'); return false;" id="tab-models" class="flex items-center px-4 py-3 text-[#606266] hover:bg-gray-50 hover:text-[#1c7ffd] rounded-md transition-colors">
                         <i class="fa-solid fa-cube w-6 text-center mr-2 text-lg"></i>
                         数据模型
@@ -102,7 +106,7 @@
                                         <i class="fa-solid fa-circle-check mr-1.5 text-sm"></i>
                                         已创建
                                     </div>
-                                    <span class="text-[#909399]">任务开始时间：2021年07月12日</span>
+                                    <span class="text-[#909399]">任务创建时间：2021年07月12日</span>
                                 </div>
                             </div>
 
@@ -256,6 +260,9 @@
                         <div class="flex-1 flex flex-col gap-5 overflow-hidden">
                             <div class="flex justify-between items-center">
                                 <h2 class="text-[16px] font-bold text-[#303133]">开发者</h2>
+                                <button onclick="openAddDeveloperModal()" class="h-8 px-4 bg-[#1c7ffd] text-white rounded text-[13px] hover:bg-blue-600 transition-colors flex items-center gap-1">
+                                    <i class="fa-solid fa-plus text-[11px]"></i> 添加
+                                </button>
                             </div>
                             <div class="flex-1 overflow-auto">
                                 <table class="w-full text-left text-[13px] text-[#606266]">
@@ -282,6 +289,50 @@
                                             <td class="py-4 px-4">王宇</td>
                                             <td class="py-4 px-4">139****5678</td>
                                             <td class="py-4 px-4">2026-03-09 14:20:00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="content-images" class="hidden bg-white rounded-lg shadow-[0_2px_12px_0_rgba(0,0,0,0.05)] flex-1 flex flex-col p-6">
+                        <div class="flex-1 flex flex-col gap-5 overflow-hidden">
+                            <div class="flex justify-between items-center">
+                                <h2 class="text-[16px] font-bold text-[#303133]">镜像</h2>
+                            </div>
+                            <div class="flex-1 overflow-auto">
+                                <table class="w-full text-left text-[13px] text-[#606266]">
+                                    <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
+                                        <tr>
+                                            <th class="py-3 px-4 w-16">序号</th>
+                                            <th class="py-3 px-4">镜像名称</th>
+                                            <th class="py-3 px-4">镜像版本</th>
+                                            <th class="py-3 px-4">关联模型</th>
+                                            <th class="py-3 px-4">创建时间</th>
+                                            <th class="py-3 px-4 w-20">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                            <td class="py-4 px-4">1</td>
+                                            <td class="py-4 px-4">social-check</td>
+                                            <td class="py-4 px-4">v1.0</td>
+                                            <td class="py-4 px-4">社保核验模型_0420</td>
+                                            <td class="py-4 px-4">2026-04-20 16:00:00</td>
+                                            <td class="py-4 px-4">
+                                                <a href="#" class="text-[#1c7ffd] hover:underline">查看</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                            <td class="py-4 px-4">2</td>
+                                            <td class="py-4 px-4">gjj-query</td>
+                                            <td class="py-4 px-4">v2.1</td>
+                                            <td class="py-4 px-4">公积金查询模型_0815</td>
+                                            <td class="py-4 px-4">2026-08-15 14:30:00</td>
+                                            <td class="py-4 px-4">
+                                                <a href="#" class="text-[#1c7ffd] hover:underline">查看</a>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -584,6 +635,7 @@
                         <table class="w-full text-left text-[13px] text-[#606266]">
                             <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
                                 <tr>
+                                    <th class="py-2 px-3 w-12"></th>
                                     <th class="py-2 px-3 w-12">序号</th>
                                     <th class="py-2 px-3">目录名称</th>
                                     <th class="py-2 px-3">服务名称</th>
@@ -594,6 +646,7 @@
                             </thead>
                             <tbody>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                    <td class="py-3 px-3"><input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-[#1c7ffd] focus:ring-[#1c7ffd] cursor-pointer"></td>
                                     <td class="py-3 px-3">1</td>
                                     <td class="py-3 px-3">企业基础信息库</td>
                                     <td class="py-3 px-3">企业基础信息查询服务</td>
@@ -602,6 +655,7 @@
                                     <td class="py-3 px-3"><a href="#" onclick="openAppliedDataDetail(); return false;" class="text-[#1c7ffd] hover:underline">查看</a></td>
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                    <td class="py-3 px-3"><input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-[#1c7ffd] focus:ring-[#1c7ffd] cursor-pointer"></td>
                                     <td class="py-3 px-3">2</td>
                                     <td class="py-3 px-3">社保信息库</td>
                                     <td class="py-3 px-3">社保信息查询服务</td>
@@ -650,6 +704,7 @@
                         <table class="w-full text-left text-[13px] text-[#606266]">
                             <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
                                 <tr>
+                                    <th class="py-2 px-3 w-12"></th>
                                     <th class="py-2 px-3 w-12">序号</th>
                                     <th class="py-2 px-3">资源名称</th>
                                     <th class="py-2 px-3">资源类型</th>
@@ -659,6 +714,7 @@
                             </thead>
                             <tbody>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                    <td class="py-3 px-3"><input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-[#1c7ffd] focus:ring-[#1c7ffd] cursor-pointer"></td>
                                     <td class="py-3 px-3">1</td>
                                     <td class="py-3 px-3">企业标签接口</td>
                                     <td class="py-3 px-3">API</td>
@@ -666,6 +722,7 @@
                                     <td class="py-3 px-3"><a href="#" onclick="openOwnDataDetail(); return false;" class="text-[#1c7ffd] hover:underline">查看</a></td>
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                    <td class="py-3 px-3"><input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-[#1c7ffd] focus:ring-[#1c7ffd] cursor-pointer"></td>
                                     <td class="py-3 px-3">2</td>
                                     <td class="py-3 px-3">税务风险评估接口</td>
                                     <td class="py-3 px-3">API</td>
@@ -682,9 +739,79 @@
                 </div>
             </div>
 
+            <!-- 添加开发者弹窗 -->
+            <div id="addDeveloperModal" class="fixed inset-0 bg-black bg-opacity-30 z-[60] hidden flex items-center justify-center">
+                <div class="bg-white rounded-lg shadow-2xl w-[700px] max-h-[80vh] flex flex-col overflow-hidden">
+                    <div class="h-12 border-b border-gray-100 flex items-center justify-between px-5 shrink-0">
+                        <span class="font-medium text-[#303133]">添加开发者</span>
+                        <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-[#1c7ffd] text-lg" onclick="closeAddDeveloperModal()"></i>
+                    </div>
+                    <div class="p-5 shrink-0 border-b border-gray-100">
+                        <div class="grid grid-cols-3 gap-x-6 gap-y-3">
+                            <div class="flex items-center gap-2">
+                                <label class="text-[#606266] text-[13px] whitespace-nowrap">账号：</label>
+                                <input type="text" placeholder="请输入" class="flex-1 h-7 px-2 border border-gray-300 rounded text-[12px] focus:outline-none focus:border-[#1c7ffd]">
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <label class="text-[#606266] text-[13px] whitespace-nowrap">姓名：</label>
+                                <input type="text" placeholder="请输入" class="flex-1 h-7 px-2 border border-gray-300 rounded text-[12px] focus:outline-none focus:border-[#1c7ffd]">
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <label class="text-[#606266] text-[13px] whitespace-nowrap">手机号：</label>
+                                <input type="text" placeholder="请输入" class="flex-1 h-7 px-2 border border-gray-300 rounded text-[12px] focus:outline-none focus:border-[#1c7ffd]">
+                            </div>
+                            <div class="flex justify-end gap-2 col-start-3">
+                                <button class="h-7 px-3 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[12px]">重置</button>
+                                <button class="h-7 px-3 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[12px]">查询</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 overflow-auto p-5">
+                        <table class="w-full text-left text-[13px] text-[#606266]">
+                            <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
+                                <tr>
+                                    <th class="py-2 px-3 w-12"></th>
+                                    <th class="py-2 px-3 w-12">序号</th>
+                                    <th class="py-2 px-3">账号</th>
+                                    <th class="py-2 px-3">姓名</th>
+                                    <th class="py-2 px-3">手机号</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                    <td class="py-3 px-3"><input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-[#1c7ffd] focus:ring-[#1c7ffd] cursor-pointer"></td>
+                                    <td class="py-3 px-3">1</td>
+                                    <td class="py-3 px-3">zhangsan</td>
+                                    <td class="py-3 px-3">张三</td>
+                                    <td class="py-3 px-3">138****0001</td>
+                                </tr>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                    <td class="py-3 px-3"><input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-[#1c7ffd] focus:ring-[#1c7ffd] cursor-pointer"></td>
+                                    <td class="py-3 px-3">2</td>
+                                    <td class="py-3 px-3">lisi</td>
+                                    <td class="py-3 px-3">李四</td>
+                                    <td class="py-3 px-3">139****0002</td>
+                                </tr>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                    <td class="py-3 px-3"><input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-[#1c7ffd] focus:ring-[#1c7ffd] cursor-pointer"></td>
+                                    <td class="py-3 px-3">3</td>
+                                    <td class="py-3 px-3">wangwu</td>
+                                    <td class="py-3 px-3">王五</td>
+                                    <td class="py-3 px-3">137****0003</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="border-t border-gray-100 p-4 flex justify-end gap-3 bg-white shrink-0">
+                        <button class="px-5 h-8 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px]" onclick="closeAddDeveloperModal()">取消</button>
+                        <button class="px-5 h-8 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px]" onclick="closeAddDeveloperModal(); showAlert('添加成功')">确定</button>
+                    </div>
+                </div>
+            </div>
+
             <script>
                 function switchTaskTab(tabName) {
-                    ['taskDetail', 'processingResources', 'developers', 'models'].forEach(function(tab) {
+                    ['taskDetail', 'processingResources', 'developers', 'images', 'models'].forEach(function(tab) {
                         const tabEl = document.getElementById('tab-' + tab);
                         const contentEl = document.getElementById('content-' + tab);
                         if (tab === tabName) {
@@ -810,6 +937,14 @@
                 }
                 function closeAddOwnDataModal() {
                     document.getElementById('addOwnDataModal').classList.add('hidden');
+                }
+
+                // 添加开发者弹窗
+                function openAddDeveloperModal() {
+                    document.getElementById('addDeveloperModal').classList.remove('hidden');
+                }
+                function closeAddDeveloperModal() {
+                    document.getElementById('addDeveloperModal').classList.add('hidden');
                 }
 
                 function showAlert(message) {
