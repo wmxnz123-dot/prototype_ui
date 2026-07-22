@@ -101,7 +101,7 @@
                                     <td class="py-4 px-4">数据要素事业部</td>
                                     <td class="py-4 px-4">2026-07-17 10:30:15</td>
                                     <td class="py-4 px-4">
-                                        <a href="#" class="text-[#1c7ffd] hover:underline">分配</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="openAuditDrawer(); return false;">审核</a>
                                     </td>
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
@@ -109,7 +109,7 @@
                                     <td class="py-4 px-4">数据研发部</td>
                                     <td class="py-4 px-4">2026-07-16 14:20:30</td>
                                     <td class="py-4 px-4">
-                                        <a href="#" class="text-[#1c7ffd] hover:underline">分配</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="openAuditDrawer(); return false;">审核</a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -220,126 +220,188 @@
     </div>
 
     <!-- 配额分配审核抽屉 -->
-    <div id="quotaAssignDrawer" class="fixed inset-0 z-50 hidden">
-        <div class="absolute inset-0 bg-black/50" onclick="closeQuotaAssignDrawer()"></div>
-        <div class="absolute right-0 top-0 h-full w-[520px] bg-white shadow-2xl flex flex-col">
-            <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
-                <span class="font-medium text-[#303133]">配额分配审核</span>
-                <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeQuotaAssignDrawer()"></i>
+    <div id="quotaAuditDrawer" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/50" onclick="closeAuditDrawer()"></div>
+        <div class="absolute right-0 top-0 h-full w-[680px] bg-white shadow-2xl flex flex-col">
+            <!-- 标题区域 -->
+            <div class="px-6 py-4 border-b border-gray-200">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <span class="text-[16px] font-medium text-[#303133]">部门名称：数据要素事业部</span>
+                        <span class="inline-flex items-center justify-center h-5 px-2.5 bg-blue-50 text-[#1c7ffd] rounded-sm text-[12px]">待审核</span>
+                    </div>
+                    <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeAuditDrawer()"></i>
+                </div>
+                <div class="text-[#909399] text-[13px] mt-2">申请时间：2026-07-17 10:30:15</div>
             </div>
+            
+            <!-- Tab切换 -->
+            <div class="px-6 pt-4 border-b border-gray-100">
+                <div class="flex">
+                    <div id="basicInfoTab" class="pb-3 px-4 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium cursor-pointer transition-colors text-[14px]" onclick="switchDrawerTab('basic')">基本信息</div>
+                    <div id="resourceConfigTab" class="pb-3 px-4 text-[#606266] hover:text-[#1c7ffd] cursor-pointer transition-colors text-[14px]" onclick="switchDrawerTab('resource')">资源配置情况</div>
+                    <div id="approvalRecordTab" class="pb-3 px-4 text-[#606266] hover:text-[#1c7ffd] cursor-pointer transition-colors text-[14px]" onclick="switchDrawerTab('record')">审批记录</div>
+                </div>
+            </div>
+            
+            <!-- 内容区域 -->
             <div class="flex-1 overflow-y-auto p-6">
-                <div class="space-y-6">
-                    <div>
-                        <h3 class="text-[15px] font-medium text-[#303133] mb-4">基本信息</h3>
-                        <div class="grid grid-cols-2 gap-x-6 gap-y-4">
-                            <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[100px]">部门名称：</label>
-                                <span class="text-[#303133]">数据要素事业部</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[100px]">申请时间：</label>
-                                <span class="text-[#303133]">2026-07-17 10:30:15</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[100px]">CPU配额（核）：</label>
-                                <span class="text-[#303133]">2</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[100px]">内存配额（Mb）：</label>
-                                <span class="text-[#303133]">2048</span>
+                <!-- 基本信息Tab -->
+                <div id="basicInfoContent">
+                    <div class="space-y-6">
+                        <!-- 当前信息 -->
+                        <div>
+                            <h3 class="text-[15px] font-medium text-[#303133] mb-4">当前信息</h3>
+                            <div class="grid grid-cols-2 gap-x-6 gap-y-4">
+                                <div class="flex items-center gap-3">
+                                    <label class="text-[#606266] whitespace-nowrap w-[120px]">CPU配额(核)：</label>
+                                    <span class="text-[#303133]">4</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <label class="text-[#606266] whitespace-nowrap w-[120px]">内存配额(Mb)：</label>
+                                    <span class="text-[#303133]">8192</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <label class="text-[#606266] whitespace-nowrap w-[120px]">CPU使用(核)：</label>
+                                    <span class="text-[#303133]">2.5</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <label class="text-[#606266] whitespace-nowrap w-[120px]">内存使用(Mb)：</label>
+                                    <span class="text-[#303133]">4096</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <h3 class="text-[15px] font-medium text-[#303133] mb-4">申请原因</h3>
-                        <div class="bg-gray-50 rounded p-4 text-[#606266] text-[13px]">
-                            因业务发展需要，申请增加配额用于数据处理。
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-[15px] font-medium text-[#303133] mb-4">审核意见</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-center gap-4">
-                                <label class="flex items-center gap-2 cursor-pointer">
-                                    <input type="radio" name="auditResult" value="approve" class="w-4 h-4 text-[#1c7ffd]">
-                                    <span class="text-[#303133]">分配</span>
-                                </label>
-                                <label class="flex items-center gap-2 cursor-pointer">
-                                    <input type="radio" name="auditResult" value="reject" class="w-4 h-4 text-[#1c7ffd]">
-                                    <span class="text-[#303133]">驳回</span>
-                                </label>
-                            </div>
-                            <div>
-                                <label class="text-[#606266] block mb-2">审核意见：</label>
-                                <textarea class="w-full h-24 px-3 py-2 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd] resize-none" placeholder="请输入审核意见"></textarea>
+                        
+                        <!-- 申请信息 -->
+                        <div>
+                            <h3 class="text-[15px] font-medium text-[#303133] mb-4">申请信息</h3>
+                            <div class="grid grid-cols-2 gap-x-6 gap-y-4">
+                                <div class="flex items-center gap-3">
+                                    <label class="text-[#606266] whitespace-nowrap w-[120px]">CPU配额（核）：</label>
+                                    <span class="text-[#303133]">2</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <label class="text-[#606266] whitespace-nowrap w-[120px]">内存配额（Mb）：</label>
+                                    <span class="text-[#303133]">2048</span>
+                                </div>
+                                <div class="col-span-2">
+                                    <label class="text-[#606266] block mb-2">申请原因：</label>
+                                    <div class="bg-gray-50 rounded p-4 text-[#606266] text-[13px]">
+                                        因业务发展需要，申请增加配额用于数据处理。
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                <!-- 资源配置情况Tab -->
+                <div id="resourceConfigContent" class="hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-[13px] text-[#606266]">
+                            <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
+                                <tr>
+                                    <th class="py-3 px-4 w-16">序号</th>
+                                    <th class="py-3 px-4">模型名称</th>
+                                    <th class="py-3 px-4">镜像名称</th>
+                                    <th class="py-3 px-4">模型所属方</th>
+                                    <th class="py-3 px-4 cursor-pointer hover:text-[#1c7ffd] transition-colors">cpu使用 <i class="fa-solid fa-sort"></i></th>
+                                    <th class="py-3 px-4 cursor-pointer hover:text-[#1c7ffd] transition-colors">内存使用 <i class="fa-solid fa-sort"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="6" class="py-20 text-center text-gray-400">
+                                        <div class="flex flex-col items-center justify-center">
+                                            <i class="fa-regular fa-folder-open text-5xl mb-3 text-gray-300"></i>
+                                            <span class="text-[14px]">暂无数据</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex justify-end items-center mt-4 text-[#606266] text-sm">
+                        <span class="mr-4">共 0 条</span>
+                        <div class="flex items-center gap-1">
+                            <button class="w-7 h-7 flex items-center justify-center border border-gray-200 rounded text-gray-400 bg-gray-50 cursor-not-allowed">
+                                <i class="fa-solid fa-angle-left"></i>
+                            </button>
+                            <button class="w-7 h-7 flex items-center justify-center border border-gray-200 rounded text-gray-400 bg-gray-50">0</button>
+                            <button class="w-7 h-7 flex items-center justify-center border border-gray-200 rounded text-gray-400 bg-gray-50 cursor-not-allowed">
+                                <i class="fa-solid fa-angle-right"></i>
+                            </button>
+                        </div>
+                        <div class="relative ml-4 w-[90px]">
+                            <select class="w-full border border-gray-300 rounded px-3 py-1 text-sm focus:outline-none focus:border-[#1c7ffd] appearance-none bg-white cursor-pointer hover:border-gray-400 transition-colors">
+                                <option>10 条/页</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-gray-400 pointer-events-none"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 审批记录Tab -->
+                <div id="approvalRecordContent" class="hidden">
+                </div>
             </div>
+            
+            <!-- 底部按钮组 -->
             <div class="flex justify-end gap-3 px-6 py-4 border-t border-gray-200">
-                <button class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px]" onclick="closeQuotaAssignDrawer()">取消</button>
-                <button class="h-8 px-5 bg-red-500 text-white rounded hover:bg-red-600 transition-colors text-[13px]" onclick="closeQuotaAssignDrawer()">驳回</button>
-                <button class="h-8 px-5 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px]" onclick="closeQuotaAssignDrawer()">分配</button>
+                <button class="h-8 px-5 bg-red-500 text-white rounded hover:bg-red-600 transition-colors text-[13px]" onclick="showRejectModal()">驳回</button>
+                <button class="h-8 px-5 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px]" onclick="showAssignModal()">分配</button>
             </div>
         </div>
     </div>
 
-    <!-- 配额分配查看抽屉 -->
-    <div id="quotaViewDrawer" class="fixed inset-0 z-50 hidden">
-        <div class="absolute inset-0 bg-black/50" onclick="closeQuotaViewDrawer()"></div>
-        <div class="absolute right-0 top-0 h-full w-[480px] bg-white shadow-2xl flex flex-col">
+    <!-- 分配弹窗 -->
+    <div id="assignModal" class="fixed inset-0 z-[60] hidden">
+        <div class="absolute inset-0 bg-black/50" onclick="closeAssignModal()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] bg-white rounded-lg shadow-2xl">
             <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
-                <span class="font-medium text-[#303133]">配额分配详情</span>
-                <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeQuotaViewDrawer()"></i>
+                <span class="font-medium text-[#303133]">配额分配</span>
+                <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeAssignModal()"></i>
             </div>
-            <div class="flex-1 overflow-y-auto p-6">
-                <div class="space-y-6">
-                    <div>
-                        <h3 class="text-[15px] font-medium text-[#303133] mb-4">基本信息</h3>
-                        <div class="grid grid-cols-2 gap-x-6 gap-y-4">
-                            <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[100px]">部门名称：</label>
-                                <span class="text-[#303133]">市场运营部</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[100px]">申请时间：</label>
-                                <span class="text-[#303133]">2026-07-15 09:00:00</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[100px]">CPU配额（核）：</label>
-                                <span class="text-[#303133]">1</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[100px]">内存配额（Mb）：</label>
-                                <span class="text-[#303133]">1024</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[100px]">审核结果：</label>
-                                <span class="inline-flex items-center justify-center h-5 px-2.5 bg-green-50 text-green-600 rounded-sm text-[12px]">已分配</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <label class="text-[#606266] whitespace-nowrap w-[100px]">审核时间：</label>
-                                <span class="text-[#303133]">2026-07-15 09:15:00</span>
-                            </div>
-                        </div>
+            <div class="p-6">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <label class="text-[#606266] whitespace-nowrap w-[120px] text-right">CPU配额（核）：</label>
+                        <input type="number" value="2" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
                     </div>
-                    <div>
-                        <h3 class="text-[15px] font-medium text-[#303133] mb-4">申请原因</h3>
-                        <div class="bg-gray-50 rounded p-4 text-[#606266] text-[13px]">
-                            申请配额用于市场数据分析。
-                        </div>
+                    <div class="flex items-center gap-3">
+                        <label class="text-[#606266] whitespace-nowrap w-[120px] text-right">内存配额（Mb）：</label>
+                        <input type="number" value="2048" class="flex-1 h-8 px-3 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd]">
                     </div>
-                    <div>
-                        <h3 class="text-[15px] font-medium text-[#303133] mb-4">审核意见</h3>
-                        <div class="bg-gray-50 rounded p-4 text-[#606266] text-[13px]">
-                            同意分配。
-                        </div>
+                    <div class="flex items-center gap-3">
+                        <label class="text-[#606266] whitespace-nowrap w-[120px] text-right">审核意见：</label>
+                        <textarea class="flex-1 h-24 px-3 py-2 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd] resize-none" placeholder="请输入审核意见"></textarea>
                     </div>
                 </div>
             </div>
             <div class="flex justify-end gap-3 px-6 py-4 border-t border-gray-200">
-                <button class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px]" onclick="closeQuotaViewDrawer()">关闭</button>
+                <button class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px]" onclick="closeAssignModal()">取消</button>
+                <button class="h-8 px-5 bg-[#1c7ffd] text-white rounded hover:bg-blue-600 transition-colors text-[13px]" onclick="submitAssign()">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 驳回弹窗 -->
+    <div id="rejectModal" class="fixed inset-0 z-[60] hidden">
+        <div class="absolute inset-0 bg-black/50" onclick="closeRejectModal()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] bg-white rounded-lg shadow-2xl">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+                <span class="font-medium text-[#303133]">驳回原因</span>
+                <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeRejectModal()"></i>
+            </div>
+            <div class="p-6">
+                <div class="flex items-start gap-3">
+                    <label class="text-[#606266] whitespace-nowrap w-[100px] text-right pt-1">驳回原因：</label>
+                    <textarea class="flex-1 h-24 px-3 py-2 border border-gray-300 rounded text-[13px] focus:outline-none focus:border-[#1c7ffd] resize-none" placeholder="请输入驳回原因"></textarea>
+                </div>
+            </div>
+            <div class="flex justify-end gap-3 px-6 py-4 border-t border-gray-200">
+                <button class="h-8 px-5 border border-gray-300 rounded text-[#606266] hover:text-[#1c7ffd] hover:border-[#1c7ffd] transition-colors text-[13px]" onclick="closeRejectModal()">取消</button>
+                <button class="h-8 px-5 bg-red-500 text-white rounded hover:bg-red-600 transition-colors text-[13px]" onclick="submitReject()">确定驳回</button>
             </div>
         </div>
     </div>
@@ -363,6 +425,32 @@
             }
         }
 
+        function switchDrawerTab(tab) {
+            document.getElementById('basicInfoTab').classList.remove('text-[#1c7ffd]', 'border-b-2', 'border-[#1c7ffd]', 'font-medium');
+            document.getElementById('basicInfoTab').classList.add('text-[#606266]');
+            document.getElementById('resourceConfigTab').classList.remove('text-[#1c7ffd]', 'border-b-2', 'border-[#1c7ffd]', 'font-medium');
+            document.getElementById('resourceConfigTab').classList.add('text-[#606266]');
+            document.getElementById('approvalRecordTab').classList.remove('text-[#1c7ffd]', 'border-b-2', 'border-[#1c7ffd]', 'font-medium');
+            document.getElementById('approvalRecordTab').classList.add('text-[#606266]');
+            document.getElementById('basicInfoContent').classList.add('hidden');
+            document.getElementById('resourceConfigContent').classList.add('hidden');
+            document.getElementById('approvalRecordContent').classList.add('hidden');
+            
+            if (tab === 'basic') {
+                document.getElementById('basicInfoTab').classList.add('text-[#1c7ffd]', 'border-b-2', 'border-[#1c7ffd]', 'font-medium');
+                document.getElementById('basicInfoTab').classList.remove('text-[#606266]');
+                document.getElementById('basicInfoContent').classList.remove('hidden');
+            } else if (tab === 'resource') {
+                document.getElementById('resourceConfigTab').classList.add('text-[#1c7ffd]', 'border-b-2', 'border-[#1c7ffd]', 'font-medium');
+                document.getElementById('resourceConfigTab').classList.remove('text-[#606266]');
+                document.getElementById('resourceConfigContent').classList.remove('hidden');
+            } else if (tab === 'record') {
+                document.getElementById('approvalRecordTab').classList.add('text-[#1c7ffd]', 'border-b-2', 'border-[#1c7ffd]', 'font-medium');
+                document.getElementById('approvalRecordTab').classList.remove('text-[#606266]');
+                document.getElementById('approvalRecordContent').classList.remove('hidden');
+            }
+        }
+
         function toggleColumnFilter(filterId, event) {
             event.stopPropagation();
             const filter = document.getElementById(filterId);
@@ -381,20 +469,40 @@
             }
         });
 
-        function openQuotaAssignDrawer() {
-            document.getElementById('quotaAssignDrawer').classList.remove('hidden');
+        function openAuditDrawer() {
+            document.getElementById('quotaAuditDrawer').classList.remove('hidden');
         }
 
-        function closeQuotaAssignDrawer() {
-            document.getElementById('quotaAssignDrawer').classList.add('hidden');
+        function closeAuditDrawer() {
+            document.getElementById('quotaAuditDrawer').classList.add('hidden');
         }
 
-        function openQuotaViewDrawer() {
-            document.getElementById('quotaViewDrawer').classList.remove('hidden');
+        function showAssignModal() {
+            document.getElementById('assignModal').classList.remove('hidden');
         }
 
-        function closeQuotaViewDrawer() {
-            document.getElementById('quotaViewDrawer').classList.add('hidden');
+        function closeAssignModal() {
+            document.getElementById('assignModal').classList.add('hidden');
+        }
+
+        function showRejectModal() {
+            document.getElementById('rejectModal').classList.remove('hidden');
+        }
+
+        function closeRejectModal() {
+            document.getElementById('rejectModal').classList.add('hidden');
+        }
+
+        function submitAssign() {
+            alert('分配成功');
+            closeAssignModal();
+            closeAuditDrawer();
+        }
+
+        function submitReject() {
+            alert('已驳回');
+            closeRejectModal();
+            closeAuditDrawer();
         }
     </script>
 </body>
