@@ -179,7 +179,7 @@
                                     </td>
                                     <td class="py-4 px-4">2026-07-15 09:15:00</td>
                                     <td class="py-4 px-4">
-                                        <a href="#" class="text-[#1c7ffd] hover:underline">查看</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="openViewDrawer(); return false;">查看</a>
                                     </td>
                                 </tr>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
@@ -190,7 +190,7 @@
                                     </td>
                                     <td class="py-4 px-4">2026-07-14 16:45:00</td>
                                     <td class="py-4 px-4">
-                                        <a href="#" class="text-[#1c7ffd] hover:underline">查看</a>
+                                        <a href="#" class="text-[#1c7ffd] hover:underline" onclick="openViewDrawer(); return false;">查看</a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -251,7 +251,7 @@
                     <div class="space-y-6">
                         <!-- 当前信息 -->
                         <div>
-                            <h3 class="text-[15px] font-medium text-[#303133] mb-4">当前信息</h3>
+                            <h3 class="text-[15px] font-medium text-[#303133] mb-4">原信息</h3>
                             <div class="grid grid-cols-2 gap-x-6 gap-y-4">
                                 <div class="flex items-center gap-3">
                                     <label class="text-[#606266] whitespace-nowrap w-[120px]">CPU配额(核)：</label>
@@ -385,6 +385,148 @@
         </div>
     </div>
 
+    <!-- 已审核查看抽屉 -->
+    <div id="quotaViewDrawer" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/50" onclick="closeViewDrawer()"></div>
+        <div class="absolute right-0 top-0 h-full w-[680px] bg-white shadow-2xl flex flex-col">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <span class="text-[16px] font-medium text-[#303133]">部门名称：市场运营部</span>
+                        <span class="inline-flex items-center justify-center h-5 px-2.5 bg-green-50 text-green-600 rounded-sm text-[12px]">已分配</span>
+                    </div>
+                    <i class="fa-solid fa-xmark text-gray-400 cursor-pointer hover:text-gray-600" onclick="closeViewDrawer()"></i>
+                </div>
+                <div class="text-[#909399] text-[13px] mt-2">审核时间：2026-07-15 09:15:00</div>
+            </div>
+            
+            <div class="px-6 pt-4 border-b border-gray-100">
+                <div class="flex">
+                    <div id="viewBasicInfoTab" class="pb-3 px-4 text-[#1c7ffd] border-b-2 border-[#1c7ffd] font-medium cursor-pointer transition-colors text-[14px]" onclick="switchViewDrawerTab('basic')">基本信息</div>
+                    <div id="viewResourceConfigTab" class="pb-3 px-4 text-[#606266] hover:text-[#1c7ffd] cursor-pointer transition-colors text-[14px]" onclick="switchViewDrawerTab('resource')">资源配置情况</div>
+                    <div id="viewApprovalRecordTab" class="pb-3 px-4 text-[#606266] hover:text-[#1c7ffd] cursor-pointer transition-colors text-[14px]" onclick="switchViewDrawerTab('record')">审批记录</div>
+                </div>
+            </div>
+            
+            <div class="flex-1 overflow-y-auto p-6">
+                <div id="viewBasicInfoContent">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-[15px] font-medium text-[#303133] mb-4">原信息</h3>
+                            <div class="grid grid-cols-2 gap-x-6 gap-y-4">
+                                <div class="flex items-center gap-3">
+                                    <label class="text-[#606266] whitespace-nowrap w-[120px]">CPU配额(核)：</label>
+                                    <span class="text-[#303133]">4</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <label class="text-[#606266] whitespace-nowrap w-[120px]">内存配额(Mb)：</label>
+                                    <span class="text-[#303133]">8192</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <label class="text-[#606266] whitespace-nowrap w-[120px]">CPU使用(核)：</label>
+                                    <span class="text-[#303133]">2.5</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <label class="text-[#606266] whitespace-nowrap w-[120px]">内存使用(Mb)：</label>
+                                    <span class="text-[#303133]">4096</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-[15px] font-medium text-[#303133] mb-4">申请信息</h3>
+                            <div class="grid grid-cols-2 gap-x-6 gap-y-4">
+                                <div class="flex items-center gap-3">
+                                    <label class="text-[#606266] whitespace-nowrap w-[120px]">CPU配额（核）：</label>
+                                    <span class="text-[#303133]">2</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <label class="text-[#606266] whitespace-nowrap w-[120px]">内存配额（Mb）：</label>
+                                    <span class="text-[#303133]">2048</span>
+                                </div>
+                                <div class="col-span-2">
+                                    <label class="text-[#606266] block mb-2">申请原因：</label>
+                                    <div class="bg-gray-50 rounded p-4 text-[#606266] text-[13px]">
+                                        申请配额用于市场数据分析。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-[15px] font-medium text-[#303133] mb-4">分配信息</h3>
+                            <div class="grid grid-cols-2 gap-x-6 gap-y-4">
+                                <div class="flex items-center gap-3">
+                                    <label class="text-[#606266] whitespace-nowrap w-[120px]">CPU配额（核）：</label>
+                                    <span class="text-[#303133]">2</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <label class="text-[#606266] whitespace-nowrap w-[120px]">内存配额（Mb）：</label>
+                                    <span class="text-[#303133]">2048</span>
+                                </div>
+                                <div class="col-span-2">
+                                    <label class="text-[#606266] block mb-2">审核意见：</label>
+                                    <div class="bg-gray-50 rounded p-4 text-[#606266] text-[13px]">
+                                        同意分配。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="viewResourceConfigContent" class="hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-[13px] text-[#606266]">
+                            <thead class="bg-[#f8f8f9] text-[#909399] font-medium border-b border-gray-200">
+                                <tr>
+                                    <th class="py-3 px-4 w-16">序号</th>
+                                    <th class="py-3 px-4">模型名称</th>
+                                    <th class="py-3 px-4">镜像名称</th>
+                                    <th class="py-3 px-4">模型所属方</th>
+                                    <th class="py-3 px-4 cursor-pointer hover:text-[#1c7ffd] transition-colors">cpu使用 <i class="fa-solid fa-sort"></i></th>
+                                    <th class="py-3 px-4 cursor-pointer hover:text-[#1c7ffd] transition-colors">内存使用 <i class="fa-solid fa-sort"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="6" class="py-20 text-center text-gray-400">
+                                        <div class="flex flex-col items-center justify-center">
+                                            <i class="fa-regular fa-folder-open text-5xl mb-3 text-gray-300"></i>
+                                            <span class="text-[14px]">暂无数据</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex justify-end items-center mt-4 text-[#606266] text-sm">
+                        <span class="mr-4">共 0 条</span>
+                        <div class="flex items-center gap-1">
+                            <button class="w-7 h-7 flex items-center justify-center border border-gray-200 rounded text-gray-400 bg-gray-50 cursor-not-allowed">
+                                <i class="fa-solid fa-angle-left"></i>
+                            </button>
+                            <button class="w-7 h-7 flex items-center justify-center border border-gray-200 rounded text-gray-400 bg-gray-50">0</button>
+                            <button class="w-7 h-7 flex items-center justify-center border border-gray-200 rounded text-gray-400 bg-gray-50 cursor-not-allowed">
+                                <i class="fa-solid fa-angle-right"></i>
+                            </button>
+                        </div>
+                        <div class="relative ml-4 w-[90px]">
+                            <select class="w-full border border-gray-300 rounded px-3 py-1 text-sm focus:outline-none focus:border-[#1c7ffd] appearance-none bg-white cursor-pointer hover:border-gray-400 transition-colors">
+                                <option>10 条/页</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-gray-400 pointer-events-none"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="viewApprovalRecordContent" class="hidden">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
     <!-- 驳回弹窗 -->
     <div id="rejectModal" class="fixed inset-0 z-[60] hidden">
         <div class="absolute inset-0 bg-black/50" onclick="closeRejectModal()"></div>
@@ -475,6 +617,40 @@
 
         function closeAuditDrawer() {
             document.getElementById('quotaAuditDrawer').classList.add('hidden');
+        }
+
+        function switchViewDrawerTab(tab) {
+            document.getElementById('viewBasicInfoTab').classList.remove('text-[#1c7ffd]', 'border-b-2', 'border-[#1c7ffd]', 'font-medium');
+            document.getElementById('viewBasicInfoTab').classList.add('text-[#606266]');
+            document.getElementById('viewResourceConfigTab').classList.remove('text-[#1c7ffd]', 'border-b-2', 'border-[#1c7ffd]', 'font-medium');
+            document.getElementById('viewResourceConfigTab').classList.add('text-[#606266]');
+            document.getElementById('viewApprovalRecordTab').classList.remove('text-[#1c7ffd]', 'border-b-2', 'border-[#1c7ffd]', 'font-medium');
+            document.getElementById('viewApprovalRecordTab').classList.add('text-[#606266]');
+            document.getElementById('viewBasicInfoContent').classList.add('hidden');
+            document.getElementById('viewResourceConfigContent').classList.add('hidden');
+            document.getElementById('viewApprovalRecordContent').classList.add('hidden');
+            
+            if (tab === 'basic') {
+                document.getElementById('viewBasicInfoTab').classList.add('text-[#1c7ffd]', 'border-b-2', 'border-[#1c7ffd]', 'font-medium');
+                document.getElementById('viewBasicInfoTab').classList.remove('text-[#606266]');
+                document.getElementById('viewBasicInfoContent').classList.remove('hidden');
+            } else if (tab === 'resource') {
+                document.getElementById('viewResourceConfigTab').classList.add('text-[#1c7ffd]', 'border-b-2', 'border-[#1c7ffd]', 'font-medium');
+                document.getElementById('viewResourceConfigTab').classList.remove('text-[#606266]');
+                document.getElementById('viewResourceConfigContent').classList.remove('hidden');
+            } else if (tab === 'record') {
+                document.getElementById('viewApprovalRecordTab').classList.add('text-[#1c7ffd]', 'border-b-2', 'border-[#1c7ffd]', 'font-medium');
+                document.getElementById('viewApprovalRecordTab').classList.remove('text-[#606266]');
+                document.getElementById('viewApprovalRecordContent').classList.remove('hidden');
+            }
+        }
+
+        function openViewDrawer() {
+            document.getElementById('quotaViewDrawer').classList.remove('hidden');
+        }
+
+        function closeViewDrawer() {
+            document.getElementById('quotaViewDrawer').classList.add('hidden');
         }
 
         function showAssignModal() {
